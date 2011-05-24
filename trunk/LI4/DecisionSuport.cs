@@ -55,6 +55,8 @@ namespace LI4
             set { _tableResult = value; }
         }
 
+
+        /*Métodos de Cálculo*/
         public Dictionary<string, int> registerClass(String idChar, int points) 
         {
             _tableCH.Add(idChar, points);
@@ -187,14 +189,9 @@ namespace LI4
 
         private Dictionary<String, Dictionary<String, float>> registerPriority(String idChar, Dictionary<String, float> tablePrior) 
         {
-
             _tableResult.Add(idChar, tablePrior);
             return _tableResult;
         }
-
-
-
-
 
         public void limparTabelas() {
             // quando fechar o programa deve limpar todas as tabelas
@@ -207,7 +204,12 @@ namespace LI4
         }
 
 
+        /* Métodos a Criar*/
 
+        // testa consistencia
+        //
+        //
+        //
 
 
 
