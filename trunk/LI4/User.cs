@@ -62,9 +62,9 @@ namespace Business
             set { _password = value; }
         }
 
-        /**
-         * Method clone
-         * */
+            /**
+             * Method clone
+             * */
         public User clone()
         {
             return new User(this);
