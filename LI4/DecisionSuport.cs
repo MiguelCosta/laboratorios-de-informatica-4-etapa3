@@ -11,7 +11,7 @@ namespace LI4
         private Dictionary<String, Dictionary<String, int>> _tableSW;
         private Dictionary<String, Dictionary<String, int>> _tableX;
         private Dictionary<String, Dictionary<String, int>> _tableClass;
-        private Dictionary<String, float> _tablePrior;
+        
         private Dictionary<String, Dictionary<String, float>> _tableResult;
 
         public DecisionSuport() 
@@ -20,7 +20,6 @@ namespace LI4
             _tableSW = new Dictionary<string, Dictionary<string,int>>();
             _tableX = new Dictionary<string,Dictionary<string,int>>();
             _tableClass = new Dictionary<string, Dictionary<string, int>>();
-            _tablePrior = new Dictionary<string, float>();
             _tableResult = new Dictionary<string, Dictionary<string, float>>();
         }
 
@@ -50,12 +49,6 @@ namespace LI4
             set { _tableClass = value; }
         }
 
-        public Dictionary<String, float> TablePrior
-        {
-            get { return _tablePrior; }
-            set { _tablePrior = value; }
-        }
-
         public Dictionary<string, Dictionary<string, float>> TableResult 
         {
             get { return _tableResult; }
@@ -70,7 +63,6 @@ namespace LI4
 
         public Dictionary<String, Dictionary<String, int>> filter(String idChar) 
         {
-             _tableX.Clear(); // ver depois se isto está bem
             Dictionary<String, int> tableAux = new Dictionary<string, int>();
             int valor;
             Dictionary<String, int> ch; // se dps nao der declarar espaco
@@ -79,7 +71,7 @@ namespace LI4
                 _tableSW.TryGetValue(idSof, out ch);
                 foreach(String idCh in ch.Keys)
                 {
-                    if (idCh == idChar){
+                    if (idCh.Equals(idChar)){
                         ch.TryGetValue(idCh, out valor);
                         tableAux.Add(idSof,valor);
                     }
@@ -89,53 +81,59 @@ namespace LI4
             return _tableX;
         }
 
-        public int calMin() 
+        public int calMin(String idChar) 
         {
-
-            // caso nao se possa na filter fazer clear na tabelaX deve-se meter a calMin a receber como parametro o id da caracteristica
             int min=0;
             int flag = 1;
-            foreach (Dictionary<String, int> list in _tableX.Values) 
+            Dictionary<String, int> list;
+            foreach (String id in _tableX.Keys)
             {
-                foreach (int valor in list.Values) 
+                if (id.Equals(idChar))
                 {
-                    if (flag == 1)
+                    _tableX.TryGetValue(id, out list);
+                    foreach (int valor in list.Values)
                     {
-                        min = valor;
-                        flag = 0;
-                    }
-                    else 
-                    { 
-                        if(min>valor)
+                        if (flag == 1)
                         {
                             min = valor;
-                        }       
-                    }  
+                            flag = 0;
+                        }
+                        else
+                        {
+                            if (min > valor)
+                            {
+                                min = valor;
+                            }
+                        }
+                    }
                 }
             }
             return min;
         }
 
-        public int calMax()
+        public int calMax(String idChar)
         {
-
-            // caso nao se possa na filter fazer clear na tabelaX deve-se meter a calMax a receber como parametro o id da caracteristica
             int max = 0;
             int flag = 1;
-            foreach (Dictionary<String, int> list in _tableX.Values)
+            Dictionary<String, int> list;
+            foreach (String id in _tableX.Keys)
             {
-                foreach (int valor in list.Values)
+                if (id.Equals(idChar))
                 {
-                    if (flag == 1)
+                    _tableX.TryGetValue(id, out list);
+                    foreach (int valor in list.Values)
                     {
-                        max = valor;
-                        flag = 0;
-                    }
-                    else
-                    {
-                        if (max < valor)
+                        if (flag == 1)
                         {
                             max = valor;
+                            flag = 0;
+                        }
+                        else
+                        {
+                            if (max < valor)
+                            {
+                                max = valor;
+                            }
                         }
                     }
                 }
@@ -155,7 +153,7 @@ namespace LI4
 
         public Dictionary<String, float> calValueMax(int min,int max)
         {
-            _tablePrior.Clear();// ver se isto dps está bem
+            Dictionary<String, float> _tablePrior=new Dictionary<string, float>();
             float resultado;
             int valor;
 
@@ -171,7 +169,7 @@ namespace LI4
 
         public Dictionary<String, float> calValueMin(int min, int max)
         {
-            _tablePrior.Clear();// ver se isto dps está bem
+            Dictionary<String, float> _tablePrior = new Dictionary<string, float>();
             float resultado;
             int valor;
 
@@ -187,13 +185,30 @@ namespace LI4
             return _tablePrior;
         }
 
+        private Dictionary<String, Dictionary<String, float>> registerPriority(String idChar) 
+        {
+            
+
+
+
+
+            return _tableResult;
+        }
 
 
 
 
 
-
-
+        public void limparTabelas() {
+            // quando fechar o programa deve limpar todas as tabelas
+            _tableCH.Clear();
+            _tableSW.Clear();
+            _tableX.Clear();
+            _tableClass.Clear();
+            _tablePrior.Clear();
+            _tableResult.Clear();
+        
+        }
 
 
 
