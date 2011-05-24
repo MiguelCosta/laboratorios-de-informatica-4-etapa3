@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace DataBase
 {
@@ -69,7 +73,9 @@ namespace DataBase
             }
             catch (Exception e)
             {
+                MessageBox.Show("Error: Impossible connect to data base!\n\n" + e.ToString());
                 Console.WriteLine("Error: Impossible connect to data base!\n" + e.ToString());
+                
             }
         }
 
@@ -84,6 +90,7 @@ namespace DataBase
             }
             catch (Exception e)
             {
+                MessageBox.Show("Error: Impossible disconnect to data base!\n\n" + e.ToString());
                 Console.WriteLine("Error: Impossible disconnect to data base!\n" + e.ToString());
             }
         }
