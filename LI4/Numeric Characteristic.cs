@@ -40,5 +40,21 @@ namespace Business
             set { _value = value; }
         }
 
+        public Numeric_Characteristic clone()
+        {
+            return new Numeric_Characteristic(this);
+        }
+
+        public bool equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null || o.GetType() != this.GetType()) return false;
+
+            Numeric_Characteristic n = (Numeric_Characteristic)o;
+
+            if (_id.Equals(n.Id) && _name.Equals(n.Name) && _value == n.Value) return true;
+        }
+
+
     }
 }
