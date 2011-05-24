@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace Interface
 {
-    public partial class Form1 : Form
+    public partial class ChooseCharacteristics : Form
     {
-        public Form1()
+        public ChooseCharacteristics()
         {
             InitializeComponent();
+        }
+
+        private void ChooseCharacteristics_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
