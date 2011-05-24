@@ -1,0 +1,34 @@
+﻿
+
+
+****************************************** Código para fazer um select ******************************************
+// precisa de uma connecion
+try
+            {
+                _myConnection.Open();
+                Console.WriteLine("ligou");
+
+                SqlDataReader myReader = null;
+                SqlCommand myCommand = new SqlCommand("SELECT * FROM [LI4].[dbo].[user]", myConnection);
+
+                myReader = myCommand.ExecuteReader();
+                int i = 1;
+                while (myReader.Read())
+                {
+                    Console.WriteLine("\nRegisto: " + i);
+                    Console.WriteLine("Username: " + myReader["username"].ToString());
+                    Console.WriteLine("Password: " + myReader["password"].ToString());
+                    Console.WriteLine("Email: " + myReader["email"].ToString());
+                    Console.WriteLine("Regist_date: " + myReader["regist_date"].ToString());
+                    i++;
+                }
+
+
+                //myConnection.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+*****************************************************************************************************************

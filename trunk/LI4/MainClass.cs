@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DataBase;
 
 namespace Business
 {
@@ -27,6 +28,9 @@ namespace Business
             Console.WriteLine("Password: " + u2.Password);
 
             Console.WriteLine("User: "+u2.equals(u));
+
+            Connect c = new Connect("miguel","nada","MIGUEL-PC\\SQLEXPRESS","LI4",10);
+            c.openMyConnection();
         }
     }
 }
