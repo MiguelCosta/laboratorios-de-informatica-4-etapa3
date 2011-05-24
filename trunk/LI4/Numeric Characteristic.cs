@@ -53,6 +53,8 @@ namespace Business
             Numeric_Characteristic n = (Numeric_Characteristic)o;
 
             if (_id.Equals(n.Id) && _name.Equals(n.Name) && _value == n.Value) return true;
+
+            return false;
         }
 
 
