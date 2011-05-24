@@ -156,34 +156,70 @@ namespace LI4
         public Dictionary<String, float> calValueMax(int min,int max)
         {
             Dictionary<String, float> tablePrior=new Dictionary<string, float>();
+            Dictionary<String, float> tableAux = new Dictionary<string, float>();
             float resultado;
             int valor;
-
-            foreach (Dictionary<String, int> listClass in _tableX.Values) {
-                foreach (String idSoft in listClass.Keys) {
+            int numSoft=0;
+            float resTotal = 0;
+            float valueX;
+            float valorNorm;
+            
+            //Calculos das prioridades
+            foreach (Dictionary<String, int> listClass in _tableX.Values) 
+            {
+                foreach (String idSoft in listClass.Keys) 
+                {
+                    numSoft++;
                     listClass.TryGetValue(idSoft, out valor);
                     resultado = formulaMax(min, max, valor);
-                    tablePrior.Add(idSoft,resultado);
+                    resTotal += resultado;
+                    tableAux.Add(idSoft, resultado);
                 }
             }
+            //Calculos das prioridades normalizadas
+
+            foreach (String id in tableAux.Keys) 
+            {
+                tableAux.TryGetValue(id, out valueX);
+                valorNorm = valueX / resTotal;
+                tablePrior.Add(id, valorNorm);
+            }
+
             return tablePrior;
         }
 
         public Dictionary<String, float> calValueMin(int min, int max)
         {
             Dictionary<String, float> tablePrior = new Dictionary<string, float>();
+            Dictionary<String, float> tableAux = new Dictionary<string, float>();
             float resultado;
             int valor;
+            int numSoft = 0;
+            float resTotal = 0;
+            float valueX;
+            float valorNorm;
 
+            //Calculos das prioridades
             foreach (Dictionary<String, int> listClass in _tableX.Values)
             {
                 foreach (String idSoft in listClass.Keys)
                 {
+                    numSoft++;
                     listClass.TryGetValue(idSoft, out valor);
                     resultado = formulaMin(min, max, valor);
-                    tablePrior.Add(idSoft, resultado);
+                    resTotal += resultado;
+                    tableAux.Add(idSoft, resultado);
                 }
             }
+            //Calculos das prioridades normalizadas
+
+            foreach (String id in tableAux.Keys)
+            {
+                tableAux.TryGetValue(id, out valueX);
+                valorNorm = valueX / resTotal;
+                tablePrior.Add(id, valorNorm);
+            }
+
             return tablePrior;
         }
 
@@ -207,7 +243,7 @@ namespace LI4
         /* Métodos a Criar*/
 
         // testa consistencia
-        //
+        // 
         //
         //
 
