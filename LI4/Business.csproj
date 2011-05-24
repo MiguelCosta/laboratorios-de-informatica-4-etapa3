@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Characteristic.cs" />
+    <Compile Include="Numeric Characteristic.cs" />
     <Compile Include="Software.cs" />
     <Compile Include="MainClass.cs" />
     <Compile Include="User.cs" />
