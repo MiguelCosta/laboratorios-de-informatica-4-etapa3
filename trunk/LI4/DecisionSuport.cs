@@ -153,7 +153,7 @@ namespace LI4
 
         public Dictionary<String, float> calValueMax(int min,int max)
         {
-            Dictionary<String, float> _tablePrior=new Dictionary<string, float>();
+            Dictionary<String, float> tablePrior=new Dictionary<string, float>();
             float resultado;
             int valor;
 
@@ -161,15 +161,15 @@ namespace LI4
                 foreach (String idSoft in listClass.Keys) {
                     listClass.TryGetValue(idSoft, out valor);
                     resultado = formulaMax(min, max, valor);
-                    _tablePrior.Add(idSoft,resultado);
+                    tablePrior.Add(idSoft,resultado);
                 }
             }
-            return _tablePrior;
+            return tablePrior;
         }
 
         public Dictionary<String, float> calValueMin(int min, int max)
         {
-            Dictionary<String, float> _tablePrior = new Dictionary<string, float>();
+            Dictionary<String, float> tablePrior = new Dictionary<string, float>();
             float resultado;
             int valor;
 
@@ -179,19 +179,16 @@ namespace LI4
                 {
                     listClass.TryGetValue(idSoft, out valor);
                     resultado = formulaMin(min, max, valor);
-                    _tablePrior.Add(idSoft, resultado);
+                    tablePrior.Add(idSoft, resultado);
                 }
             }
-            return _tablePrior;
+            return tablePrior;
         }
 
-        private Dictionary<String, Dictionary<String, float>> registerPriority(String idChar) 
+        private Dictionary<String, Dictionary<String, float>> registerPriority(String idChar, Dictionary<String, float> tablePrior) 
         {
-            
 
-
-
-
+            _tableResult.Add(idChar, tablePrior);
             return _tableResult;
         }
 
@@ -205,7 +202,6 @@ namespace LI4
             _tableSW.Clear();
             _tableX.Clear();
             _tableClass.Clear();
-            _tablePrior.Clear();
             _tableResult.Clear();
         
         }
