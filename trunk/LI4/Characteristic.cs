@@ -29,7 +29,7 @@ namespace Business
         }
 
         /**
-         * Constructor with Software
+         * Constructor with Characteristic
          * */
         public Characteristic(Characteristic c)
         {
