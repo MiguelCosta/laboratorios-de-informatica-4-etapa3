@@ -44,7 +44,7 @@ namespace LI4
             set { _tableX = value; }
         }
 
-        public Dictionary<String, Dictionary<String, int>> TableClas
+        public Dictionary<String, Dictionary<String, int>> TableClass
         {
             get { return _tableClass; }
             set { _tableClass = value; }
@@ -61,8 +61,81 @@ namespace LI4
             get { return _tableResult; }
             set { _tableResult = value; }
         }
-    
-    
-    
+
+        public Dictionary<string, int> registerClass(String idChar, int points) 
+        {
+            _tableCH.Add(idChar, points);
+            return _tableCH;
+        }
+
+        public Dictionary<String, Dictionary<String, int>> filter(String idChar) 
+        {
+
+            _tableX.Clear(); // ver depois se isto está bem
+            Dictionary<String, int> tableAux = new Dictionary<string, int>();
+            int valor;
+            foreach(String idSof in _tableSW.Keys){
+                foreach(Dictionary<String, int> ch in _tableSW.Values){
+                    foreach(String idCh in ch.Keys){
+                        if (idCh == idChar){
+                            ch.TryGetValue(idCh, out valor);
+                            tableAux.Add(idSof,valor);
+                        }
+                    }
+                }
+            }
+            _tableX.Add(idChar,tableAux);
+            return _tableX;
+        }
+
+        public int calMin() 
+        {
+
+            // caso nao se possa na filter fazer clear na tabelaX deve-se meter a calMin a receber como parametro o id da caracteristica
+            int min=0;
+            int flag = 1;
+            foreach (Dictionary<String, int> list in _tableX.Values) 
+            {
+                foreach (int valor in list.Values) 
+                {
+                    if (flag == 1)
+                    {
+                        min = valor;
+                        flag = 0;
+                    }
+                    else 
+                    { 
+                        if(min>valor)
+                        {
+                            min = valor;
+                        }       
+                    }  
+                }
+            }
+            return min;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
