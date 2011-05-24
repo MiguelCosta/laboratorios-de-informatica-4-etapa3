@@ -32,5 +32,22 @@ namespace Interface
           
         }
 
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ConsultWebpage_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'lI4DataSet.software' table. You can move, or remove it, as needed.
+            this.softwareTableAdapter.Fill(this.lI4DataSet.software);
+
+        }
+
     }
 }
