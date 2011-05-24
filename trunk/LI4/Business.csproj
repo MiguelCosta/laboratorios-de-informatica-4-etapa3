@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Characteristic.cs" />
     <Compile Include="Software.cs" />
     <Compile Include="MainClass.cs" />
     <Compile Include="User.cs" />
