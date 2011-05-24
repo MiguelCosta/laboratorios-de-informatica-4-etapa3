@@ -10,7 +10,7 @@ namespace Business
         private string _id;
         private string _name;
         private string _link;
-        private Characteristic _charac;
+        private Dictionary<String, Characteristic> _charac;
 
         /**
          * Constructor default
@@ -26,7 +26,7 @@ namespace Business
         /**
          * Constructor with parameters
          * */
-        public Software(string id, string name, string link, Characteristic charac)
+        public Software(string id, string name, string link, Dictionary<String,Characteristic> charac)
         {
             _id = id;
             _name = name;
@@ -63,7 +63,7 @@ namespace Business
             set { _link = value; }
         }
 
-        public Characteristic Charac
+        public Dictionary<String,Characteristic> Charac
         {
             get { return _charac; }
             set { _charac = value; }
