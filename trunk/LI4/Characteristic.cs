@@ -7,8 +7,8 @@ namespace Business
 {
     abstract class Characteristic
     {
-        private string _id;
-        private string _name;
+        protected string _id;
+        protected string _name;
 
         /**
          * Constructor default
