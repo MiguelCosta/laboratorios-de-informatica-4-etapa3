@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    class Qualitative_Characteristic : Characteristic
+    public class Qualitative_Characteristic : Characteristic
     {
         private Dictionary<string, Value> _values;
 

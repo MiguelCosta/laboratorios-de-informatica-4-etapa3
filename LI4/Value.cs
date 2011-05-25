@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    class Value
+    public class Value
     {
         private string _name;
         private int _classification;

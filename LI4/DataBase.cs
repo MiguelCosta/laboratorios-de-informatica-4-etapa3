@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    class DataBase
+    public class DataBase
     {
         private User _user;
         private Dictionary<string, Software> _software_list;

@@ -52,6 +52,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBoxSoftwaresList.SuspendLayout();
             this.groupBoxSelectedSoftwares.SuspendLayout();
@@ -71,7 +73,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dataBaseToolStripMenuItem,
             this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.editAccountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(674, 24);
@@ -208,7 +211,7 @@
             // listBoxSelectedSoftwares
             // 
             this.listBoxSelectedSoftwares.FormattingEnabled = true;
-            this.listBoxSelectedSoftwares.Location = new System.Drawing.Point(27, 20);
+            this.listBoxSelectedSoftwares.Location = new System.Drawing.Point(27, 29);
             this.listBoxSelectedSoftwares.Name = "listBoxSelectedSoftwares";
             this.listBoxSelectedSoftwares.Size = new System.Drawing.Size(151, 147);
             this.listBoxSelectedSoftwares.TabIndex = 0;
@@ -246,6 +249,20 @@
             this.label1.Size = new System.Drawing.Size(25, 13);
             this.label1.TabIndex = 37;
             this.label1.Text = "Info";
+            // 
+            // editAccountToolStripMenuItem
+            // 
+            this.editAccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem});
+            this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
+            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.editAccountToolStripMenuItem.Text = "Edit Account";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // ChooseSoftwares
             // 
@@ -298,5 +315,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem editAccountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }

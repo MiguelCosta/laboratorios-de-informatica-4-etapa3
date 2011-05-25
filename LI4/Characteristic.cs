@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    abstract class Characteristic
+    public abstract class Characteristic
     {
         protected string _id;
         protected string _name;
