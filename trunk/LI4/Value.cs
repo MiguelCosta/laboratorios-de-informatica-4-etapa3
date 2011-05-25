@@ -49,6 +49,35 @@ namespace Business
             get { return _classification; }
             set { _classification = value; }
         }
-        
+
+        /**
+         * Method clone
+         * */
+        public Value clone()
+        {
+            return new Value(this);
+        }
+
+        public bool equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null || o.GetType() != this.GetType()) return false;
+
+            Value n = (Value)o;
+
+            if (_name.Equals(n.Name) && _classification == n.Classification) return true;
+
+            return false;
+        }
+
+        public string toString()
+        {
+            StringBuilder s = new StringBuilder("Value\n");
+            s.Append(_name);
+            s.Append("\n");
+            s.Append(_classification);
+            return s.ToString();
+        }
+
     }
 }
