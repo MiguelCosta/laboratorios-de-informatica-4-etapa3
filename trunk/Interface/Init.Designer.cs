@@ -70,6 +70,7 @@
             this.buttonRegisterNow.TabIndex = 1;
             this.buttonRegisterNow.Text = "Register Now";
             this.buttonRegisterNow.UseVisualStyleBackColor = true;
+            this.buttonRegisterNow.Click += new System.EventHandler(this.buttonRegisterNow_Click_1);
             // 
             // label2
             // 
