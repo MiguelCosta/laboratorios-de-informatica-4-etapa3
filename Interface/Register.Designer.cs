@@ -39,8 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxPasswordConfirmation = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,8 +51,8 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxPasswordConfirmation);
+            this.panel1.Controls.Add(this.textBoxEmail);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
@@ -76,7 +76,7 @@
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(97, 23);
             this.buttonOk.TabIndex = 6;
-            this.buttonOk.Text = "Ok";
+            this.buttonOk.Text = "Send data";
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
@@ -145,21 +145,21 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 11);
+            this.label1.Location = new System.Drawing.Point(8, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 13);
+            this.label1.Size = new System.Drawing.Size(246, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome new member";
+            this.label1.Text = "Welcome to beSMART registation process";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 33);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(319, 26);
+            this.label4.Size = new System.Drawing.Size(322, 26);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Please make you register now. Fill the boxes and after that you are\r\nable to logi" +
-                "n.";
+            this.label4.Text = "Please make your register now. Fill the boxes and after that you are\r\nable to log" +
+                "in.";
             // 
             // label5
             // 
@@ -181,19 +181,19 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Email";
             // 
-            // textBox1
+            // textBoxEmail
             // 
-            this.textBox1.Location = new System.Drawing.Point(10, 158);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(317, 20);
-            this.textBox1.TabIndex = 10;
+            this.textBoxEmail.Location = new System.Drawing.Point(10, 158);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(317, 20);
+            this.textBoxEmail.TabIndex = 10;
             // 
-            // textBox2
+            // textBoxPasswordConfirmation
             // 
-            this.textBox2.Location = new System.Drawing.Point(11, 270);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(189, 20);
-            this.textBox2.TabIndex = 11;
+            this.textBoxPasswordConfirmation.Location = new System.Drawing.Point(11, 270);
+            this.textBoxPasswordConfirmation.Name = "textBoxPasswordConfirmation";
+            this.textBoxPasswordConfirmation.Size = new System.Drawing.Size(189, 20);
+            this.textBoxPasswordConfirmation.TabIndex = 11;
             // 
             // label7
             // 
@@ -229,11 +229,11 @@
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxPasswordConfirmation;
     }
 }

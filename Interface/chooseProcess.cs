@@ -14,6 +14,19 @@ namespace Interface
         public chooseProcess()
         {
             InitializeComponent();
+        
+        }
+
+        private void close_init()
+        {
+            Init i = new Init();
+            i.Close();
+        }
+
+        private void FormChooseProcess_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
