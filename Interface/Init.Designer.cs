@@ -31,29 +31,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dataBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editSoftwareListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewSoftwareWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tutorialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aHPTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sMARTTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.valueFNTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -62,44 +52,37 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 52);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(196, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 13);
+            this.label1.Size = new System.Drawing.Size(308, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome to Be SMART Software.";
+            this.label1.Text = "Welcome to beSMART Software";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(110, 282);
+            this.button1.Location = new System.Drawing.Point(200, 316);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(109, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "START";
+            this.button1.Text = "Register Now";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 89);
+            this.label2.Location = new System.Drawing.Point(33, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(223, 13);
+            this.label2.Size = new System.Drawing.Size(452, 26);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Be SMART is a software for decison problems";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 106);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(237, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "based on multicriteria evaluation and prioritization";
+            this.label2.Text = "beSMART is a software for decison problems based on multicriteria evaluation and " +
+                "prioritization\r\nof decision support softwares.";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(45, 154);
+            this.label4.Location = new System.Drawing.Point(33, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 13);
             this.label4.TabIndex = 4;
@@ -116,25 +99,16 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(52, 186);
+            this.label6.Location = new System.Drawing.Point(52, 207);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 13);
             this.label6.TabIndex = 6;
             this.label6.Text = "1. Choose tte softwares";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 123);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(147, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "of decision support softwares.";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(52, 205);
+            this.label8.Location = new System.Drawing.Point(52, 226);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(144, 13);
             this.label8.TabIndex = 8;
@@ -143,144 +117,96 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(52, 223);
+            this.label9.Location = new System.Drawing.Point(52, 244);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(225, 13);
             this.label9.TabIndex = 9;
             this.label9.Text = "3. Choose the multicriteria method the be used";
             // 
-            // menuStrip1
+            // groupBox1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dataBaseToolStripMenuItem,
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(332, 24);
-            this.menuStrip1.TabIndex = 30;
-            this.menuStrip1.Text = "menuStrip1";
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.textBoxPassword);
+            this.groupBox1.Controls.Add(this.textBoxUsername);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(200, 40);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(304, 86);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Login Area";
             // 
-            // dataBaseToolStripMenuItem
+            // button2
             // 
-            this.dataBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.dataBaseToolStripMenuItem.Name = "dataBaseToolStripMenuItem";
-            this.dataBaseToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.dataBaseToolStripMenuItem.Text = "DataBase";
+            this.button2.Location = new System.Drawing.Point(238, 50);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(51, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Login";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // newToolStripMenuItem
+            // textBoxPassword
             // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.newToolStripMenuItem.Text = "New";
+            this.textBoxPassword.Location = new System.Drawing.Point(71, 50);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(160, 20);
+            this.textBoxPassword.TabIndex = 3;
             // 
-            // openToolStripMenuItem
+            // textBoxUsername
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.openToolStripMenuItem.Text = "Open";
+            this.textBoxUsername.Location = new System.Drawing.Point(71, 22);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(218, 20);
+            this.textBoxUsername.TabIndex = 2;
             // 
-            // saveToolStripMenuItem
+            // label10
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 53);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Password";
             // 
-            // saveAsToolStripMenuItem
+            // label3
             // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.saveAsToolStripMenuItem.Text = "Save as...";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Username";
             // 
-            // exitToolStripMenuItem
+            // label11
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editSoftwareListToolStripMenuItem,
-            this.viewSoftwareWebsiteToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.fileToolStripMenuItem.Text = "Sotware";
-            // 
-            // editSoftwareListToolStripMenuItem
-            // 
-            this.editSoftwareListToolStripMenuItem.Name = "editSoftwareListToolStripMenuItem";
-            this.editSoftwareListToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.editSoftwareListToolStripMenuItem.Text = "Edit software list";
-            // 
-            // viewSoftwareWebsiteToolStripMenuItem
-            // 
-            this.viewSoftwareWebsiteToolStripMenuItem.Name = "viewSoftwareWebsiteToolStripMenuItem";
-            this.viewSoftwareWebsiteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.viewSoftwareWebsiteToolStripMenuItem.Text = "View Software website";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tutorialsToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // tutorialsToolStripMenuItem
-            // 
-            this.tutorialsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aHPTutorialToolStripMenuItem,
-            this.sMARTTutorialToolStripMenuItem,
-            this.valueFNTutorialToolStripMenuItem});
-            this.tutorialsToolStripMenuItem.Name = "tutorialsToolStripMenuItem";
-            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.tutorialsToolStripMenuItem.Text = "Tutorials";
-            // 
-            // aHPTutorialToolStripMenuItem
-            // 
-            this.aHPTutorialToolStripMenuItem.Name = "aHPTutorialToolStripMenuItem";
-            this.aHPTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.aHPTutorialToolStripMenuItem.Text = "AHP Tutorial";
-            // 
-            // sMARTTutorialToolStripMenuItem
-            // 
-            this.sMARTTutorialToolStripMenuItem.Name = "sMARTTutorialToolStripMenuItem";
-            this.sMARTTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.sMARTTutorialToolStripMenuItem.Text = "SMART Tutorial";
-            // 
-            // valueFNTutorialToolStripMenuItem
-            // 
-            this.valueFNTutorialToolStripMenuItem.Name = "valueFNTutorialToolStripMenuItem";
-            this.valueFNTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.valueFNTutorialToolStripMenuItem.Text = "ValueFN Tutorial";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(33, 275);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(454, 26);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "To use this software you must be registered on system data base. So that, registe" +
+                "r pressing the \r\nbutton bellow.";
             // 
             // Init
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 358);
-            this.Controls.Add(this.menuStrip1);
+            this.ClientSize = new System.Drawing.Size(516, 351);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "Init";
-            this.Text = "Be SMART Software";
-            this.Load += new System.EventHandler(this.Init_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Text = "beSMART Software";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,27 +217,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem dataBaseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editSoftwareListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewSoftwareWebsiteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tutorialsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aHPTutorialToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sMARTTutorialToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem valueFNTutorialToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label11;
     }
 }

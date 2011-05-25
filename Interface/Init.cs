@@ -14,19 +14,16 @@ namespace Interface
         public Init()
         {
             InitializeComponent();
-            //this.AutoScaleBaseSize = new Size(5, 13);
+            textBoxPassword.PasswordChar = '*';
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            this.Dispose();
-
-        }
-
-
-        private void Init_Load(object sender, EventArgs e)
-        {
+            Register r= new Register();
+            r.Show();
+            //this.Dispose();
+            
+            
 
         }
 
