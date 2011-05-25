@@ -72,10 +72,10 @@ namespace Business
             {
                 _tableCH.Add(idChar, points);
             }
-            else 
+            else
             {
                 _tableCH.Remove(idChar);
-                _tableCH.Add(idChar,points);
+                _tableCH.Add(idChar, points);
             }
             return _tableCH;
         }
@@ -109,17 +109,15 @@ namespace Business
 
         /* Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
         SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1*/
+
         public Dictionary<String, Dictionary<String, float>> normalizeAHP(Dictionary<String, Dictionary<String, float>> table)
         {
-            Dictionary<String, Dictionary<String, float>> tableAux = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, float> table1 = new Dictionary<string, float>();
             Dictionary<String, float> tableSomas = new Dictionary<string, float>();
-            Dictionary<String, float> table3 = new Dictionary<string, float>();
+            Dictionary<String, Dictionary<String, float>> tableAux = new Dictionary<string, Dictionary<string, float>>();
 
             float valor;
-            float valor1 = 0;
             float resultado;
-            float total;
 
             foreach (String idCharA in table.Keys)
             {
@@ -131,31 +129,51 @@ namespace Business
                     totalValor += valor;
                 }
                 tableSomas.Add(idCharA, totalValor);
+
             }
+
+            Dictionary<String, float> tableCorrespondencia;
+            Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
+            Dictionary<String, float> tableAuxiliar1 = new Dictionary<string, float>();
+            float valor1 = 0;
 
             foreach (String idCharA in table.Keys)
             {
-                tableSomas.TryGetValue(idCharA, out total);
-                if (total > 1)
+                table.TryGetValue(idCharA, out tableAuxiliar);
+                tableCorrespondencia = new Dictionary<string, float>();
+                foreach (String idCharB in table1.Keys)
                 {
-                    table.TryGetValue(idCharA, out table1);
-                    foreach (String idCharB in table1.Keys)
+                    tableAuxiliar.TryGetValue(idCharB, out valor);
+                    tableSomas.TryGetValue(idCharA, out valor1);
+                    resultado = valor / valor1;
+
+                    if (!tableAux.ContainsKey(idCharA))
                     {
-                        table1.TryGetValue(idCharB, out valor);
-                        foreach (String id in tableSomas.Keys)
+                        if (!tableCorrespondencia.ContainsKey(idCharB))
                         {
-                            if (id.Equals(idCharB))
-                            {
-                                tableSomas.TryGetValue(id, out valor1);
-                            }
+                            tableCorrespondencia.Add(idCharB, resultado);
+                            tableAux.Add(idCharA, tableCorrespondencia);
                         }
-                        resultado = valor / valor1;
-                        table3.Add(idCharB, resultado);
+                        else
+                        {
+                            tableCorrespondencia.Remove(idCharB);
+                            tableCorrespondencia.Add(idCharB,resultado);
+                        }
                     }
-                    tableAux.Add(idCharA, table3);
+                    else
+                    {
+                        tableAux.TryGetValue(idCharA, out tableAuxiliar1);
+                        tableAux.Remove(idCharA);
+                        tableAuxiliar1.Add(idCharB, resultado);
+                        tableAux.Add(idCharA, tableAuxiliar1);
+
+                    }
                 }
+
             }
+
             return tableAux;
+            /*Console.WriteLine("\n************Resultados**************\nValor: " + valor + "\nValor Total: " + valor1 + "\nResultado: " + resultado + "\n");*/
         }
 
         //Rece a matriz normalizada. Calcular Médias da matriz normalizada
@@ -460,7 +478,7 @@ namespace Business
                         }
                         tableAux.Add(idSofA, table3);
                     }
-                    else 
+                    else
                     {
                         tableAux = tableAux2;
                     }
@@ -471,10 +489,10 @@ namespace Business
         }
 
         //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
-        public Dictionary<String,Dictionary<String, float>> pesosPriorFinais(Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorma)
+        public Dictionary<String, Dictionary<String, float>> pesosPriorFinais(Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorma)
         {
-            Dictionary<String,Dictionary<String, float>> tablePesosFinais = new Dictionary<String,Dictionary<string, float>>();
-            Dictionary<String,Dictionary<String, Dictionary<String, float>>> tableNormalInverted = new Dictionary<string,Dictionary<string,Dictionary<string,float>>>();
+            Dictionary<String, Dictionary<String, float>> tablePesosFinais = new Dictionary<String, Dictionary<string, float>>();
+            Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNormalInverted = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
             Dictionary<String, Dictionary<String, float>> tableNormalInvertedAux;
             Dictionary<String, float> table1 = new Dictionary<string, float>();
             Dictionary<String, float> table2 = new Dictionary<string, float>();
@@ -485,7 +503,7 @@ namespace Business
             //inverter a tabela normalizada ou seja trocar as caracteristicas de <idCharA,<idcharB,valor>> para <idCharB,<idcharA,valor>>
             foreach (String idChar in tableNorma.Keys)
             {
-                tableNorma.TryGetValue(idChar,out tableNormalInvertedAux);
+                tableNorma.TryGetValue(idChar, out tableNormalInvertedAux);
                 foreach (String idSofA in tableNormalInvertedAux.Keys)
                 {
                     tableNormalInvertedAux.TryGetValue(idSofA, out table1);
@@ -537,7 +555,7 @@ namespace Business
                     table2.TryGetValue(id, out valor);
                     table3.Add(id, (valor / numCar));
                 }
-                tablePesosFinais.Add(idCh,table3);
+                tablePesosFinais.Add(idCh, table3);
             }
 
             return tablePesosFinais;
@@ -566,14 +584,14 @@ namespace Business
 
 
 
-      
 
 
 
-        
+
+
         //analisa a prioridade se o user utilizou o smart e 
         //public Dictionary<int, Dictionary<String, float>> analiseFinal() { }
-        
+
         /* Métodos a Criar*/
 
         // testa consistencia
