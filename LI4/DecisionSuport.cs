@@ -257,7 +257,8 @@ namespace LI4
             return _tableAHP;
         }
 
-        // Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
+        /* Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
+        SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1*/
         public Dictionary<String, Dictionary<String, float>> normalizeAHP(Dictionary<String, Dictionary<String, float>> table)
         {
             Dictionary<String, Dictionary<String, float>> tableAux = new Dictionary<string, Dictionary<string, float>>();
@@ -387,8 +388,8 @@ namespace LI4
             return tablePriorID;
         }
 
-        // Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
-        // SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1    COLOCAR EM CIMA TAMBÉM
+        /* Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
+           SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1*/
         public Dictionary<String, Dictionary<String, Dictionary<String, float>>> normalizePriorityAHP(Dictionary<String, Dictionary<String, Dictionary<String, float>>> table)
         {
             Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorm = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
@@ -529,10 +530,12 @@ namespace LI4
 
 
 
+
+
+        
         //analisa a prioridade se o user utilizou o smart e 
         //public Dictionary<int, Dictionary<String, float>> analiseFinal() { }
-
-
+        
         /* Métodos a Criar*/
 
         // testa consistencia
