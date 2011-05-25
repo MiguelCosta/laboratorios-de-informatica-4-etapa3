@@ -27,18 +27,16 @@ namespace DataBase
         {
             // resultado
             bool r = false;
-
             SqlDataReader myReader = null;
-
             string select = "SELECT [username] AS username " +
                                     "FROM [LI4].[dbo].[user] " +
                                         "WHERE username = '" + username + "' " +
                                         "AND password='" + password + "'";
 
             SqlCommand myCommand = new SqlCommand(select, this.MyConnection);
-
             myReader = myCommand.ExecuteReader();
 
+            // se tiver algo para ler é porque existe o utilizador
             if (myReader.Read()) r = true;
 
             return r;
