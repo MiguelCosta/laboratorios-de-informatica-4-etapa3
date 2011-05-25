@@ -14,6 +14,8 @@ namespace Interface
         public Register()
         {
             InitializeComponent();
+            textBoxPassword.PasswordChar = '*';
+            textBoxPasswordConfirmation.PasswordChar = '*';
         }
 
 
