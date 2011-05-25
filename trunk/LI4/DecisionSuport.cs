@@ -37,6 +37,13 @@ namespace Business
             set { _tableSW = value; }
         }
 
+        public Dictionary<String, Dictionary<String, float>> TableAHP
+        {
+            get { return _tableAHP; }
+            set { _tableAHP = value; }
+        }
+
+
         public Dictionary<String, Dictionary<String, int>> TableX
         {
             get { return _tableX; }
@@ -77,8 +84,26 @@ namespace Business
         public Dictionary<String, Dictionary<String, float>> registerClassAHP(String idCharA, String idCharB, float points)
         {
             Dictionary<String, float> tableAux = new Dictionary<string, float>();
-            tableAux.Add(idCharB, points);
-            _tableAHP.Add(idCharA, tableAux);
+            Dictionary<String, float> tableA;
+            if (!_tableAHP.ContainsKey(idCharA))
+            {
+                tableAux.Add(idCharB, points);
+                _tableAHP.Add(idCharA, tableAux);
+            }
+            else
+            {
+                _tableAHP.TryGetValue(idCharA, out tableA);
+                if (!tableA.ContainsKey(idCharB))
+                {
+                    tableA.Add(idCharB, points);
+                }
+                else
+                {
+                    tableA.Remove(idCharB);
+                    tableA.Add(idCharB, points);
+                }
+            }
+
             return _tableAHP;
         }
 
