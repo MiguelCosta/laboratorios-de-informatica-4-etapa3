@@ -12,7 +12,7 @@ namespace DataBase
 {
     public class Connect
     {
-        private SqlConnection _myConnection;
+        protected SqlConnection _myConnection;
 
         /**
          * Constructor default
