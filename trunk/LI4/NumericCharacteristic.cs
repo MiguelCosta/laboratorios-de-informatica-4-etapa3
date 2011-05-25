@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Business
 {
-    public class Numeric_Characteristic : Characteristic
+    public class NumericCharacteristic : Characteristic
     {
         private int _value;
 
         /**
          * Constructor default
          * */
-        public Numeric_Characteristic():
+        public NumericCharacteristic():
             base("","") {
                 _value = 0;
         }
@@ -20,7 +20,7 @@ namespace Business
         /**
          * Constructor with parameters
          * */
-        public Numeric_Characteristic(string id, string name, int value):
+        public NumericCharacteristic(string id, string name, int value):
             base(id, name) {
                 _value = value;
         }
@@ -29,7 +29,7 @@ namespace Business
          * Constructor with Numeric_Characteristic
          * */
 
-        public Numeric_Characteristic(Numeric_Characteristic nc) :
+        public NumericCharacteristic(NumericCharacteristic nc) :
             base(nc.Id, nc.Name) {
             _value = nc.Value;
         }
@@ -44,9 +44,9 @@ namespace Business
          * Method clone
          * */
 
-        public Numeric_Characteristic clone()
+        public NumericCharacteristic clone()
         {
-            return new Numeric_Characteristic(this);
+            return new NumericCharacteristic(this);
         }
 
         public bool equals(Object o)
@@ -54,7 +54,7 @@ namespace Business
             if (this == o) return true;
             if (o == null || o.GetType() != this.GetType()) return false;
 
-            Numeric_Characteristic n = (Numeric_Characteristic)o;
+            NumericCharacteristic n = (NumericCharacteristic)o;
 
             if (_id.Equals(n.Id) && _name.Equals(n.Name) && _value == n.Value) return true;
 

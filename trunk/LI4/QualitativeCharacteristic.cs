@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Business
 {
-    public class Qualitative_Characteristic : Characteristic
+    public class QualitativeCharacteristic : Characteristic
     {
         private Dictionary<string, Value> _values;
 
         /**
          * Constructor default
          * */
-        public Qualitative_Characteristic():
+        public QualitativeCharacteristic():
             base("","") {
                 _values = new Dictionary<string,Value>();
         }
@@ -20,7 +20,7 @@ namespace Business
         /**
          * Constructor with parameters
          * */
-        public Qualitative_Characteristic(string id, string name, Dictionary<string, Value> values):
+        public QualitativeCharacteristic(string id, string name, Dictionary<string, Value> values):
             base(id, name) {
                 _values = values;
         }
@@ -29,7 +29,7 @@ namespace Business
          * Constructor with Qualitative_Characteristic
          * */
 
-        public Qualitative_Characteristic(Qualitative_Characteristic nc) :
+        public QualitativeCharacteristic(QualitativeCharacteristic nc) :
             base(nc.Id, nc.Name) {
             _values = nc.Values;
         }
@@ -48,9 +48,9 @@ namespace Business
         /**
          * Method clone
          * */
-        public Qualitative_Characteristic clone()
+        public QualitativeCharacteristic clone()
         {
-            return new Qualitative_Characteristic(this);
+            return new QualitativeCharacteristic(this);
         }
 
         public bool equals(Object o)
@@ -58,7 +58,7 @@ namespace Business
             if (this == o) return true;
             if (o == null || o.GetType() != this.GetType()) return false;
 
-            Qualitative_Characteristic n = (Qualitative_Characteristic)o;
+            QualitativeCharacteristic n = (QualitativeCharacteristic)o;
 
             if (_id.Equals(n.Id) && _name.Equals(n.Name) && _values.Equals(n.Values)) return true;
 

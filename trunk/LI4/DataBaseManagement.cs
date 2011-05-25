@@ -87,7 +87,7 @@ namespace Business
             return new DataBaseUser(db);
         }
 
-        public Dictionary<string, Dictionary<string, int>> filterDB(Dictionary<string, Software> software_list)
+        public Dictionary<string, Dictionary<string, int>> FilterDB(Dictionary<string, Software> software_list)
         {
             //ESTE MÉTODO AINDA NÃO FAZ COISAS
             return _tableSW;
