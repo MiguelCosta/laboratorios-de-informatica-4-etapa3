@@ -45,7 +45,10 @@
             this.aHPTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sMARTTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.valueFNTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -57,6 +60,7 @@
             this.lI4DataSet = new Interface.LI4DataSet();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.softwareTableAdapter = new Interface.LI4DataSetTableAdapters.softwareTableAdapter();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -140,7 +144,9 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tutorialsToolStripMenuItem});
+            this.tutorialsToolStripMenuItem,
+            this.helpToolStripMenuItem1,
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -173,18 +179,39 @@
             this.valueFNTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.valueFNTutorialToolStripMenuItem.Text = "ValueFN Tutorial";
             // 
+            // helpToolStripMenuItem1
+            // 
+            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem1.Text = "Help";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dataBaseToolStripMenuItem,
             this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.editAccountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.Size = new System.Drawing.Size(642, 24);
             this.menuStrip1.TabIndex = 31;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // editAccountToolStripMenuItem
+            // 
+            this.editAccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem});
+            this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
+            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.editAccountToolStripMenuItem.Text = "Edit Account";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // imageList1
             // 
@@ -283,6 +310,12 @@
             // 
             this.softwareTableAdapter.ClearBeforeFill = true;
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
             // ConsultWebpage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,5 +373,9 @@
         private System.Windows.Forms.BindingSource softwareBindingSource;
         private LI4DataSetTableAdapters.softwareTableAdapter softwareTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editAccountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }

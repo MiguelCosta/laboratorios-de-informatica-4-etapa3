@@ -118,10 +118,10 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 33);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(322, 26);
+            this.label4.Size = new System.Drawing.Size(321, 26);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Please make your register now. Fill the boxes and after that you are\r\nable to log" +
-                "in.";
+            this.label4.Text = "Please make your register now. Fill the boxes and after that you will\r\nable to lo" +
+                "gin.";
             // 
             // buttonOk
             // 

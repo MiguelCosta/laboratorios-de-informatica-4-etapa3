@@ -58,6 +58,10 @@
             this.aHPTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sMARTTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.valueFNTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -222,7 +226,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dataBaseToolStripMenuItem,
             this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.editAccountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(511, 24);
@@ -296,7 +301,9 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tutorialsToolStripMenuItem});
+            this.tutorialsToolStripMenuItem,
+            this.helpToolStripMenuItem1,
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -308,7 +315,7 @@
             this.sMARTTutorialToolStripMenuItem,
             this.valueFNTutorialToolStripMenuItem});
             this.tutorialsToolStripMenuItem.Name = "tutorialsToolStripMenuItem";
-            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tutorialsToolStripMenuItem.Text = "Tutorials";
             // 
             // aHPTutorialToolStripMenuItem
@@ -328,6 +335,32 @@
             this.valueFNTutorialToolStripMenuItem.Name = "valueFNTutorialToolStripMenuItem";
             this.valueFNTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.valueFNTutorialToolStripMenuItem.Text = "ValueFN Tutorial";
+            // 
+            // helpToolStripMenuItem1
+            // 
+            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem1.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // editAccountToolStripMenuItem
+            // 
+            this.editAccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem});
+            this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
+            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.editAccountToolStripMenuItem.Text = "Edit Account";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // chooseProcess
             // 
@@ -392,5 +425,9 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editAccountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
