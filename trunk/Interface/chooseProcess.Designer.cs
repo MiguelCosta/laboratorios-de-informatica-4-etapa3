@@ -31,11 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(chooseProcess));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBoxCharactList = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -62,13 +57,14 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxCharactList = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.groupBoxCharactList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -76,6 +72,8 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.groupBoxCharactList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -89,68 +87,22 @@
             this.tabControl1.Location = new System.Drawing.Point(4, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(507, 473);
+            this.tabControl1.Size = new System.Drawing.Size(534, 488);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.splitContainer1);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.groupBoxCharactList);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(499, 447);
+            this.tabPage1.Size = new System.Drawing.Size(526, 462);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Choose Softwares";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBoxCharactList);
-            this.splitContainer1.Size = new System.Drawing.Size(493, 441);
-            this.splitContainer1.SplitterDistance = 261;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // groupBoxCharactList
-            // 
-            this.groupBoxCharactList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxCharactList.Controls.Add(this.dataGridView1);
-            this.groupBoxCharactList.Location = new System.Drawing.Point(3, 3);
-            this.groupBoxCharactList.Name = "groupBoxCharactList";
-            this.groupBoxCharactList.Size = new System.Drawing.Size(255, 441);
-            this.groupBoxCharactList.TabIndex = 40;
-            this.groupBoxCharactList.TabStop = false;
-            this.groupBoxCharactList.Text = "Softwares List";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column3,
-            this.Column1});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(249, 422);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Check";
-            this.Column3.Name = "Column3";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Software";
-            this.Column1.Name = "Column1";
             // 
             // tabPage2
             // 
@@ -230,7 +182,7 @@
             this.editAccountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(511, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(538, 24);
             this.menuStrip1.TabIndex = 46;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -315,7 +267,7 @@
             this.sMARTTutorialToolStripMenuItem,
             this.valueFNTutorialToolStripMenuItem});
             this.tutorialsToolStripMenuItem.Name = "tutorialsToolStripMenuItem";
-            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.tutorialsToolStripMenuItem.Text = "Tutorials";
             // 
             // aHPTutorialToolStripMenuItem
@@ -339,13 +291,13 @@
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // editAccountToolStripMenuItem
@@ -359,14 +311,70 @@
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
+            // 
+            // groupBoxCharactList
+            // 
+            this.groupBoxCharactList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxCharactList.Controls.Add(this.dataGridView1);
+            this.groupBoxCharactList.Location = new System.Drawing.Point(29, 55);
+            this.groupBoxCharactList.Name = "groupBoxCharactList";
+            this.groupBoxCharactList.Size = new System.Drawing.Size(369, 388);
+            this.groupBoxCharactList.TabIndex = 42;
+            this.groupBoxCharactList.TabStop = false;
+            this.groupBoxCharactList.Text = "Softwares List";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column3,
+            this.Column1});
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(363, 369);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Check";
+            this.Column3.Name = "Column3";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Software";
+            this.Column1.Name = "Column1";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 18);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Step one |";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(114, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(381, 16);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Select from the list the softwares to be udes in decision process";
             // 
             // chooseProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 502);
+            this.ClientSize = new System.Drawing.Size(538, 517);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -376,11 +384,7 @@
             this.Load += new System.EventHandler(this.chooseProcess_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.groupBoxCharactList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -389,6 +393,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBoxCharactList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,12 +420,7 @@
         private System.Windows.Forms.ToolStripMenuItem aHPTutorialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sMARTTutorialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem valueFNTutorialToolStripMenuItem;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.GroupBox groupBoxCharactList;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -429,5 +430,11 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editAccountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBoxCharactList;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
