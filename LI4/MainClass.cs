@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
 using DataBase;
+
 
 namespace Business
 {
@@ -31,6 +33,9 @@ namespace Business
 
             Connect c = new Connect("miguel","nada","MIGUEL-PC\\SQLEXPRESS","LI4",10);
             c.openMyConnection();
+            QueryUser q = new QueryUser(c.MyConnection);
+            Console.WriteLine("LOGIN: "+q.queryUserLogin("miguelcosta","83"));
+
         }
     }
 }
