@@ -18,6 +18,7 @@ namespace Interface
         public Init()
         {
             InitializeComponent();
+            //this.MaximumSize = new System.Drawing.Size(453, 371);
             textBoxPassword.PasswordChar = '*';
             textBoxPassword.MaxLength = 10;
             ch_form = new chooseProcess();
@@ -48,6 +49,7 @@ namespace Interface
         {
 
         }
+
 
 
     }

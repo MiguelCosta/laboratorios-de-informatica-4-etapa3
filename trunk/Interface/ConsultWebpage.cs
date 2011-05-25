@@ -16,6 +16,11 @@ namespace Interface
             InitializeComponent();
         }
 
+        private void ConsultWebpage_FormClosing(Object sender, FormClosingEventArgs e) 
+        {
+            Close();
+        }
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //vai buscar os softwares a bd
@@ -26,11 +31,6 @@ namespace Interface
 
         }
 
-        private void viewSoftwareWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //webBrowser1.Navigate(new Uri(listBox1.SelectedItem.ToString()));
-          
-        }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {

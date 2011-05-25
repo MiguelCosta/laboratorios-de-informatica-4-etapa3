@@ -33,12 +33,13 @@ namespace Interface
            //ler texto e adicionar user na bd
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        private void Register_Load(object sender, EventArgs e)
         {
 
         }

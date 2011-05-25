@@ -17,16 +17,11 @@ namespace Interface
         
         }
 
-        private void close_init()
-        {
-            Init i = new Init();
-            i.Close();
-        }
 
-        private void FormChooseProcess_FormClosing(object sender, FormClosingEventArgs e)
+
+        private void FormChooseProcess_FormClosing(object sender, EventArgs e)
         {
-            e.Cancel = true;
-            Hide();
+            Close();
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -34,9 +29,18 @@ namespace Interface
 
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void chooseProcess_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void viewSoftwareWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultWebpage cwp = new ConsultWebpage();
+            cwp.Show();
+            
+        }
+
+
     }
 }
