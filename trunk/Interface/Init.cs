@@ -34,9 +34,13 @@ namespace Interface
         private void buttonLogin_Click(object sender, EventArgs e)
         {
            
-            this.Hide();
-            ch_form.Show();
 
+            // (varivelUsername = textBoxUsername.Text;
+            //variavelPass = textBoxPassword.Text;
+            
+                this.Hide();
+                ch_form.Show();
+            
         }
 
         private void buttonRegisterNow_Click_1(object sender, EventArgs e)
