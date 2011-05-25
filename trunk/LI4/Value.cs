@@ -32,6 +32,23 @@ namespace Business
         /**
          * Constructor with Value
          * */
+        public Value(Value v)
+        {
+            _name = v.Name;
+            _classification = v.Classification;
+        }
 
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public int Classification
+        {
+            get { return _classification; }
+            set { _classification = value; }
+        }
+        
     }
 }
