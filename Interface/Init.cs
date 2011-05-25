@@ -19,6 +19,7 @@ namespace Interface
         {
             InitializeComponent();
             textBoxPassword.PasswordChar = '*';
+            textBoxPassword.MaxLength = 10;
             ch_form = new chooseProcess();
             ch_form.VisibleChanged += new EventHandler(_form2_VisibleChanged);
         }
@@ -28,18 +29,6 @@ namespace Interface
             if (!ch_form.Visible)
                 Show();
         }
-
-        /*
-        private void FormInit_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            this.Hide();
-            ch_form.Show();
-        }
-
-        */
-
-
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -53,6 +42,11 @@ namespace Interface
         {
             Register r = new Register();
             r.Show();
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 

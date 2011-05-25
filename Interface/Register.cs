@@ -15,7 +15,9 @@ namespace Interface
         {
             InitializeComponent();
             textBoxPassword.PasswordChar = '*';
+            textBoxPassword.MaxLength = 10;
             textBoxPasswordConfirmation.PasswordChar = '*';
+            textBoxPasswordConfirmation.MaxLength = 10;
         }
 
 
