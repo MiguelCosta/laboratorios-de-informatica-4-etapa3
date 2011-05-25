@@ -17,13 +17,18 @@ namespace Interface
             textBoxPassword.PasswordChar = '*';
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonRegisterNow_Click(object sender, EventArgs e)
         {
             Register r= new Register();
             r.Show();
             //this.Dispose();
             
             
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
 
