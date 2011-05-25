@@ -305,12 +305,11 @@ namespace LI4
             Dictionary<String, float> table2 = new Dictionary<string, float>();
             Dictionary<String, float> table3;
             float valor;
-            String idAux;
+            int numCar = 0;
 
             //inverter a tabela normalizada ou seja trocar as caracteristicas de <idCharA,<idcharB,valor>> para <idCharB,<idcharA,valor>>
             foreach (String idCharA in tableNorma.Keys) 
             {
-                idAux = "";
                 tableNorma.TryGetValue(idCharA, out table1);
                 foreach (String idCharB in table1.Keys) 
                 { 
@@ -327,10 +326,31 @@ namespace LI4
                     }
                 }
             }
+            table1.Clear();
+            table2.Clear();
+            foreach (String idCharA in tableNormalInverted.Keys)
+            {
+                float valorTotal=0;
+                tableNormalInverted.TryGetValue(idCharA, out table1);
+                foreach (String idCharB in table1.Keys)
+                {
+                    table1.TryGetValue(idCharB, out valor);
+                    valorTotal += valor;
+                }
 
-            //FALTA ACABAR 
+                table2.Add(idCharA, valorTotal);
+            }
 
+            foreach (String id in table1.Keys) {
+                numCar++;
+            }
 
+            foreach(String id in table2.Keys){
+
+                table2.TryGetValue(id,out valor);
+
+                tablePesosFinais.Add(id,(valor/numCar));
+            }
 
             return tablePesosFinais;
         }
