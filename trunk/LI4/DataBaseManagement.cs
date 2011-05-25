@@ -89,6 +89,10 @@ namespace Business
 
         public Dictionary<string, Dictionary<string, int>> FilterDB(Dictionary<string, Software> software_list)
         {
+            foreach (string s in software_list.Keys)
+            {
+
+            }
             //ESTE MÉTODO AINDA NÃO FAZ COISAS
             return _tableSW;
         }
