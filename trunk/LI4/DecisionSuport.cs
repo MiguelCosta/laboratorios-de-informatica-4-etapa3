@@ -359,8 +359,8 @@ namespace LI4
         /* Métodos a Criar*/
 
         // testa consistencia
-        // 
-        //
+        // ahp prioridades
+        //análises finais
         //
 
 
