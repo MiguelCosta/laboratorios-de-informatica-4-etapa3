@@ -36,10 +36,11 @@
   <ItemGroup>
     <Compile Include="Characteristic.cs" />
     <Compile Include="DecisionSuport.cs" />
-    <Compile Include="Numeric Characteristic.cs" />
+    <Compile Include="NumericCharacteristic.cs" />
     <Compile Include="Software.cs" />
     <Compile Include="MainClass.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="YesNoCharacteristic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
