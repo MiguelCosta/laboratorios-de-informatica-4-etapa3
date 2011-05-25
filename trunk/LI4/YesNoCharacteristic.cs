@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    class YesNo_Characteristic : Characteristic
+    public class YesNo_Characteristic : Characteristic
     {
         private bool _state;
 

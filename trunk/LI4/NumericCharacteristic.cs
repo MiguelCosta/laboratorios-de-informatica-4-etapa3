@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    class Numeric_Characteristic : Characteristic
+    public class Numeric_Characteristic : Characteristic
     {
         private int _value;
 

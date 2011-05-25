@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    class Software
+    public class Software
     {
         private string _id;
         private string _name;
