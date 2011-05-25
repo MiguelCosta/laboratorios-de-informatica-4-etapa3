@@ -25,8 +25,11 @@ namespace DataBase
         /* Query que pergunta se existe um utilizador com aquele username e password */
         public bool queryUserLogin(string username, string password)
         {
+            // resultado
             bool r = false;
+
             SqlDataReader myReader = null;
+
             string select = "SELECT [username] AS username " +
                                     "FROM [LI4].[dbo].[user] " +
                                         "WHERE username = '" + username + "' " +
@@ -38,7 +41,6 @@ namespace DataBase
 
             if (myReader.Read()) r = true;
 
-            // devolve o resultado
             return r;
         }
 
