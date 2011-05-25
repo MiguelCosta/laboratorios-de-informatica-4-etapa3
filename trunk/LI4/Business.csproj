@@ -41,6 +41,7 @@
     <Compile Include="Software.cs" />
     <Compile Include="MainClass.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Value.cs" />
     <Compile Include="YesNoCharacteristic.cs" />
   </ItemGroup>
   <ItemGroup>
