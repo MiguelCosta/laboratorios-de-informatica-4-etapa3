@@ -20,7 +20,7 @@ namespace Business
         /**
          * Constructor with parameters
          * */
-        public YesNo_Characteristic(string id, string name, Boolean state):
+        public YesNo_Characteristic(string id, string name, bool state):
             base(id, name) {
                 _state = state;
         }
@@ -34,7 +34,7 @@ namespace Business
             _state = nc.State;
         }
 
-        public Boolean State
+        public bool State
         {
             get { return _state; }
             set { _state = value; }
