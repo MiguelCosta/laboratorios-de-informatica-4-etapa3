@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Characteristic.cs" />
+    <Compile Include="DataBase.cs" />
     <Compile Include="DecisionSuport.cs" />
     <Compile Include="NumericCharacteristic.cs" />
     <Compile Include="QualitativeCharacteristic.cs" />
