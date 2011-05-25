@@ -77,10 +77,10 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(20, 139);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(397, 26);
+            this.label2.Size = new System.Drawing.Size(408, 26);
             this.label2.TabIndex = 2;
-            this.label2.Text = "beSMART is a software for decison problems based on multicriteria evaluation and " +
-                "\r\nprioritization of decision support softwares.";
+            this.label2.Text = "beSMART is a software for decision problems based on a multicriteria evaluation a" +
+                "nd \r\nprioritization of decision support softwares.";
             // 
             // label4
             // 
@@ -104,9 +104,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(159, 199);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 13);
+            this.label6.Size = new System.Drawing.Size(121, 13);
             this.label6.TabIndex = 6;
-            this.label6.Text = "1. Choose tte softwares";
+            this.label6.Text = "1. Choose the softwares";
             // 
             // label8
             // 
@@ -122,9 +122,10 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(106, 236);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(225, 13);
+            this.label9.Size = new System.Drawing.Size(219, 13);
             this.label9.TabIndex = 9;
-            this.label9.Text = "3. Choose the multicriteria method the be used";
+            this.label9.Text = "3. Choose the multicriteria method to be used";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // groupBox1
             // 

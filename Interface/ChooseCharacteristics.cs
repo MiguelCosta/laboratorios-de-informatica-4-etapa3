@@ -25,5 +25,10 @@ namespace Interface
         {
 
         }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
