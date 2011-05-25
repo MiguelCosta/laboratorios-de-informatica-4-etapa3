@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DataBase;
 
 
 namespace Interface
@@ -13,7 +14,8 @@ namespace Interface
 
     public partial class Init : Form
     {
-        private chooseProcess ch_form;
+        private Connect conn;
+        private QueryUser queryUser;
 
         public Init()
         {
@@ -21,25 +23,33 @@ namespace Interface
             //this.MaximumSize = new System.Drawing.Size(453, 371);
             textBoxPassword.PasswordChar = '*';
             textBoxPassword.MaxLength = 10;
-            ch_form = new chooseProcess();
-            ch_form.VisibleChanged += new EventHandler(_form2_VisibleChanged);
+            connecteToDataBase();
         }
 
-        void _form2_VisibleChanged(object sender, EventArgs e)
-        {
-            if (!ch_form.Visible)
-                Show();
-        }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-           
+            string username = textBoxUsername.Text;
+            string password = textBoxPassword.Text;
 
+            bool login = false;
+            login = queryUser.queryUserLogin(username, password);
+
+            if (login)
+            {
+                MessageBox.Show("Login com sucesso!");
+                chooseProcess cp = new chooseProcess();
+                cp.Show();
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Username: " + username);
+                MessageBox.Show("Password: " + password);
+            }
             // (varivelUsername = textBoxUsername.Text;
             //variavelPass = textBoxPassword.Text;
             
-                this.Hide();
-                ch_form.Show();
             
         }
 
@@ -54,11 +64,12 @@ namespace Interface
 
         }
 
-        private void label9_Click(object sender, EventArgs e)
+        private void connecteToDataBase()
         {
-
+            conn = new Connect();
+            conn.openMyConnection();
+            queryUser = new QueryUser(conn._myConnection);
         }
-
 
 
     }

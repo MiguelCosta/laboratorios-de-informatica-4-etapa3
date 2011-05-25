@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Business;
 
 namespace Interface
 {
@@ -15,7 +16,9 @@ namespace Interface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ConsultWebpage());
+            
+            DataBase = new DataBase();
+
             Application.Run(new Init());
         }
     }
