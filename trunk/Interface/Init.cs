@@ -14,42 +14,42 @@ namespace Interface
 
     public partial class Init : Form
     {
-        private Connect conn;
-        private QueryUser queryUser;
+        private Connect _conn;
+        private QueryUser _queryUser;
+        private Business.DataBaseUser _dataBase;
 
-        public Init()
+        public Init(Business.DataBaseUser dataBase)
         {
             InitializeComponent();
-            //this.MaximumSize = new System.Drawing.Size(453, 371);
             textBoxPassword.PasswordChar = '*';
-            textBoxPassword.MaxLength = 10;
+
+            // copia o apontador da data base recebida como parametro
+            _dataBase = dataBase;
+
             connecteToDataBase();
         }
 
 
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            string username = textBoxUsername.Text;
-            string password = textBoxPassword.Text;
+            string name = textBoxUsername.Text;
+            string pass = textBoxPassword.Text;
 
             bool login = false;
-            login = queryUser.queryUserLogin(username, password);
+            login = _queryUser.queryUserLogin(name, pass);
 
             if (login)
             {
+                Business.User u = _queryUser.login(name,pass);
+                _dataBase.User = u;
                 MessageBox.Show("Login com sucesso!");
-                chooseProcess cp = new chooseProcess();
-                cp.Show();
                 this.Dispose();
             }
             else
             {
-                MessageBox.Show("Username: " + username);
-                MessageBox.Show("Password: " + password);
+                MessageBox.Show("Login incorrecto");
             }
-            // (varivelUsername = textBoxUsername.Text;
-            //variavelPass = textBoxPassword.Text;
-            
             
         }
 
@@ -66,9 +66,9 @@ namespace Interface
 
         private void connecteToDataBase()
         {
-            conn = new Connect();
-            conn.openMyConnection();
-            queryUser = new QueryUser(conn._myConnection);
+            _conn = new Connect();
+            _conn.openMyConnection();
+            _queryUser = new QueryUser(_conn._myConnection);
         }
 
 

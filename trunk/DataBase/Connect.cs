@@ -13,6 +13,11 @@ namespace DataBase
     public class Connect
     {
         public SqlConnection _myConnection;
+        private string _username;
+        private string _password;
+        private string _server;
+        private string _name_database;
+        private int _timeout;
 
         /**
          * Constructor default
@@ -20,12 +25,18 @@ namespace DataBase
         public Connect()
         {
             // username and password is Windows Authentication: Trusted_Connection=yes
-            _myConnection = new SqlConnection("user id=nao_interessa;" +
-                                             "password=nao_interessa;" +
-                                             "server=MIGUEL-PC\\SQLEXPRESS;" +
-                                             "Trusted_Connection=yes;" +
-                                             "database=LI4;" +
-                                             "connection timeout=10");
+            _username = "nada";
+            _password = "nada";
+            _server = "MIGUEL-PC\\SQLEXPRESS";
+            _name_database = "LI4";
+            _timeout = 5;
+            _myConnection = new SqlConnection("user id=" + _username +
+                                             ";password=" + _password +
+                                             ";server=" + _server +
+                                             ";Trusted_Connection=yes" +
+                                             ";database=" + _name_database +
+                                             ";connection timeout=" + _timeout +
+                                             ";MultipleActiveResultSets = True");
             
 
 
@@ -36,13 +47,19 @@ namespace DataBase
          * */
         public Connect(string username, string password, string server, string name_database, int timeout)
         {
+            _username = username;
+            _password = password;
+            _server = server;
+            _name_database = name_database;
+            _timeout = timeout;
             // username and password is Windows Authentication: Trusted_Connection=yes
-            _myConnection = new SqlConnection("user id=" + username + ";" +
-                                             "password=" + password + ";" +
-                                             "server=" + server + ";" +
-                                             "Trusted_Connection=yes;" +
-                                             "database=" + name_database + ";" +
-                                             "connection timeout=" + timeout);
+            _myConnection = new SqlConnection("user id=" + _username +
+                                             ";password=" + _password +
+                                             ";server=" + _server +
+                                             ";Trusted_Connection=yes" +
+                                             ";database=" + _name_database + 
+                                             ";connection timeout=" + _timeout+
+                                             ";MultipleActiveResultSets = True");
         }
 
         /**

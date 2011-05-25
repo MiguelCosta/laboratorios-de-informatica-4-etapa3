@@ -52,18 +52,6 @@
     <Compile Include="chooseProcess.Designer.cs">
       <DependentUpon>chooseProcess.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChooseSoftwares.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChooseSoftwares.Designer.cs">
-      <DependentUpon>ChooseSoftwares.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ChooseCharacteristics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChooseCharacteristics.Designer.cs">
-      <DependentUpon>ChooseCharacteristics.cs</DependentUpon>
-    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,14 +77,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChooseCharacteristics.resx">
-      <DependentUpon>ChooseCharacteristics.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="chooseProcess.resx">
       <DependentUpon>chooseProcess.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChooseSoftwares.resx">
-      <DependentUpon>ChooseSoftwares.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
