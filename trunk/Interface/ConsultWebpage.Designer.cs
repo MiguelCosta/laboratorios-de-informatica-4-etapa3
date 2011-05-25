@@ -50,15 +50,15 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lI4DataSet = new Interface.LI4DataSet();
-            this.softwareBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.softwareTableAdapter = new Interface.LI4DataSetTableAdapters.softwareTableAdapter();
             this.idsoftwareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.softwareBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lI4DataSet = new Interface.LI4DataSet();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.softwareTableAdapter = new Interface.LI4DataSetTableAdapters.softwareTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -67,8 +67,8 @@
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lI4DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.softwareBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lI4DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataSet1
@@ -184,7 +184,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(608, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(642, 24);
             this.menuStrip1.TabIndex = 31;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -212,8 +212,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
-            this.splitContainer1.Size = new System.Drawing.Size(608, 342);
-            this.splitContainer1.SplitterDistance = 202;
+            this.splitContainer1.Size = new System.Drawing.Size(642, 468);
+            this.splitContainer1.SplitterDistance = 213;
             this.splitContainer1.TabIndex = 32;
             // 
             // tableLayoutPanel1
@@ -228,27 +228,18 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.76583F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.23417F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(202, 342);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(213, 468);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 299);
+            this.button1.Location = new System.Drawing.Point(3, 409);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Edit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(402, 342);
-            this.webBrowser1.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -264,23 +255,9 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(196, 290);
+            this.dataGridView1.Size = new System.Drawing.Size(207, 400);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // lI4DataSet
-            // 
-            this.lI4DataSet.DataSetName = "LI4DataSet";
-            this.lI4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // softwareBindingSource
-            // 
-            this.softwareBindingSource.DataMember = "software";
-            this.softwareBindingSource.DataSource = this.lI4DataSet;
-            // 
-            // softwareTableAdapter
-            // 
-            this.softwareTableAdapter.ClearBeforeFill = true;
             // 
             // idsoftwareDataGridViewTextBoxColumn
             // 
@@ -306,11 +283,34 @@
             this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
             this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
             // 
+            // softwareBindingSource
+            // 
+            this.softwareBindingSource.DataMember = "software";
+            this.softwareBindingSource.DataSource = this.lI4DataSet;
+            // 
+            // lI4DataSet
+            // 
+            this.lI4DataSet.DataSetName = "LI4DataSet";
+            this.lI4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(425, 468);
+            this.webBrowser1.TabIndex = 0;
+            // 
+            // softwareTableAdapter
+            // 
+            this.softwareTableAdapter.ClearBeforeFill = true;
+            // 
             // ConsultWebpage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 366);
+            this.ClientSize = new System.Drawing.Size(642, 492);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "ConsultWebpage";
@@ -325,8 +325,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lI4DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.softwareBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lI4DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
