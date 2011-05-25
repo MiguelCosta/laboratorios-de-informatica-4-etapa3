@@ -40,6 +40,10 @@ namespace Business
             set { _value = value; }
         }
 
+        /**
+         * Method clone
+         * */
+
         public Numeric_Characteristic clone()
         {
             return new Numeric_Characteristic(this);
@@ -57,6 +61,15 @@ namespace Business
             return false;
         }
 
-
+        public string toString()
+        {
+            StringBuilder s = new StringBuilder("Characteristic\n");
+            s.Append(_name);
+            s.Append("\n");
+            s.Append(_id);
+            s.Append("\n");
+            s.Append(_value);
+            return s.ToString();
+        }
     }
 }
