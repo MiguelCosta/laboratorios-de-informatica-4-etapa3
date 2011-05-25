@@ -14,7 +14,7 @@ namespace Business
          * */
         public Qualitative_Characteristic():
             base("","") {
-                _values = null;
+                _values = new Dictionary<string,Value>();
         }
 
         /**
@@ -72,7 +72,6 @@ namespace Business
             s.Append("\n");
             s.Append(_id);
             s.Append("\n");
-            s.Append(_values.ToString());
             return s.ToString();
         }
     }

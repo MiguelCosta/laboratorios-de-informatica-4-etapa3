@@ -20,7 +20,7 @@ namespace Business
             _id = "";
             _name = "";
             _link = "";
-            _charac = null;
+            _charac = new Dictionary<string,Characteristic>();
         }
 
         /**
