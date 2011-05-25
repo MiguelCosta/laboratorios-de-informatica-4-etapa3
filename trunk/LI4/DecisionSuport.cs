@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LI4
+namespace Business
 {
     class DecisionSuport
     {
@@ -23,7 +23,6 @@ namespace LI4
             _tableResult = new Dictionary<string, Dictionary<string, float>>();
             _tableAHP = new Dictionary<string, Dictionary<string, float>>();
         }
-
 
         /* Métodos get e set */
         public Dictionary<String, int> TableCH
@@ -57,13 +56,148 @@ namespace LI4
         }
 
 
-        /*Métodos de Cálculo*/
+
+
+        /*Métodos de Cálculo de Classificações*/
         public Dictionary<string, int> registerClass(String idChar, int points)
         {
-            _tableCH.Add(idChar, points);
+            if (!_tableCH.ContainsKey(idChar))
+            {
+                _tableCH.Add(idChar, points);
+            }
+            else 
+            {
+                _tableCH.Remove(idChar);
+                _tableCH.Add(idChar,points);
+            }
             return _tableCH;
         }
 
+        // regista os resultados
+        public Dictionary<String, Dictionary<String, float>> registerClassAHP(String idCharA, String idCharB, float points)
+        {
+            Dictionary<String, float> tableAux = new Dictionary<string, float>();
+            tableAux.Add(idCharB, points);
+            _tableAHP.Add(idCharA, tableAux);
+            return _tableAHP;
+        }
+
+        /* Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
+        SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1*/
+        public Dictionary<String, Dictionary<String, float>> normalizeAHP(Dictionary<String, Dictionary<String, float>> table)
+        {
+            Dictionary<String, Dictionary<String, float>> tableAux = new Dictionary<string, Dictionary<string, float>>();
+            Dictionary<String, float> table1 = new Dictionary<string, float>();
+            Dictionary<String, float> tableSomas = new Dictionary<string, float>();
+            Dictionary<String, float> table3 = new Dictionary<string, float>();
+
+            float valor;
+            float valor1 = 0;
+            float resultado;
+            float total;
+
+            foreach (String idCharA in table.Keys)
+            {
+                table.TryGetValue(idCharA, out table1);
+                float totalValor = 0;
+                foreach (String idCharB in table1.Keys)
+                {
+                    table1.TryGetValue(idCharB, out valor);
+                    totalValor += valor;
+                }
+                tableSomas.Add(idCharA, totalValor);
+            }
+
+            foreach (String idCharA in table.Keys)
+            {
+                tableSomas.TryGetValue(idCharA, out total);
+                if (total > 1)
+                {
+                    table.TryGetValue(idCharA, out table1);
+                    foreach (String idCharB in table1.Keys)
+                    {
+                        table1.TryGetValue(idCharB, out valor);
+                        foreach (String id in tableSomas.Keys)
+                        {
+                            if (id.Equals(idCharB))
+                            {
+                                tableSomas.TryGetValue(id, out valor1);
+                            }
+                        }
+                        resultado = valor / valor1;
+                        table3.Add(idCharB, resultado);
+                    }
+                    tableAux.Add(idCharA, table3);
+                }
+            }
+            return tableAux;
+        }
+
+        //Rece a matriz normalizada. Calcular Médias da matriz normalizada
+        public Dictionary<String, float> pesosFinais(Dictionary<String, Dictionary<String, float>> tableNorma)
+        {
+            Dictionary<String, float> tablePesosFinais = new Dictionary<string, float>();
+            Dictionary<String, Dictionary<String, float>> tableNormalInverted = new Dictionary<string, Dictionary<string, float>>();
+            Dictionary<String, float> table1 = new Dictionary<string, float>();
+            Dictionary<String, float> table2 = new Dictionary<string, float>();
+            Dictionary<String, float> table3;
+            float valor;
+            int numCar = 0;
+
+            //inverter a tabela normalizada ou seja trocar as caracteristicas de <idCharA,<idcharB,valor>> para <idCharB,<idcharA,valor>>
+            foreach (String idCharA in tableNorma.Keys)
+            {
+                tableNorma.TryGetValue(idCharA, out table1);
+                foreach (String idCharB in table1.Keys)
+                {
+                    table1.TryGetValue(idCharB, out valor);
+                    if (!tableNormalInverted.ContainsKey(idCharB))
+                    {
+                        table2.Add(idCharA, valor);
+                        tableNormalInverted.Add(idCharB, table2);
+                    }
+                    else
+                    {
+                        tableNormalInverted.TryGetValue(idCharB, out table3);
+                        table3.Add(idCharA, valor);
+                    }
+                }
+            }
+            table1.Clear();
+            table2.Clear();
+            foreach (String idCharA in tableNormalInverted.Keys)
+            {
+                float valorTotal = 0;
+                tableNormalInverted.TryGetValue(idCharA, out table1);
+                foreach (String idCharB in table1.Keys)
+                {
+                    table1.TryGetValue(idCharB, out valor);
+                    valorTotal += valor;
+                }
+
+                table2.Add(idCharA, valorTotal);
+            }
+
+            foreach (String id in table1.Keys)
+            {
+                numCar++;
+            }
+
+            foreach (String id in table2.Keys)
+            {
+
+                table2.TryGetValue(id, out valor);
+
+                tablePesosFinais.Add(id, (valor / numCar));
+            }
+
+            return tablePesosFinais;
+        }
+
+        // Testar Consistência para classificações
+
+
+        /*Métodos dé Cálculo de Prioridades*/
         public Dictionary<String, Dictionary<String, int>> filter(String idChar)
         {
             Dictionary<String, int> tableAux = new Dictionary<string, int>();
@@ -231,151 +365,7 @@ namespace LI4
             return _tableResult;
         }
 
-        public void limparTabelas()
-        {
-            // quando fechar o programa deve limpar todas as tabelas
-            _tableCH.Clear();
-            _tableSW.Clear();
-            _tableX.Clear();
-            _tableClass.Clear();
-            _tableResult.Clear();
-
-
-
-        }
-
-
-
-
-        /* Métodos do AHP para Classificao*/
-        // regista os resultados
-        public Dictionary<String, Dictionary<String, float>> registerClassAHP(String idCharA, String idCharB, float points)
-        {
-            Dictionary<String, float> tableAux = new Dictionary<string, float>();
-            tableAux.Add(idCharB, points);
-            _tableAHP.Add(idCharA, tableAux);
-            return _tableAHP;
-        }
-
-        /* Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
-        SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1*/
-        public Dictionary<String, Dictionary<String, float>> normalizeAHP(Dictionary<String, Dictionary<String, float>> table)
-        {
-            Dictionary<String, Dictionary<String, float>> tableAux = new Dictionary<string, Dictionary<string, float>>();
-            Dictionary<String, float> table1 = new Dictionary<string, float>();
-            Dictionary<String, float> tableSomas = new Dictionary<string, float>();
-            Dictionary<String, float> table3 = new Dictionary<string, float>();
-
-            float valor;
-            float valor1 = 0;
-            float resultado;
-            float total;
-
-            foreach (String idCharA in table.Keys)
-            {
-                table.TryGetValue(idCharA, out table1);
-                float totalValor = 0;
-                foreach (String idCharB in table1.Keys)
-                {
-                    table1.TryGetValue(idCharB, out valor);
-                    totalValor += valor;
-                }
-                tableSomas.Add(idCharA, totalValor);
-            }
-
-            foreach (String idCharA in table.Keys)
-            {
-                tableSomas.TryGetValue(idCharA, out total);
-                if (total > 1)
-                {
-                    table.TryGetValue(idCharA, out table1);
-                    foreach (String idCharB in table1.Keys)
-                    {
-                        table1.TryGetValue(idCharB, out valor);
-                        foreach (String id in tableSomas.Keys)
-                        {
-                            if (id.Equals(idCharB))
-                            {
-                                tableSomas.TryGetValue(id, out valor1);
-                            }
-                        }
-                        resultado = valor / valor1;
-                        table3.Add(idCharB, resultado);
-                    }
-                    tableAux.Add(idCharA, table3);
-                }
-            }
-            return tableAux;
-        }
-
-        //Rece a matriz normalizada. Calcular Médias da matriz normalizada
-        public Dictionary<String, float> pesosFinais(Dictionary<String, Dictionary<String, float>> tableNorma)
-        {
-            Dictionary<String, float> tablePesosFinais = new Dictionary<string, float>();
-            Dictionary<String, Dictionary<String, float>> tableNormalInverted = new Dictionary<string, Dictionary<string, float>>();
-            Dictionary<String, float> table1 = new Dictionary<string, float>();
-            Dictionary<String, float> table2 = new Dictionary<string, float>();
-            Dictionary<String, float> table3;
-            float valor;
-            int numCar = 0;
-
-            //inverter a tabela normalizada ou seja trocar as caracteristicas de <idCharA,<idcharB,valor>> para <idCharB,<idcharA,valor>>
-            foreach (String idCharA in tableNorma.Keys)
-            {
-                tableNorma.TryGetValue(idCharA, out table1);
-                foreach (String idCharB in table1.Keys)
-                {
-                    table1.TryGetValue(idCharB, out valor);
-                    if (!tableNormalInverted.ContainsKey(idCharB))
-                    {
-                        table2.Add(idCharA, valor);
-                        tableNormalInverted.Add(idCharB, table2);
-                    }
-                    else
-                    {
-                        tableNormalInverted.TryGetValue(idCharB, out table3);
-                        table3.Add(idCharA, valor);
-                    }
-                }
-            }
-            table1.Clear();
-            table2.Clear();
-            foreach (String idCharA in tableNormalInverted.Keys)
-            {
-                float valorTotal = 0;
-                tableNormalInverted.TryGetValue(idCharA, out table1);
-                foreach (String idCharB in table1.Keys)
-                {
-                    table1.TryGetValue(idCharB, out valor);
-                    valorTotal += valor;
-                }
-
-                table2.Add(idCharA, valorTotal);
-            }
-
-            foreach (String id in table1.Keys)
-            {
-                numCar++;
-            }
-
-            foreach (String id in table2.Keys)
-            {
-
-                table2.TryGetValue(id, out valor);
-
-                tablePesosFinais.Add(id, (valor / numCar));
-            }
-
-            return tablePesosFinais;
-        }
-
-
-
-
-
-        /* Métodos do AHP para Prioridades
-           A diferença entre estes métodos e os métodos da classificação é que têm que andar com o id da caracteristica porque cada uma pode ter o seu método
-         */
+        //A diferença entre estes métodos e os métodos da classificação é que têm que andar com o id da caracteristica porque cada uma pode ter o seu método
         // regista os resultados
         public Dictionary<String, Dictionary<String, Dictionary<String, float>>> registerPriorAHP(String idChar, String idSofA, String idSofB, float points)
         {
@@ -528,7 +518,30 @@ namespace LI4
             return tablePesosFinais;
         }
 
+        // Testar Consistência para Prioridades
 
+
+
+
+
+
+        public void limparTabelas()
+        {
+            // quando fechar o programa deve limpar todas as tabelas
+            _tableCH.Clear();
+            _tableSW.Clear();
+            _tableX.Clear();
+            _tableClass.Clear();
+            _tableResult.Clear();
+
+
+
+        }
+
+
+
+
+      
 
 
 
