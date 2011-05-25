@@ -12,7 +12,7 @@ namespace DataBase
 {
     public class Connect
     {
-        protected SqlConnection _myConnection;
+        public SqlConnection _myConnection;
 
         /**
          * Constructor default
@@ -60,6 +60,7 @@ namespace DataBase
         public SqlConnection MyConnection
         {
             get { return _myConnection; }
+            set { _myConnection = value; }
         }
 
         /**
