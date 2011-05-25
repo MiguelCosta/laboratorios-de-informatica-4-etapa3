@@ -125,7 +125,7 @@
             this.label9.Size = new System.Drawing.Size(219, 13);
             this.label9.TabIndex = 9;
             this.label9.Text = "3. Choose the multicriteria method to be used";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            //this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // groupBox1
             // 
