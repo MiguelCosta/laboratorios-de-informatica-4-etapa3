@@ -15,7 +15,8 @@ namespace Interface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ConsultWebpage());
+            //Application.Run(new ConsultWebpage());
+            Application.Run(new Init());
         }
     }
 }
