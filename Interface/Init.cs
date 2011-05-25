@@ -29,6 +29,7 @@ namespace Interface
                 Show();
         }
 
+        /*
         private void FormInit_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
@@ -36,10 +37,15 @@ namespace Interface
             ch_form.Show();
         }
 
+        */
 
 
-        private void label1_Click(object sender, EventArgs e)
+
+        private void buttonLogin_Click(object sender, FormClosingEventArgs e)
         {
+            e.Cancel = true;
+            this.Hide();
+            ch_form.Show();
 
         }
 
@@ -47,13 +53,6 @@ namespace Interface
         {
             Register r = new Register();
             r.Show();
-        }
-
-
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-
-
         }
 
 
