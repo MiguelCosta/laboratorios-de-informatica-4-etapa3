@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonResgisterNow = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -37,7 +37,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonLogin = new System.Windows.Forms.Button();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -59,15 +59,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to beSMART Software";
             // 
-            // button1
+            // buttonResgisterNow
             // 
-            this.button1.Location = new System.Drawing.Point(200, 316);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Register Now";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonResgisterNow.Location = new System.Drawing.Point(200, 316);
+            this.buttonResgisterNow.Name = "buttonResgisterNow";
+            this.buttonResgisterNow.Size = new System.Drawing.Size(109, 23);
+            this.buttonResgisterNow.TabIndex = 1;
+            this.buttonResgisterNow.Text = "Register Now";
+            this.buttonResgisterNow.UseVisualStyleBackColor = true;
+            this.buttonResgisterNow.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -125,7 +125,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.buttonLogin);
             this.groupBox1.Controls.Add(this.textBoxPassword);
             this.groupBox1.Controls.Add(this.textBoxUsername);
             this.groupBox1.Controls.Add(this.label10);
@@ -137,14 +137,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login Area";
             // 
-            // button2
+            // buttonLogin
             // 
-            this.button2.Location = new System.Drawing.Point(238, 50);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(51, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Login";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonLogin.Location = new System.Drawing.Point(238, 50);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(51, 23);
+            this.buttonLogin.TabIndex = 4;
+            this.buttonLogin.Text = "Login";
+            this.buttonLogin.UseVisualStyleBackColor = true;
             // 
             // textBoxPassword
             // 
@@ -201,7 +201,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonResgisterNow);
             this.Controls.Add(this.label1);
             this.Name = "Init";
             this.Text = "beSMART Software";
@@ -215,7 +215,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonResgisterNow;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -227,7 +227,7 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Label label11;
     }
 }
