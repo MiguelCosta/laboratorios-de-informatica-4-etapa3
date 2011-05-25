@@ -6,7 +6,7 @@
 USE [LI4]
 GO
 
-/****** Object:  Table [dbo].[user]    Script Date: 05/24/2011 16:30:22 ******/
+/****** Object:  Table [dbo].[user]    Script Date: 05/25/2011 11:50:36 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[user]') AND type in (N'U'))
 DROP TABLE [dbo].[user]
 GO
@@ -14,7 +14,7 @@ GO
 USE [LI4]
 GO
 
-/****** Object:  Table [dbo].[user]    Script Date: 05/24/2011 16:30:22 ******/
+/****** Object:  Table [dbo].[user]    Script Date: 05/25/2011 11:50:36 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -48,7 +48,7 @@ GO
 USE [LI4]
 GO
 
-/****** Object:  Table [dbo].[caracteristics]    Script Date: 05/24/2011 18:28:42 ******/
+/****** Object:  Table [dbo].[caracteristics]    Script Date: 05/25/2011 11:49:13 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[caracteristics]') AND type in (N'U'))
 DROP TABLE [dbo].[caracteristics]
 GO
@@ -56,7 +56,7 @@ GO
 USE [LI4]
 GO
 
-/****** Object:  Table [dbo].[caracteristics]    Script Date: 05/24/2011 18:28:43 ******/
+/****** Object:  Table [dbo].[caracteristics]    Script Date: 05/25/2011 11:49:14 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -80,6 +80,9 @@ SET ANSI_PADDING OFF
 GO
 
 
+
+
+
 /***************************************************************************************/
 /* Table Software */
 USE [LI4]
@@ -92,7 +95,7 @@ GO
 USE [LI4]
 GO
 
-/****** Object:  Table [dbo].[software]    Script Date: 05/24/2011 16:28:46 ******/
+/****** Object:  Table [dbo].[software]    Script Date: 05/25/2011 11:49:46 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[software]') AND type in (N'U'))
 DROP TABLE [dbo].[software]
 GO
@@ -100,7 +103,7 @@ GO
 USE [LI4]
 GO
 
-/****** Object:  Table [dbo].[software]    Script Date: 05/24/2011 16:28:46 ******/
+/****** Object:  Table [dbo].[software]    Script Date: 05/25/2011 11:49:46 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -133,15 +136,9 @@ GO
 ALTER TABLE [dbo].[software] CHECK CONSTRAINT [FK_software_user]
 GO
 
-
-
 /***************************************************************************************/
 /* Table Software_list */
 USE [LI4]
-GO
-
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_software_list_caracteristics]') AND parent_object_id = OBJECT_ID(N'[dbo].[software_list]'))
-ALTER TABLE [dbo].[software_list] DROP CONSTRAINT [FK_software_list_caracteristics]
 GO
 
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_software_list_software]') AND parent_object_id = OBJECT_ID(N'[dbo].[software_list]'))
@@ -151,7 +148,7 @@ GO
 USE [LI4]
 GO
 
-/****** Object:  Table [dbo].[software_list]    Script Date: 05/24/2011 16:27:34 ******/
+/****** Object:  Table [dbo].[software_list]    Script Date: 05/25/2011 11:50:11 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[software_list]') AND type in (N'U'))
 DROP TABLE [dbo].[software_list]
 GO
@@ -159,7 +156,7 @@ GO
 USE [LI4]
 GO
 
-/****** Object:  Table [dbo].[software_list]    Script Date: 05/24/2011 16:27:34 ******/
+/****** Object:  Table [dbo].[software_list]    Script Date: 05/25/2011 11:50:11 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -178,13 +175,6 @@ CREATE TABLE [dbo].[software_list](
 GO
 
 SET ANSI_PADDING OFF
-GO
-
-ALTER TABLE [dbo].[software_list]  WITH CHECK ADD  CONSTRAINT [FK_software_list_caracteristics] FOREIGN KEY([caracteristics_id])
-REFERENCES [dbo].[caracteristics] ([caracteristics_id])
-GO
-
-ALTER TABLE [dbo].[software_list] CHECK CONSTRAINT [FK_software_list_caracteristics]
 GO
 
 ALTER TABLE [dbo].[software_list]  WITH CHECK ADD  CONSTRAINT [FK_software_list_software] FOREIGN KEY([id_software])
