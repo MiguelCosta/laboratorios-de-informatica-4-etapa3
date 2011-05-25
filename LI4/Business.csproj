@@ -50,6 +50,10 @@
       <Project>{ACDB3707-3093-4BD3-B8C0-83BADB4C8AC4}</Project>
       <Name>DataBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Interface\Interface.csproj">
+      <Project>{969B6A81-759A-460E-83CE-BA98AC328019}</Project>
+      <Name>Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
