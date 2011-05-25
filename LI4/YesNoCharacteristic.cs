@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Business
 {
-    public class YesNo_Characteristic : Characteristic
+    public class YesNoCharacteristic : Characteristic
     {
         private bool _state;
 
         /**
          * Constructor default
          * */
-        public YesNo_Characteristic():
+        public YesNoCharacteristic():
             base("","") {
                 _state = false;
         }
@@ -20,7 +20,7 @@ namespace Business
         /**
          * Constructor with parameters
          * */
-        public YesNo_Characteristic(string id, string name, bool state):
+        public YesNoCharacteristic(string id, string name, bool state):
             base(id, name) {
                 _state = state;
         }
@@ -29,7 +29,7 @@ namespace Business
          * Constructor with Numeric_Characteristic
          * */
 
-        public YesNo_Characteristic(YesNo_Characteristic nc) :
+        public YesNoCharacteristic(YesNoCharacteristic nc) :
             base(nc.Id, nc.Name) {
             _state = nc.State;
         }
@@ -50,9 +50,9 @@ namespace Business
          * Method clone
          * */
 
-        public YesNo_Characteristic clone()
+        public YesNoCharacteristic clone()
         {
-            return new YesNo_Characteristic(this);
+            return new YesNoCharacteristic(this);
         }
 
 
