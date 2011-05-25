@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonResgisterNow = new System.Windows.Forms.Button();
+            this.buttonRegisterNow = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,16 +58,16 @@
             this.label1.Size = new System.Drawing.Size(308, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome to beSMART Software";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // buttonResgisterNow
+            // buttonRegisterNow
             // 
-            this.buttonResgisterNow.Location = new System.Drawing.Point(200, 316);
-            this.buttonResgisterNow.Name = "buttonResgisterNow";
-            this.buttonResgisterNow.Size = new System.Drawing.Size(109, 23);
-            this.buttonResgisterNow.TabIndex = 1;
-            this.buttonResgisterNow.Text = "Register Now";
-            this.buttonResgisterNow.UseVisualStyleBackColor = true;
-            this.buttonResgisterNow.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRegisterNow.Location = new System.Drawing.Point(200, 316);
+            this.buttonRegisterNow.Name = "buttonRegisterNow";
+            this.buttonRegisterNow.Size = new System.Drawing.Size(109, 23);
+            this.buttonRegisterNow.TabIndex = 1;
+            this.buttonRegisterNow.Text = "Register Now";
+            this.buttonRegisterNow.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -201,7 +201,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.buttonResgisterNow);
+            this.Controls.Add(this.buttonRegisterNow);
             this.Controls.Add(this.label1);
             this.Name = "Init";
             this.Text = "beSMART Software";
@@ -215,7 +215,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonResgisterNow;
+        private System.Windows.Forms.Button buttonRegisterNow;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
