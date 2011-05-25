@@ -7,7 +7,7 @@ namespace Business
 {
     public class DataBaseManagement
     {
-        private DataBase _db;
+        private DataBaseUser _db;
         private Dictionary<string, Dictionary<string, int>> _tableSW;
 
         /**
@@ -15,14 +15,14 @@ namespace Business
          * */
         public DataBaseManagement()
         {
-            _db = new DataBase();
+            _db = new DataBaseUser();
             _tableSW = new Dictionary<string,Dictionary<string,int>>();
         }
 
         /**
          * Constructor with parameters
          * */
-        public DataBaseManagement(DataBase db, Dictionary<string, Dictionary<string, int>> tableSW)
+        public DataBaseManagement(DataBaseUser db, Dictionary<string, Dictionary<string, int>> tableSW)
         {
             _db = db;
             _tableSW = tableSW;
@@ -33,12 +33,12 @@ namespace Business
          * */
         public DataBaseManagement(DataBaseManagement dbm)
         {
-            _db = dbm.DataBase;
+            _db = dbm.DB;
             _tableSW = dbm.TableSW;
         }
 
 
-        public DataBase DataBase
+        public DataBaseUser DB
         {
             get { return _db; }
             set { _db = value; }
@@ -50,7 +50,7 @@ namespace Business
             set { _tableSW = value; }
         }
 
-        public DataBase GetChangableDB()
+        public DataBaseUser GetChangableDB()
         {
             return _db;
             //ESTE MÉTODO AINDA NÃO ESTÁ IMPLEMENTADO
@@ -81,10 +81,10 @@ namespace Business
             //ESTE MÉTODO AINDA NÃO ESTÁ IMPLEMENTADO
         }
 
-        public DataBase NewDataBase(DataBase db)
+        public DataBaseUser NewDataBase(DataBaseUser db)
         {
             //?????
-            return new DataBase(db);
+            return new DataBaseUser(db);
         }
 
         public Dictionary<string, Dictionary<string, int>> filterDB(Dictionary<string, Software> software_list)

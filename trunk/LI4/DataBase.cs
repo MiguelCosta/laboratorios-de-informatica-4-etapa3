@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    public class DataBase
+    public class DataBaseUser
     {
         private User _user;
         private Dictionary<string, Software> _software_list;
@@ -14,7 +14,7 @@ namespace Business
         /**
          * Constructor default
          * */
-        public DataBase()
+        public DataBaseUser()
         {
             _user = new User();
             _software_list = new Dictionary<string,Software>();
@@ -24,7 +24,7 @@ namespace Business
         /**
          * Constructor with parameters
          * */
-        public DataBase(User user, Dictionary<string,Software> software_list, Dictionary<string,Characteristic> charac)
+        public DataBaseUser(User user, Dictionary<string,Software> software_list, Dictionary<string,Characteristic> charac)
         {
             _user = user;
             _software_list = software_list;
@@ -34,7 +34,7 @@ namespace Business
         /**
          * Constructor with Value
          * */
-        public DataBase(DataBase db)
+        public DataBaseUser(DataBaseUser db)
         {
             _user = db.User;
             _software_list = db.Software_list;
