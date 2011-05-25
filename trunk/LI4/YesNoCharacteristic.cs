@@ -46,6 +46,18 @@ namespace Business
             else _state = true;
         }
 
+        /**
+         * Method clone
+         * */
+
+        public YesNo_Characteristic clone()
+        {
+            return new YesNo_Characteristic(this);
+        }
+
+
+
+
 
     }
 }
