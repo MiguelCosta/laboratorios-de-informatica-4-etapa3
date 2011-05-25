@@ -84,7 +84,7 @@ namespace Business
             if (o == null || o.GetType() != this.GetType()) return false;
 
             Software s = (Software)o;
-            if (_id.Equals(s.Id) && _name.Equals(s.Name) && _link.Equals(s.Link) && _charac.equals(s.Charac)) return true;
+            if (_id.Equals(s.Id) && _name.Equals(s.Name) && _link.Equals(s.Link) && _charac.Equals(s.Charac)) return true;
 
             return false;
         }
