@@ -176,14 +176,15 @@ namespace Business
             /*Console.WriteLine("\n************Resultados**************\nValor: " + valor + "\nValor Total: " + valor1 + "\nResultado: " + resultado + "\n");*/
         }
 
-        //Rece a matriz normalizada. Calcular Médias da matriz normalizada
+        //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
         public Dictionary<String, float> pesosFinais(Dictionary<String, Dictionary<String, float>> tableNorma)
         {
-            Dictionary<String, float> tablePesosFinais = new Dictionary<string, float>();
-            Dictionary<String, Dictionary<String, float>> tableNormalInverted = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, float> table1 = new Dictionary<string, float>();
             Dictionary<String, float> table2 = new Dictionary<string, float>();
             Dictionary<String, float> table3;
+            Dictionary<String, float> tablePesosFinais = new Dictionary<string, float>();
+            Dictionary<String, Dictionary<String, float>> tableNormalInverted = new Dictionary<string, Dictionary<string, float>>();
+           
             float valor;
             int numCar = 0;
 
@@ -196,8 +197,17 @@ namespace Business
                     table1.TryGetValue(idCharB, out valor);
                     if (!tableNormalInverted.ContainsKey(idCharB))
                     {
-                        table2.Add(idCharA, valor);
-                        tableNormalInverted.Add(idCharB, table2);
+                        if (!table2.ContainsKey(idCharA))
+                        {
+                            table2.Add(idCharA, valor);
+                            tableNormalInverted.Add(idCharB, table2);
+                        }
+                        else
+                        {
+                            table2.Remove(idCharA);
+                            table2.Add(idCharA,valor);
+                        }
+
                     }
                     else
                     {
