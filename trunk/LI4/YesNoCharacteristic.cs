@@ -7,7 +7,7 @@ namespace Business
 {
     class YesNo_Characteristic : Characteristic
     {
-        private Boolean _state;
+        private bool _state;
 
         /**
          * Constructor default
