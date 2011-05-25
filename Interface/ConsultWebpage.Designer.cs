@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultWebpage));
             this.dataSet1 = new System.Data.DataSet();
             this.dataBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,10 +52,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idsoftwareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.linkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.softwareBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lI4DataSet = new Interface.LI4DataSet();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -134,10 +132,10 @@
             // 
             // viewSoftwareWebsiteToolStripMenuItem
             // 
+            this.viewSoftwareWebsiteToolStripMenuItem.Enabled = false;
             this.viewSoftwareWebsiteToolStripMenuItem.Name = "viewSoftwareWebsiteToolStripMenuItem";
             this.viewSoftwareWebsiteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.viewSoftwareWebsiteToolStripMenuItem.Text = "View Software website";
-            this.viewSoftwareWebsiteToolStripMenuItem.Click += new System.EventHandler(this.viewSoftwareWebsiteToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -154,7 +152,7 @@
             this.sMARTTutorialToolStripMenuItem,
             this.valueFNTutorialToolStripMenuItem});
             this.tutorialsToolStripMenuItem.Name = "tutorialsToolStripMenuItem";
-            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tutorialsToolStripMenuItem.Text = "Tutorials";
             // 
             // aHPTutorialToolStripMenuItem
@@ -247,10 +245,7 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idsoftwareDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.linkDataGridViewTextBoxColumn,
-            this.usernameDataGridViewTextBoxColumn});
+            this.nameDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.softwareBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
@@ -259,29 +254,11 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // idsoftwareDataGridViewTextBoxColumn
-            // 
-            this.idsoftwareDataGridViewTextBoxColumn.DataPropertyName = "id_software";
-            this.idsoftwareDataGridViewTextBoxColumn.HeaderText = "id_software";
-            this.idsoftwareDataGridViewTextBoxColumn.Name = "idsoftwareDataGridViewTextBoxColumn";
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // linkDataGridViewTextBoxColumn
-            // 
-            this.linkDataGridViewTextBoxColumn.DataPropertyName = "link";
-            this.linkDataGridViewTextBoxColumn.HeaderText = "link";
-            this.linkDataGridViewTextBoxColumn.Name = "linkDataGridViewTextBoxColumn";
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
             // 
             // softwareBindingSource
             // 
@@ -313,8 +290,10 @@
             this.ClientSize = new System.Drawing.Size(642, 492);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConsultWebpage";
-            this.Text = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "beSMART Software | Consult Software Webpage";
             this.Load += new System.EventHandler(this.ConsultWebpage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -360,9 +339,6 @@
         private LI4DataSet lI4DataSet;
         private System.Windows.Forms.BindingSource softwareBindingSource;
         private LI4DataSetTableAdapters.softwareTableAdapter softwareTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idsoftwareDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn linkDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
     }
 }
