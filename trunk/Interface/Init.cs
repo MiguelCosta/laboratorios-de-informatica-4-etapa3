@@ -41,9 +41,9 @@ namespace Interface
 
 
 
-        private void buttonLogin_Click(object sender, FormClosingEventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
-            e.Cancel = true;
+           
             this.Hide();
             ch_form.Show();
 
