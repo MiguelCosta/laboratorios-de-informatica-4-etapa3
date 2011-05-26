@@ -11,9 +11,13 @@ namespace Interface
 {
     public partial class chooseProcess : Form
     {
-        public chooseProcess()
+        private Business.DataBaseUser _dataBase;
+
+        public chooseProcess(Business.DataBaseUser dataBase)
         {
             InitializeComponent();
+            _dataBase = dataBase;
+
         
         }
 
