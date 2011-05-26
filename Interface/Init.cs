@@ -14,19 +14,20 @@ namespace Interface
 
     public partial class Init : Form
     {
-        private Connect _conn;
-        private QueryUser _queryUser;
         private Business.DataBaseUser _dataBase;
+        private DataBase.Connect _conn;
+        private DataBase.QueryUser _queryUser;
 
-        public Init(Business.DataBaseUser dataBase)
+        public Init(Business.DataBaseUser dataBase, DataBase.Connect conn, DataBase.QueryUser queryUser)
         {
             InitializeComponent();
             textBoxPassword.PasswordChar = '*';
 
             // copia o apontador da data base recebida como parametro
             _dataBase = dataBase;
+            _conn = conn;
+            _queryUser = queryUser;
 
-            connecteToDataBase();
         }
 
 
@@ -64,12 +65,7 @@ namespace Interface
 
         }
 
-        private void connecteToDataBase()
-        {
-            _conn = new Connect();
-            _conn.openMyConnection();
-            _queryUser = new QueryUser(_conn._myConnection);
-        }
+        
 
 
     }

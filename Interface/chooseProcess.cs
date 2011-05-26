@@ -12,13 +12,21 @@ namespace Interface
     public partial class chooseProcess : Form
     {
         private Business.DataBaseUser _dataBase;
+        private DataTable _dataTableSoft;
 
-        public chooseProcess(Business.DataBaseUser dataBase)
+        public chooseProcess(Business.DataBaseUser dataBase, DataTable tabelaSoftware)
         {
             InitializeComponent();
             _dataBase = dataBase;
 
-        
+            Business.User user = _dataBase.User;
+            _dataTableSoft = tabelaSoftware;
+
+            dataGridViewTabelaSoftware.DataSource = tabelaSoftware;
+
+            MessageBox.Show("login2: "+user.toString());
+            
+
         }
 
 
