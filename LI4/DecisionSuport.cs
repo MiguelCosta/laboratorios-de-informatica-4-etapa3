@@ -43,7 +43,6 @@ namespace Business
             set { _tableAHP = value; }
         }
 
-
         public Dictionary<String, Dictionary<String, int>> TableX
         {
             get { return _tableX; }
@@ -157,7 +156,7 @@ namespace Business
                         else
                         {
                             tableCorrespondencia.Remove(idCharB);
-                            tableCorrespondencia.Add(idCharB,resultado);
+                            tableCorrespondencia.Add(idCharB, resultado);
                         }
                     }
                     else
@@ -173,73 +172,69 @@ namespace Business
             }
 
             return tableAux;
-            /*Console.WriteLine("\n************Resultados**************\nValor: " + valor + "\nValor Total: " + valor1 + "\nResultado: " + resultado + "\n");*/
         }
 
         //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
         public Dictionary<String, float> pesosFinais(Dictionary<String, Dictionary<String, float>> tableNorma)
         {
-            Dictionary<String, float> table1 = new Dictionary<string, float>();
-            Dictionary<String, float> table2 = new Dictionary<string, float>();
-            Dictionary<String, float> table3;
+            Dictionary<String, float> tableCorrespondencia;
+            Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
+            Dictionary<String, float> tableAuxiliar1;
             Dictionary<String, float> tablePesosFinais = new Dictionary<string, float>();
             Dictionary<String, Dictionary<String, float>> tableNormalInverted = new Dictionary<string, Dictionary<string, float>>();
-           
+
             float valor;
             int numCar = 0;
 
             //inverter a tabela normalizada ou seja trocar as caracteristicas de <idCharA,<idcharB,valor>> para <idCharB,<idcharA,valor>>
             foreach (String idCharA in tableNorma.Keys)
             {
-                tableNorma.TryGetValue(idCharA, out table1);
-                foreach (String idCharB in table1.Keys)
+                tableNorma.TryGetValue(idCharA, out tableAuxiliar);
+                tableAuxiliar1 = new Dictionary<string, float>();
+                foreach (String idCharB in tableAuxiliar.Keys)
                 {
-                    table1.TryGetValue(idCharB, out valor);
+                    tableCorrespondencia = new Dictionary<string, float>();
+                    tableAuxiliar.TryGetValue(idCharB, out valor);
                     if (!tableNormalInverted.ContainsKey(idCharB))
                     {
-                        if (!table2.ContainsKey(idCharA))
-                        {
-                            table2.Add(idCharA, valor);
-                            tableNormalInverted.Add(idCharB, table2);
-                        }
-                        else
-                        {
-                            table2.Remove(idCharA);
-                            table2.Add(idCharA,valor);
-                        }
-
+                        tableCorrespondencia.Add(idCharA, valor);
+                        tableNormalInverted.Add(idCharB, tableCorrespondencia);
                     }
                     else
                     {
-                        tableNormalInverted.TryGetValue(idCharB, out table3);
-                        table3.Add(idCharA, valor);
+                        tableNormalInverted.TryGetValue(idCharB, out tableAuxiliar1);
+                        tableNormalInverted.Remove(idCharB);
+                        tableAuxiliar1.Add(idCharA, valor);
+                        tableNormalInverted.Add(idCharB, tableAuxiliar1);
                     }
                 }
             }
-            table1.Clear();
-            table2.Clear();
+
+            tableAuxiliar.Clear();
+            tableAuxiliar1 = new Dictionary<string, float>();
             foreach (String idCharA in tableNormalInverted.Keys)
             {
                 float valorTotal = 0;
-                tableNormalInverted.TryGetValue(idCharA, out table1);
-                foreach (String idCharB in table1.Keys)
+                tableNormalInverted.TryGetValue(idCharA, out tableAuxiliar);
+
+                foreach (String idCharB in tableAuxiliar.Keys)
                 {
-                    table1.TryGetValue(idCharB, out valor);
+                    tableAuxiliar.TryGetValue(idCharB, out valor);
                     valorTotal += valor;
                 }
 
-                table2.Add(idCharA, valorTotal);
+                tableAuxiliar1.Add(idCharA, valorTotal);
             }
 
-            foreach (String id in table1.Keys)
+            foreach (String id in tableAuxiliar.Keys)
             {
                 numCar++;
             }
 
-            foreach (String id in table2.Keys)
+            foreach (String id in tableAuxiliar1.Keys)
             {
 
-                table2.TryGetValue(id, out valor);
+                tableAuxiliar1.TryGetValue(id, out valor);
 
                 tablePesosFinais.Add(id, (valor / numCar));
             }
