@@ -245,6 +245,8 @@ namespace Business
         // Testar Consistência para classificações
 
 
+
+
         /*Métodos dé Cálculo de Prioridades*/
         public Dictionary<String, Dictionary<String, int>> filter(String idChar)
         {
