@@ -332,13 +332,17 @@ namespace Business
         /*Auxiliar da calcValueMax*/
         public float formulaMax(int min, int max, int x)
         {
-            return (x - min) / (max - min);
+            int a = x - min;
+            int b = max - min;
+            return (float)a / (float)b ;
         }
         
         /*Auxiliar da calcValueMin*/
         public float formulaMin(int min, int max, int x)
         {
-            return (max - x) / (max - min);
+            int a = max - x;
+            int b = max - min;
+            return (float)a / (float)b;
         }
 
         public Dictionary<String, float> calValueMax(int min, int max)
@@ -348,33 +352,23 @@ namespace Business
             Dictionary<String, int> listClass;
             float resultado;
             int valor;
-            int numSoft = 0;
-            float resTotal = 0;
+            
             float valueX;
             float valorNorm;
-
+            float resTotal = 0;
             //Calculos das prioridades
             foreach (String idA in _tableX.Keys)
             {
                 _tableX.TryGetValue(idA ,out listClass);
+                
                 foreach (String idSoft in listClass.Keys)
                 {
-                    numSoft++;
                     listClass.TryGetValue(idSoft, out valor);
                     resultado = formulaMax(min, max, valor);
                     resTotal += resultado;
                     tableAux.Add(idSoft, resultado);
                 }
             }
-            Console.WriteLine("**********Prioridades Tabela**");
-            float v;
-            foreach(String id in tableAux.Keys)
-            {
-                tableAux.TryGetValue(id, out v);
-                Console.WriteLine("ID: "+id+ "\n Valor: "+v);
-            }
-
-            
 
             //Calculos das prioridades normalizadas
 
