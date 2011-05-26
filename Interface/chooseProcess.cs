@@ -34,12 +34,6 @@ namespace Interface
 
         }
 
-        private void viewSoftwareWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ConsultWebpage cwp = new ConsultWebpage();
-            cwp.Show();
-            
-        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -62,6 +56,18 @@ namespace Interface
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonViewSWpage_Click(object sender, EventArgs e)
+        {
+            ConsultWebpage cwp = new ConsultWebpage();
+            cwp.Show();
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
