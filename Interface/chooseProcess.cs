@@ -51,6 +51,21 @@ namespace Interface
 
         }
 
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

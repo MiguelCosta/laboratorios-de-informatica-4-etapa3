@@ -21,8 +21,8 @@ namespace Interface
             DataBaseUser dataBase = new DataBaseUser();
 
             // Apresenta o Login
-            Init abertura = new Init(dataBase);
-            Application.Run(abertura);
+           // Init abertura = new Init(dataBase);
+          //  Application.Run(abertura);
 
             MessageBox.Show(dataBase.User.toString());
             chooseProcess cp = new chooseProcess();
