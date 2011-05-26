@@ -417,9 +417,17 @@ namespace Business
             return tablePrior;
         }
 
-        private Dictionary<String, Dictionary<String, float>> registerPriority(String idChar, Dictionary<String, float> tablePrior)
+        public Dictionary<String, Dictionary<String, float>> registerPriority(String idChar, Dictionary<String, float> tablePrior)
         {
-            _tableResult.Add(idChar, tablePrior);
+            if (!_tableResult.ContainsKey(idChar))
+            {
+                _tableResult.Add(idChar, tablePrior);
+            }
+            else
+            {
+                _tableResult.Remove(idChar);
+                _tableResult.Add(idChar, tablePrior);
+            }
             return _tableResult;
         }
 
