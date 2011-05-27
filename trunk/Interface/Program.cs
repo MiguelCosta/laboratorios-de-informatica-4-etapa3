@@ -38,12 +38,12 @@ namespace Interface
 
             MessageBox.Show(dataBase.User.toString());
 
-            // DataTable com os softwares do User
-            DataTable tabelaSoftware = querySoftware.querySoftwareUserWithCarcteristics(dataBase.User.Username);
+            // insere as categorias na base de dados            
+            querySoftware.querySoftwareUserCarcteristics(dataBase);
 
             // Apresenta a nova janela
            
-            chooseProcess cp = new chooseProcess(dataBase, tabelaSoftware);
+            chooseProcess cp = new chooseProcess(dataBase);
             Application.Run(cp);
 
 

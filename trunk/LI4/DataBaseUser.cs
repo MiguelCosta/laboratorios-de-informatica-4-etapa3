@@ -9,7 +9,7 @@ namespace Business
     {
         private User _user;
         private Dictionary<string, Software> _software_list;
-        private Dictionary<string, Characteristic> _charac;
+        private Dictionary<int, Characteristic> _charac;
 
         /**
          * Constructor default
@@ -18,13 +18,13 @@ namespace Business
         {
             _user = new User();
             _software_list = new Dictionary<string,Software>();
-            _charac = new Dictionary<string,Characteristic>();
+            _charac = new Dictionary<int,Characteristic>();
         }
 
         /**
          * Constructor with parameters
          * */
-        public DataBaseUser(User user, Dictionary<string,Software> software_list, Dictionary<string,Characteristic> charac)
+        public DataBaseUser(User user, Dictionary<string,Software> software_list, Dictionary<int,Characteristic> charac)
         {
             _user = user;
             _software_list = software_list;
@@ -53,7 +53,7 @@ namespace Business
             set { _software_list = value; }
         }
 
-        public Dictionary<string, Characteristic> Charac
+        public Dictionary<int, Characteristic> Charac
         {
             get { return _charac; }
             set { _charac = value; }
@@ -75,7 +75,7 @@ namespace Business
             //ESTE MÉTODO AINDA NÃO ESTÁ IMPLEMENTADO
         }
 
-        public void RemoveChar(string id)
+        public void RemoveChar(int id)
         {
             _charac.Remove(id);
         }
