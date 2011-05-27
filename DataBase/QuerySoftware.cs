@@ -61,10 +61,9 @@ namespace DataBase
                 nomes_das_colunas = nomes_das_colunas + coluna.ToString() + "\n";
             }
 
-
             // vai buscar um software à lista de softwares
             DataRow linha = softwares.Rows[0];
-            int id_software = (int) linha["ID"];
+            int id_software = (int)linha["ID"];
 
             // agora precisa de saber em que carateristicas é que esse software está caracterizado
             // por isso vou à tabela software_list buscar os nomes das caracteristicas com o id do software
@@ -74,7 +73,7 @@ namespace DataBase
                                                     " WHERE software_list.id_software =" + id_software +
                                                     " AND software_list.caracteristics_id = caracteristics.caracteristics_id " +
                                                     " GROUP BY caracteristics.catacyeristics_name";
-           
+
             // executa a query e coloca numa tabela
             SqlDataReader nomes_caracteristicas = executeQuery(select_nomes_caracteristicas);
             DataTable tabelaNomeCaracteristicas = new DataTable();
@@ -82,13 +81,33 @@ namespace DataBase
 
             foreach (DataRow linha_nome_caracteristica in tabelaNomeCaracteristicas.Rows)
             {
-                string nome_da_caracteristica = (string) linha_nome_caracteristica[0];
+                string nome_da_caracteristica = (string)linha_nome_caracteristica[0];
                 result.Columns.Add(nome_da_caracteristica);
                 nomes_das_colunas = nomes_das_colunas + nome_da_caracteristica + "\n";
             }
 
-
             MessageBox.Show("Colunas adiciondas:\n" + nomes_das_colunas);
+
+            // agora já temos as caracteristicas todas, falta ir buscar o valor para cada registo
+            // vai a todas as linhas de cada software
+            foreach (DataRow linha_de_caracteristicas in softwares.Rows)
+            {
+                int software_id = (int)linha["ID"];
+                string software_name = (string)linha["NAME"];
+                string software_link = (string)linha["LINK"];
+                // select para buscar as caracteristicas de um software
+                string select_caracteristicas_de_um_software = " SELECT software_list.caracteristics_value" +
+                                                                " FROM [LI4].[dbo].[software_list], [LI4].[dbo].[software]" +
+                                                                " WHERE software_list.id_software =" + software_id +
+                                                                " AND software_list.id_software = software.id_software";
+
+                // cria uma tabela com as caracteristicas do software
+                SqlDataReader caracteristicas_do_software = executeQuery(select_caracteristicas_de_um_software);
+                DataTable tabela_com_as_caracteristicas_de_um_software = new DataTable();
+                tabela_com_as_caracteristicas_de_um_software.Load(caracteristicas_do_software);
+
+
+            }
 
             return result;
 
