@@ -13,14 +13,14 @@ namespace Business
          * Constructor default
          * */
         public YesNoCharacteristic():
-            base("","") {
+            base(0,"") {
                 _state = false;
         }
 
         /**
          * Constructor with parameters
          * */
-        public YesNoCharacteristic(string id, string name, bool state):
+        public YesNoCharacteristic(int id, string name, bool state):
             base(id, name) {
                 _state = state;
         }

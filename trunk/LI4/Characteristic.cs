@@ -7,7 +7,7 @@ namespace Business
 {
     public abstract class Characteristic
     {
-        protected string _id;
+        protected int _id;
         protected string _name;
 
         /**
@@ -15,14 +15,14 @@ namespace Business
          * */
         public Characteristic()
         {
-            _id = "";
+            _id = 0;
             _name = "";
         }
 
         /**
          * Constructor with parameters
          * */
-        public Characteristic(string id, string name)
+        public Characteristic(int id, string name)
         {
             _id = id;
             _name = name;
@@ -38,7 +38,7 @@ namespace Business
         }
 
 
-        public string Id
+        public int Id
         {
             get { return _id; }
             set { _id = value; }
