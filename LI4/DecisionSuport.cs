@@ -473,7 +473,6 @@ namespace Business
         public Dictionary<String, Dictionary<String, Dictionary<String, float>>> normalizePriorityAHP(Dictionary<String, Dictionary<String, Dictionary<String, float>>> table)
         {
             float valor;
-            float valor1 = 0;
             float resultado;
             float total;
             Dictionary<String, Dictionary<String, float>> tableAux2;
@@ -500,7 +499,9 @@ namespace Business
 
                 }
             }
-            
+
+            // Correcto ATÉ Aqui
+
             Dictionary<String, float> tableCorrespondencia;
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
             Dictionary<String, float> tableAuxiliar1 = new Dictionary<string, float>();
@@ -512,15 +513,13 @@ namespace Business
                 tableAuxiliar2 = new Dictionary<String, Dictionary<string, float>>();
                 foreach (String idSofA in tableAux2.Keys)
                 {
-
                     tableAux2.TryGetValue(idSofA, out tableAuxiliar);
                     tableCorrespondencia = new Dictionary<string, float>();
                     foreach (String idSofB in tableAuxiliar.Keys)
                     {
                         tableAuxiliar.TryGetValue(idSofB, out valor);
                         tableSomas.TryGetValue(idSofA, out total);
-                        resultado = valor / valor1;
-
+                        resultado = valor / total;
                         if (!tableAuxiliar2.ContainsKey(idSofA))
                         {
                             tableCorrespondencia.Add(idSofB, resultado);
@@ -538,12 +537,8 @@ namespace Business
                 }
                 tableNorm.Add(idCh, tableAuxiliar2);
             }
-             
             return tableNorm;
         }
-
-
-
 
         //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
         public Dictionary<String, Dictionary<String, float>> pesosPriorFinais(Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorma)
@@ -579,8 +574,17 @@ namespace Business
                         else
                         {
                             tableNormalInvertedAux.TryGetValue(idSofB, out tableAuxiliar1);
-                            tableNormalInverted.Remove(idSofB);
-                            tableAuxiliar1.Add(idSofA, valor);
+                            tableNormalInvertedAux.Remove(idSofB);
+                            if (!tableAuxiliar1.ContainsKey(idSofA))
+                            {
+                                tableAuxiliar1.Add(idSofA, valor);
+                            }
+                            else
+                            {
+                                tableAuxiliar1.Remove(idSofA);
+                                tableAuxiliar1.Add(idSofA, valor);
+                            }
+
                             tableNormalInvertedAux.Add(idSofB, tableAuxiliar1);
                         }
                     }
