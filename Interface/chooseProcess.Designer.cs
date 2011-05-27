@@ -103,7 +103,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(550, 489);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.UseWaitCursor = true;
             // 
             // tabPage1
             // 
@@ -115,7 +114,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Choose Softwares";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.UseWaitCursor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // splitContainer1
@@ -127,16 +125,14 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxCharactList);
-            this.splitContainer1.Panel1.UseWaitCursor = true;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Panel2.UseWaitCursor = true;
+            //this.splitContainer1.Panel2.UseWaitCursor = true;
             this.splitContainer1.Size = new System.Drawing.Size(536, 457);
             this.splitContainer1.SplitterDistance = 504;
             this.splitContainer1.TabIndex = 47;
-            this.splitContainer1.UseWaitCursor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -149,7 +145,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(28, 457);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.UseWaitCursor = true;
             // 
             // tabPage2
             // 
@@ -161,7 +156,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Choose Criteria";
             this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.UseWaitCursor = true;
             // 
             // groupBox1
             // 
@@ -177,7 +171,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Criteria List";
-            this.groupBox1.UseWaitCursor = true;
             // 
             // dataGridView2
             // 
@@ -191,7 +184,6 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(490, 434);
             this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.UseWaitCursor = true;
             // 
             // dataGridViewCheckBoxColumn1
             // 
@@ -216,7 +208,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Definition of Weights";
             this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.UseWaitCursor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // groupBox3
@@ -230,7 +221,6 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "SMART Method";
-            this.groupBox3.UseWaitCursor = true;
             // 
             // button2
             // 
@@ -240,7 +230,6 @@
             this.button2.TabIndex = 0;
             this.button2.Text = "SMART";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.UseWaitCursor = true;
             // 
             // label7
             // 
@@ -253,7 +242,6 @@
             this.label7.Text = "Assign 10 points to the least important attribute.\r\n\r\nGive points (>10) to reflec" +
                 "t the importance of \r\nthe attribute relative to the least important attribute.\r\n" +
                 "";
-            this.label7.UseWaitCursor = true;
             // 
             // groupBox2
             // 
@@ -266,7 +254,6 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "AHP Method";
-            this.groupBox2.UseWaitCursor = true;
             // 
             // button1
             // 
@@ -276,7 +263,6 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "AHP";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.UseWaitCursor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
@@ -289,7 +275,6 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Rate each criterion on a scale of 1 to 9\r\n(however,  can contain intermediate val" +
                 "ues​​).";
-            this.label8.UseWaitCursor = true;
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label5
@@ -301,7 +286,6 @@
             this.label5.Size = new System.Drawing.Size(393, 16);
             this.label5.TabIndex = 0;
             this.label5.Text = "Define the weights of each criterion in choosing the best software. ";
-            this.label5.UseWaitCursor = true;
             // 
             // label6
             // 
@@ -313,7 +297,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Please choose between the AHP and SMART methods";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label6.UseWaitCursor = true;
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // menuStrip1
@@ -466,16 +449,16 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer3.Panel1.UseWaitCursor = true;
+            //this.splitContainer3.Panel1.UseWaitCursor = true;
             this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel1_Paint);
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.UseWaitCursor = true;
+            //this.splitContainer3.Panel2.UseWaitCursor = true;
             this.splitContainer3.Size = new System.Drawing.Size(536, 457);
             this.splitContainer3.SplitterDistance = 502;
             this.splitContainer3.TabIndex = 3;
-            this.splitContainer3.UseWaitCursor = true;
+            //this.splitContainer3.UseWaitCursor = true;
             // 
             // dataGridViewTabelaSoftware
             // 
