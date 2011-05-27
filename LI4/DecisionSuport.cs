@@ -506,7 +506,7 @@ namespace Business
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
             Dictionary<String, float> tableAuxiliar1 = new Dictionary<string, float>();
             Dictionary<String, Dictionary<String, float>> tableAuxiliar2;
-            
+
             foreach (String idCh in table.Keys)
             {
                 table.TryGetValue(idCh, out tableAux2);
@@ -549,6 +549,7 @@ namespace Business
             Dictionary<String, float> tableAuxiliar2 = new Dictionary<string, float>();
             Dictionary<String, Dictionary<String, float>> tablePesosFinais = new Dictionary<String, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, float>> tableNormalInvertedAux = new Dictionary<string, Dictionary<string, float>>();
+            Dictionary<String, Dictionary<String, float>> tableNormalized = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNormalInverted = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
             float valor;
             int numCar = 0;
@@ -556,12 +557,11 @@ namespace Business
             //inverter a tabela normalizada ou seja trocar as caracteristicas de <idCharA,<idcharB,valor>> para <idCharB,<idcharA,valor>>
             foreach (String idChar in tableNorma.Keys)
             {
-                tableNorma.TryGetValue(idChar, out tableNormalInvertedAux);
+                tableNorma.TryGetValue(idChar, out tableNormalized);
 
-                foreach (String idSofA in tableNormalInvertedAux.Keys)
+                foreach (String idSofA in tableNormalized.Keys)
                 {
-                    tableNormalInvertedAux.TryGetValue(idSofA, out tableAuxiliar);
-                    tableAuxiliar1 = new Dictionary<string, float>();
+                    tableNormalized.TryGetValue(idSofA, out tableAuxiliar);
                     foreach (String idSofB in tableAuxiliar.Keys)
                     {
                         tableCorrespondencia = new Dictionary<string, float>();
@@ -593,6 +593,30 @@ namespace Business
                 tableNormalInverted.Add(idChar, tableNormalInvertedAux);
             }
 
+
+            Dictionary<String, Dictionary<String, float>> tableA;
+            Dictionary<String, float> tableB;
+            float x;
+            Console.WriteLine("\n************ Inverted Normalized *************");
+            foreach (String idChar in tableNormalInverted.Keys)
+            {
+                tableNormalInverted.TryGetValue(idChar, out tableA);
+                Console.WriteLine("Id Char: " + idChar);
+                foreach (String idSofA in tableA.Keys)
+                {
+                    tableA.TryGetValue(idSofA, out tableB);
+                    Console.WriteLine("\tID Sof: " + idSofA);
+                    foreach (String idSofB in tableB.Keys)
+                    {
+                        tableB.TryGetValue(idSofB, out x);
+                        Console.WriteLine("\t\tId Sof: " + idSofB);
+                        Console.WriteLine("\t\tValor: " + x);
+                    }
+
+                }
+            }
+
+
             tableAuxiliar.Clear();
             tableAuxiliar1 = new Dictionary<string, float>();
 
@@ -615,14 +639,16 @@ namespace Business
                 foreach (String id in tableAuxiliar.Keys)
                 {
                     numCar++;
+
                 }
 
                 foreach (String id in tableAuxiliar1.Keys)
                 {
                     tableAuxiliar1.TryGetValue(id, out valor);
-                    tableAuxiliar2.Add(id, (valor / numCar));
+                    float result = (valor / numCar);
+                    tableAuxiliar2.Add(id, result);
                 }
-                
+
                 tablePesosFinais.Add(idCh, tableAuxiliar2);
             }
 
