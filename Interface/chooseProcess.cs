@@ -72,14 +72,21 @@ namespace Interface
 
         }
 
-        private void buttonViewSWpage_Click(object sender, EventArgs e)
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewSoftwareWebpageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConsultWebpage cwp = new ConsultWebpage();
             cwp.Show();
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void splitContainer3_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
