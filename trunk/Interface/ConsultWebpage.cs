@@ -54,5 +54,22 @@ namespace Interface
 
         }
 
+        private void editSoftwareListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditSWList editList = new EditSWList();
+            editList.Show();
+        }
+
+        private void viewSoftwareWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+            o.ShowDialog();
+        }
+
     }
 }
