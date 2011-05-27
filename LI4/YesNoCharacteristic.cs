@@ -55,7 +55,17 @@ namespace Business
             return new YesNoCharacteristic(this);
         }
 
-
+        public override string toString()
+        {
+            StringBuilder s = new StringBuilder("Characteristic\n");
+            s.Append(_name);
+            s.Append("\n");
+            s.Append(_id);
+            s.Append("\n");
+            s.Append(_state);
+            s.Append("\n");
+            return s.ToString();
+        }
 
 
 

@@ -40,12 +40,15 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBoxCharactList = new System.Windows.Forms.GroupBox();
             this.dataGridViewTabelaSoftware = new System.Windows.Forms.DataGridView();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonNext = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonNew = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -76,9 +79,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -126,7 +127,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Choose Softwares";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // splitContainer1
             // 
@@ -167,7 +167,7 @@
             this.dataGridViewTabelaSoftware.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -197,7 +197,13 @@
             this.dataGridViewTabelaSoftware.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(527, 384);
             this.dataGridViewTabelaSoftware.TabIndex = 0;
-            this.dataGridViewTabelaSoftware.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTabelaSoftware_CellContentClick);
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "";
+            this.Column3.MinimumWidth = 35;
+            this.Column3.Name = "Column3";
             // 
             // tableLayoutPanel1
             // 
@@ -243,9 +249,7 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel1_Paint);
-            // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);            // 
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.buttonNew);
@@ -274,7 +278,7 @@
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -286,7 +290,7 @@
             this.dataGridViewTextBoxColumn1});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowFrame;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Orange;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -307,6 +311,19 @@
             this.dataGridView2.Size = new System.Drawing.Size(527, 378);
             this.dataGridView2.TabIndex = 1;
             // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.MinimumWidth = 35;
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Criteria";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
             // buttonNew
             // 
             this.buttonNew.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -317,7 +334,6 @@
             this.buttonNew.TabIndex = 1;
             this.buttonNew.Text = "Next   >";
             this.buttonNew.UseVisualStyleBackColor = true;
-            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // tabPage3
             // 
@@ -329,7 +345,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Definition of Weights";
             this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // panel1
             // 
@@ -373,7 +388,6 @@
             this.buttonAHP.TabIndex = 1;
             this.buttonAHP.Text = "AHP";
             this.buttonAHP.UseVisualStyleBackColor = true;
-            this.buttonAHP.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -385,7 +399,6 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Rate each criterion on a scale of 1 to 9\r\n(however,  can contain intermediate val" +
                 "ues​​).";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // groupBox3
             // 
@@ -430,7 +443,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Please choose between the AHP and SMART methods:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // menuStrip1
             // 
@@ -588,25 +600,9 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.ToolTipText = "Leave account";
             // 
-            // Column3
+            // openFileDialog1
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "";
-            this.Column3.MinimumWidth = 35;
-            this.Column3.Name = "Column3";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewCheckBoxColumn1.HeaderText = "";
-            this.dataGridViewCheckBoxColumn1.MinimumWidth = 35;
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Criteria";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // chooseProcess
             // 
@@ -619,7 +615,6 @@
             this.Name = "chooseProcess";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "beSMART Software";
-            this.Load += new System.EventHandler(this.chooseProcess_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -696,5 +691,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

@@ -49,5 +49,7 @@ namespace Business
             get { return _name; }
             set { _name = value; }
         }
+
+        public abstract string toString();
     }
 }

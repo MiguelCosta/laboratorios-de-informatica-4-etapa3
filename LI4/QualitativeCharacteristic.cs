@@ -68,13 +68,19 @@ namespace Business
             return false;
         }
 
-        public string toString()
+        public override string toString()
         {
             StringBuilder s = new StringBuilder("Characteristic\n");
             s.Append(_name);
             s.Append("\n");
             s.Append(_id);
             s.Append("\n");
+            foreach(Value v in _values.Values)
+            {
+                s.Append(v.Name);
+                s.Append("\t");
+                s.Append(v.Classification);
+            }
             return s.ToString();
         }
     }
