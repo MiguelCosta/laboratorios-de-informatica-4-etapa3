@@ -488,7 +488,6 @@
             this.dataGridViewTabelaSoftware.Name = "dataGridViewTabelaSoftware";
             this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(495, 434);
             this.dataGridViewTabelaSoftware.TabIndex = 0;
-            this.dataGridViewTabelaSoftware.UseWaitCursor = true;
             // 
             // Column3
             // 
@@ -509,7 +508,6 @@
             this.groupBoxCharactList.TabIndex = 42;
             this.groupBoxCharactList.TabStop = false;
             this.groupBoxCharactList.Text = "Softwares List";
-            this.groupBoxCharactList.UseWaitCursor = true;
             // 
             // chooseProcess
             // 
