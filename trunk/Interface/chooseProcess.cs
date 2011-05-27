@@ -112,6 +112,11 @@ namespace Interface
 
         }
 
+        private void dataGridViewTabelaSoftware_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         
 
 
