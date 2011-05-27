@@ -32,6 +32,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBoxCharactList = new System.Windows.Forms.GroupBox();
             this.dataGridViewTabelaSoftware = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.buttonAddnew = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,21 +55,17 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonAddnew = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBoxCharactList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -114,6 +114,52 @@
             this.dataGridViewTabelaSoftware.TabIndex = 0;
             this.dataGridViewTabelaSoftware.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTabelaSoftware_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 40;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.buttonAddnew);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.buttonDelete);
+            this.splitContainer2.Size = new System.Drawing.Size(508, 48);
+            this.splitContainer2.SplitterDistance = 250;
+            this.splitContainer2.TabIndex = 2;
+            // 
+            // buttonAddnew
+            // 
+            this.buttonAddnew.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonAddnew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddnew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonAddnew.Location = new System.Drawing.Point(112, 11);
+            this.buttonAddnew.Name = "buttonAddnew";
+            this.buttonAddnew.Size = new System.Drawing.Size(125, 25);
+            this.buttonAddnew.TabIndex = 0;
+            this.buttonAddnew.Text = "Add new Sotfware";
+            this.buttonAddnew.UseVisualStyleBackColor = true;
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.Location = new System.Drawing.Point(14, 11);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(125, 25);
+            this.buttonDelete.TabIndex = 1;
+            this.buttonDelete.Text = "Delete Software";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -143,31 +189,32 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "Save as...";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // fileToolStripMenuItem
@@ -181,16 +228,19 @@
             // 
             // editSoftwareListToolStripMenuItem
             // 
+            this.editSoftwareListToolStripMenuItem.Enabled = false;
             this.editSoftwareListToolStripMenuItem.Name = "editSoftwareListToolStripMenuItem";
             this.editSoftwareListToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.editSoftwareListToolStripMenuItem.Text = "Edit software list";
+            this.editSoftwareListToolStripMenuItem.Click += new System.EventHandler(this.editSoftwareListToolStripMenuItem_Click);
             // 
             // viewSoftwareWebsiteToolStripMenuItem
             // 
-            this.viewSoftwareWebsiteToolStripMenuItem.Enabled = false;
+            this.viewSoftwareWebsiteToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.viewSoftwareWebsiteToolStripMenuItem.Name = "viewSoftwareWebsiteToolStripMenuItem";
             this.viewSoftwareWebsiteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.viewSoftwareWebsiteToolStripMenuItem.Text = "View Software website";
+            this.viewSoftwareWebsiteToolStripMenuItem.Click += new System.EventHandler(this.viewSoftwareWebsiteToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -256,52 +306,6 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
-            // buttonAddnew
-            // 
-            this.buttonAddnew.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonAddnew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddnew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonAddnew.Location = new System.Drawing.Point(112, 11);
-            this.buttonAddnew.Name = "buttonAddnew";
-            this.buttonAddnew.Size = new System.Drawing.Size(125, 25);
-            this.buttonAddnew.TabIndex = 0;
-            this.buttonAddnew.Text = "Add new Sotfware";
-            this.buttonAddnew.UseVisualStyleBackColor = true;
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.Location = new System.Drawing.Point(14, 11);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(125, 25);
-            this.buttonDelete.TabIndex = 1;
-            this.buttonDelete.Text = "Delete Software";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.buttonAddnew);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.buttonDelete);
-            this.splitContainer2.Size = new System.Drawing.Size(508, 48);
-            this.splitContainer2.SplitterDistance = 250;
-            this.splitContainer2.TabIndex = 2;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 40;
-            // 
             // EditSWList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,12 +322,12 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBoxCharactList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

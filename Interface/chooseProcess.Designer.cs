@@ -34,20 +34,17 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBoxCharactList = new System.Windows.Forms.GroupBox();
             this.dataGridViewTabelaSoftware = new System.Windows.Forms.DataGridView();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonSMART = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAHP = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -70,6 +67,12 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.buttonNew = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -78,9 +81,11 @@
             this.splitContainer1.SuspendLayout();
             this.groupBoxCharactList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -88,6 +93,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -101,7 +107,7 @@
             this.tabControl1.Location = new System.Drawing.Point(4, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(550, 489);
+            this.tabControl1.Size = new System.Drawing.Size(550, 492);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -110,7 +116,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(542, 463);
+            this.tabPage1.Size = new System.Drawing.Size(542, 466);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Choose Softwares";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -121,6 +127,7 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(3, 3);
             this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
@@ -129,8 +136,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(536, 457);
-            this.splitContainer1.SplitterDistance = 504;
+            this.splitContainer1.Size = new System.Drawing.Size(536, 460);
+            this.splitContainer1.SplitterDistance = 407;
             this.splitContainer1.TabIndex = 47;
             // 
             // groupBoxCharactList
@@ -141,9 +148,9 @@
             this.groupBoxCharactList.Controls.Add(this.dataGridViewTabelaSoftware);
             this.groupBoxCharactList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCharactList.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.groupBoxCharactList.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxCharactList.Location = new System.Drawing.Point(3, 3);
             this.groupBoxCharactList.Name = "groupBoxCharactList";
-            this.groupBoxCharactList.Size = new System.Drawing.Size(501, 457);
+            this.groupBoxCharactList.Size = new System.Drawing.Size(533, 407);
             this.groupBoxCharactList.TabIndex = 42;
             this.groupBoxCharactList.TabStop = false;
             this.groupBoxCharactList.Text = "Softwares List";
@@ -157,24 +164,20 @@
             this.dataGridViewTabelaSoftware.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTabelaSoftware.Location = new System.Drawing.Point(3, 20);
             this.dataGridViewTabelaSoftware.Name = "dataGridViewTabelaSoftware";
-            this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(495, 434);
+            this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(527, 384);
             this.dataGridViewTabelaSoftware.TabIndex = 0;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Check";
-            this.Column3.Name = "Column3";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonNext, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(28, 457);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(536, 49);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tabPage2
@@ -183,7 +186,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(542, 463);
+            this.tabPage2.Size = new System.Drawing.Size(542, 466);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Choose Criteria";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -193,13 +196,18 @@
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.Location = new System.Drawing.Point(3, 3);
             this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel1_Paint);
-            this.splitContainer3.Size = new System.Drawing.Size(536, 457);
-            this.splitContainer3.SplitterDistance = 502;
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.buttonNew);
+            this.splitContainer3.Size = new System.Drawing.Size(536, 460);
+            this.splitContainer3.SplitterDistance = 403;
             this.splitContainer3.TabIndex = 3;
             // 
             // groupBox1
@@ -212,7 +220,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.groupBox1.Location = new System.Drawing.Point(-1, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(496, 457);
+            this.groupBox1.Size = new System.Drawing.Size(533, 401);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Criteria List";
@@ -225,31 +233,19 @@
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn1});
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Enabled = false;
             this.dataGridView2.Location = new System.Drawing.Point(3, 20);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(490, 434);
+            this.dataGridView2.Size = new System.Drawing.Size(527, 378);
             this.dataGridView2.TabIndex = 1;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Check";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Criteria";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.groupBox3);
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(542, 463);
+            this.tabPage3.Size = new System.Drawing.Size(542, 466);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Definition of Weights";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -257,7 +253,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.buttonSMART);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(46, 104);
@@ -267,14 +263,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "SMART Method";
             // 
-            // button2
+            // buttonSMART
             // 
-            this.button2.Location = new System.Drawing.Point(27, 31);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(60, 35);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "SMART";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonSMART.Location = new System.Drawing.Point(27, 31);
+            this.buttonSMART.Name = "buttonSMART";
+            this.buttonSMART.Size = new System.Drawing.Size(60, 35);
+            this.buttonSMART.TabIndex = 0;
+            this.buttonSMART.Text = "SMART";
+            this.buttonSMART.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -290,25 +286,25 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.buttonAHP);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(46, 221);
+            this.groupBox2.Location = new System.Drawing.Point(46, 266);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(429, 97);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "AHP Method";
             // 
-            // button1
+            // buttonAHP
             // 
-            this.button1.Location = new System.Drawing.Point(27, 38);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 35);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "AHP";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAHP.Location = new System.Drawing.Point(27, 38);
+            this.buttonAHP.Name = "buttonAHP";
+            this.buttonAHP.Size = new System.Drawing.Size(60, 35);
+            this.buttonAHP.TabIndex = 1;
+            this.buttonAHP.Text = "AHP";
+            this.buttonAHP.UseVisualStyleBackColor = true;
+            this.buttonAHP.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -326,7 +322,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(19, 27);
+            this.label5.Location = new System.Drawing.Point(26, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(393, 16);
             this.label5.TabIndex = 0;
@@ -336,11 +332,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(19, 56);
+            this.label6.Location = new System.Drawing.Point(27, 49);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(337, 16);
+            this.label6.Size = new System.Drawing.Size(340, 16);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Please choose between the AHP and SMART methods";
+            this.label6.Text = "Please choose between the AHP and SMART methods:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
@@ -399,6 +395,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // softwareToolStripMenuItem
             // 
@@ -414,6 +411,7 @@
             this.editSoftwareListToolStripMenuItem.Name = "editSoftwareListToolStripMenuItem";
             this.editSoftwareListToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.editSoftwareListToolStripMenuItem.Text = "Edit Software List";
+            this.editSoftwareListToolStripMenuItem.Click += new System.EventHandler(this.editSoftwareListToolStripMenuItem_Click);
             // 
             // viewSoftwareWebpageToolStripMenuItem
             // 
@@ -486,6 +484,60 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(536, 457);
+            this.panel1.TabIndex = 6;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "";
+            this.Column3.MinimumWidth = 35;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 40;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.MinimumWidth = 35;
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Criteria";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNext.Location = new System.Drawing.Point(230, 12);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(75, 25);
+            this.buttonNext.TabIndex = 0;
+            this.buttonNext.Text = "Next   >";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            // 
+            // buttonNew
+            // 
+            this.buttonNew.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNew.Location = new System.Drawing.Point(230, 17);
+            this.buttonNew.Name = "buttonNew";
+            this.buttonNew.Size = new System.Drawing.Size(75, 25);
+            this.buttonNew.TabIndex = 1;
+            this.buttonNew.Text = "Next   >";
+            this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            // 
             // chooseProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,20 +558,23 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBoxCharactList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -549,13 +604,11 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSMART;
+        private System.Windows.Forms.Button buttonAHP;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -567,6 +620,11 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox groupBoxCharactList;
         private System.Windows.Forms.DataGridView dataGridViewTabelaSoftware;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.Button buttonNew;
     }
 }

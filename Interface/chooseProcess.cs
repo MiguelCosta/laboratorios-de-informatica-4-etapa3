@@ -73,7 +73,6 @@ namespace Interface
         }
 
 
-
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -96,6 +95,24 @@ namespace Interface
             OpenFileDialog o = new OpenFileDialog();
             o.ShowDialog();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void editSoftwareListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditSWList editList = new EditSWList();
+            editList.Show();
+        }
+
+        private void buttonNew_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
 
     }

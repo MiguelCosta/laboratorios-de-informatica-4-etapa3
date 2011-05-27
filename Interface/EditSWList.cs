@@ -20,5 +20,22 @@ namespace Interface
         {
 
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+            o.ShowDialog();
+        }
+
+        private void viewSoftwareWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultWebpage consultwp = new ConsultWebpage();
+            consultwp.Show();
+        }
+
+        private void editSoftwareListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
