@@ -36,11 +36,13 @@ namespace Interface
             Init abertura = new Init(dataBase, conn, queryUser);
             Application.Run(abertura);
 
+            MessageBox.Show(dataBase.User.toString());
+
             // DataTable com os softwares do User
-            DataTable tabelaSoftware = querySoftware.querySoftwareUser(dataBase.User.Username);
+            DataTable tabelaSoftware = querySoftware.querySoftwareUserWithCarcteristics(dataBase.User.Username);
 
             // Apresenta a nova janela
-            MessageBox.Show(dataBase.User.toString());
+           
             chooseProcess cp = new chooseProcess(dataBase, tabelaSoftware);
             Application.Run(cp);
 

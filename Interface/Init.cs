@@ -28,6 +28,9 @@ namespace Interface
             _conn = conn;
             _queryUser = queryUser;
 
+            textBoxUsername.Text = "extra_database";
+            textBoxPassword.Text = "extra_database";
+
         }
 
 
@@ -61,6 +64,11 @@ namespace Interface
         }
 
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Init_Load(object sender, EventArgs e)
         {
 
         }
