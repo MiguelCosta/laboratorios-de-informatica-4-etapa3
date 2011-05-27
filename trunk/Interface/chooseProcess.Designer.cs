@@ -32,8 +32,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBoxCharactList = new System.Windows.Forms.GroupBox();
+            this.dataGridViewTabelaSoftware = new System.Windows.Forms.DataGridView();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -54,6 +58,9 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.softwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editSoftwareListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewSoftwareWebpageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tutorialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aHPTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,31 +70,24 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.softwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editSoftwareListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewSoftwareWebpageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.dataGridViewTabelaSoftware = new System.Windows.Forms.DataGridView();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.groupBoxCharactList = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBoxCharactList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).BeginInit();
-            this.groupBoxCharactList.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -129,10 +129,41 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            //this.splitContainer1.Panel2.UseWaitCursor = true;
             this.splitContainer1.Size = new System.Drawing.Size(536, 457);
             this.splitContainer1.SplitterDistance = 504;
             this.splitContainer1.TabIndex = 47;
+            // 
+            // groupBoxCharactList
+            // 
+            this.groupBoxCharactList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxCharactList.Controls.Add(this.dataGridViewTabelaSoftware);
+            this.groupBoxCharactList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCharactList.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.groupBoxCharactList.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxCharactList.Name = "groupBoxCharactList";
+            this.groupBoxCharactList.Size = new System.Drawing.Size(501, 457);
+            this.groupBoxCharactList.TabIndex = 42;
+            this.groupBoxCharactList.TabStop = false;
+            this.groupBoxCharactList.Text = "Softwares List";
+            // 
+            // dataGridViewTabelaSoftware
+            // 
+            this.dataGridViewTabelaSoftware.BackgroundColor = System.Drawing.SystemColors.WindowFrame;
+            this.dataGridViewTabelaSoftware.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTabelaSoftware.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column3});
+            this.dataGridViewTabelaSoftware.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewTabelaSoftware.Location = new System.Drawing.Point(3, 20);
+            this.dataGridViewTabelaSoftware.Name = "dataGridViewTabelaSoftware";
+            this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(495, 434);
+            this.dataGridViewTabelaSoftware.TabIndex = 0;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Check";
+            this.Column3.Name = "Column3";
             // 
             // tableLayoutPanel1
             // 
@@ -156,6 +187,20 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Choose Criteria";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel1_Paint);
+            this.splitContainer3.Size = new System.Drawing.Size(536, 457);
+            this.splitContainer3.SplitterDistance = 502;
+            this.splitContainer3.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -335,6 +380,7 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -353,6 +399,28 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // softwareToolStripMenuItem
+            // 
+            this.softwareToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editSoftwareListToolStripMenuItem,
+            this.viewSoftwareWebpageToolStripMenuItem});
+            this.softwareToolStripMenuItem.Name = "softwareToolStripMenuItem";
+            this.softwareToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.softwareToolStripMenuItem.Text = "Software";
+            // 
+            // editSoftwareListToolStripMenuItem
+            // 
+            this.editSoftwareListToolStripMenuItem.Name = "editSoftwareListToolStripMenuItem";
+            this.editSoftwareListToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.editSoftwareListToolStripMenuItem.Text = "Edit Software List";
+            // 
+            // viewSoftwareWebpageToolStripMenuItem
+            // 
+            this.viewSoftwareWebpageToolStripMenuItem.Name = "viewSoftwareWebpageToolStripMenuItem";
+            this.viewSoftwareWebpageToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.viewSoftwareWebpageToolStripMenuItem.Text = "View Software Webpage";
+            this.viewSoftwareWebpageToolStripMenuItem.Click += new System.EventHandler(this.viewSoftwareWebpageToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -418,80 +486,6 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
-            // softwareToolStripMenuItem
-            // 
-            this.softwareToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editSoftwareListToolStripMenuItem,
-            this.viewSoftwareWebpageToolStripMenuItem});
-            this.softwareToolStripMenuItem.Name = "softwareToolStripMenuItem";
-            this.softwareToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.softwareToolStripMenuItem.Text = "Software";
-            // 
-            // editSoftwareListToolStripMenuItem
-            // 
-            this.editSoftwareListToolStripMenuItem.Name = "editSoftwareListToolStripMenuItem";
-            this.editSoftwareListToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.editSoftwareListToolStripMenuItem.Text = "Edit Software List";
-            // 
-            // viewSoftwareWebpageToolStripMenuItem
-            // 
-            this.viewSoftwareWebpageToolStripMenuItem.Name = "viewSoftwareWebpageToolStripMenuItem";
-            this.viewSoftwareWebpageToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.viewSoftwareWebpageToolStripMenuItem.Text = "View Software Webpage";
-            this.viewSoftwareWebpageToolStripMenuItem.Click += new System.EventHandler(this.viewSoftwareWebpageToolStripMenuItem_Click);
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
-            //this.splitContainer3.Panel1.UseWaitCursor = true;
-            this.splitContainer3.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel1_Paint);
-            // 
-            // splitContainer3.Panel2
-            // 
-            //this.splitContainer3.Panel2.UseWaitCursor = true;
-            this.splitContainer3.Size = new System.Drawing.Size(536, 457);
-            this.splitContainer3.SplitterDistance = 502;
-            this.splitContainer3.TabIndex = 3;
-            //this.splitContainer3.UseWaitCursor = true;
-            // 
-            // dataGridViewTabelaSoftware
-            // 
-            this.dataGridViewTabelaSoftware.BackgroundColor = System.Drawing.SystemColors.WindowFrame;
-            this.dataGridViewTabelaSoftware.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTabelaSoftware.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column3});
-            this.dataGridViewTabelaSoftware.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewTabelaSoftware.Location = new System.Drawing.Point(3, 20);
-            this.dataGridViewTabelaSoftware.Name = "dataGridViewTabelaSoftware";
-            this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(495, 434);
-            this.dataGridViewTabelaSoftware.TabIndex = 0;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Check";
-            this.Column3.Name = "Column3";
-            // 
-            // groupBoxCharactList
-            // 
-            this.groupBoxCharactList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxCharactList.Controls.Add(this.dataGridViewTabelaSoftware);
-            this.groupBoxCharactList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxCharactList.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.groupBoxCharactList.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxCharactList.Name = "groupBoxCharactList";
-            this.groupBoxCharactList.Size = new System.Drawing.Size(501, 457);
-            this.groupBoxCharactList.TabIndex = 42;
-            this.groupBoxCharactList.TabStop = false;
-            this.groupBoxCharactList.Text = "Softwares List";
-            // 
             // chooseProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,7 +504,12 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBoxCharactList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -521,11 +520,6 @@
             this.groupBox2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).EndInit();
-            this.groupBoxCharactList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
