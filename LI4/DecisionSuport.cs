@@ -11,8 +11,9 @@ namespace Business
         private Dictionary<String, Dictionary<String, int>> _tableSW;
         private Dictionary<String, Dictionary<String, int>> _tableX;
         private Dictionary<String, Dictionary<String, int>> _tableClass;
-        Dictionary<String, Dictionary<String, float>> _tableAHP;
+        private Dictionary<String, Dictionary<String, float>> _tableAHP;
         private Dictionary<String, Dictionary<String, float>> _tableResult;
+        private Dictionary<String, Dictionary<String, Dictionary<String, float>>> _tablePriorAHP;
 
         public DecisionSuport()
         {
@@ -20,8 +21,10 @@ namespace Business
             _tableSW = new Dictionary<string, Dictionary<string, int>>();
             _tableX = new Dictionary<string, Dictionary<string, int>>();
             _tableClass = new Dictionary<string, Dictionary<string, int>>();
-            _tableResult = new Dictionary<string, Dictionary<string, float>>();
             _tableAHP = new Dictionary<string, Dictionary<string, float>>();
+            _tableResult = new Dictionary<string, Dictionary<string, float>>();
+            _tablePriorAHP = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
+
         }
 
         /* Métodos get e set */
@@ -61,7 +64,11 @@ namespace Business
             set { _tableResult = value; }
         }
 
-
+        public Dictionary<string, Dictionary<string, Dictionary<string, float>>> TablePriorAHP
+        {
+            get { return _tablePriorAHP; }
+            set { _tablePriorAHP = value; }
+        }
 
 
         /*Métodos de Cálculo de Classificações*/
@@ -148,16 +155,8 @@ namespace Business
 
                     if (!tableAux.ContainsKey(idCharA))
                     {
-                        if (!tableCorrespondencia.ContainsKey(idCharB))
-                        {
-                            tableCorrespondencia.Add(idCharB, resultado);
-                            tableAux.Add(idCharA, tableCorrespondencia);
-                        }
-                        else
-                        {
-                            tableCorrespondencia.Remove(idCharB);
-                            tableCorrespondencia.Add(idCharB, resultado);
-                        }
+                        tableCorrespondencia.Add(idCharB, resultado);
+                        tableAux.Add(idCharA, tableCorrespondencia);
                     }
                     else
                     {
@@ -334,9 +333,9 @@ namespace Business
         {
             int a = x - min;
             int b = max - min;
-            return (float)a / (float)b ;
+            return (float)a / (float)b;
         }
-        
+
         /*Auxiliar da calcValueMin*/
         public float formulaMin(int min, int max, int x)
         {
@@ -352,15 +351,15 @@ namespace Business
             Dictionary<String, int> listClass;
             float resultado;
             int valor;
-            
+
             float valueX;
             float valorNorm;
             float resTotal = 0;
             //Calculos das prioridades
             foreach (String idA in _tableX.Keys)
             {
-                _tableX.TryGetValue(idA ,out listClass);
-                
+                _tableX.TryGetValue(idA, out listClass);
+
                 foreach (String idSoft in listClass.Keys)
                 {
                     listClass.TryGetValue(idSoft, out valor);
@@ -435,30 +434,55 @@ namespace Business
         // regista os resultados
         public Dictionary<String, Dictionary<String, Dictionary<String, float>>> registerPriorAHP(String idChar, String idSofA, String idSofB, float points)
         {
-            Dictionary<String, Dictionary<String, Dictionary<String, float>>> tablePriorID = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
             Dictionary<String, Dictionary<String, float>> tablePrior = new Dictionary<string, Dictionary<string, float>>();
+            Dictionary<String, Dictionary<String, float>> tablePriorAux = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, float> tableAux = new Dictionary<string, float>();
-            tableAux.Add(idSofB, points);
-            tablePrior.Add(idSofA, tableAux);
-            tablePriorID.Add(idChar, tablePrior);
-            return tablePriorID;
+            if (!_tablePriorAHP.ContainsKey(idChar))
+            {
+                tableAux.Add(idSofB, points);
+                tablePrior.Add(idSofA, tableAux);
+                _tablePriorAHP.Add(idChar, tablePrior);
+            }
+            else
+            {
+                _tablePriorAHP.TryGetValue(idChar, out tablePriorAux);
+                if (!tablePriorAux.ContainsKey(idSofA))
+                {
+                    tableAux.Add(idSofB, points);
+                    tablePriorAux.Add(idSofA, tableAux);
+                }
+                else
+                {
+                    tablePriorAux.TryGetValue(idSofA, out tableAux);
+                    if (!tableAux.ContainsKey(idSofB))
+                    {
+                        tableAux.Add(idSofB, points);
+                    }
+                    else
+                    {
+                        tableAux.Remove(idSofB);
+                        tableAux.Add(idSofB, points);
+                    }
+                }
+            }
+            return _tablePriorAHP;
         }
 
         /* Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
            SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1*/
         public Dictionary<String, Dictionary<String, Dictionary<String, float>>> normalizePriorityAHP(Dictionary<String, Dictionary<String, Dictionary<String, float>>> table)
         {
-            Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorm = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
-            Dictionary<String, Dictionary<String, float>> tableAux2;
-            Dictionary<String, Dictionary<String, float>> tableAux = new Dictionary<string, Dictionary<string, float>>();
-            Dictionary<String, float> table1;
-            Dictionary<String, float> tableSomas = new Dictionary<string, float>();
-            Dictionary<String, float> table3 = new Dictionary<string, float>();
-
             float valor;
             float valor1 = 0;
             float resultado;
             float total;
+            Dictionary<String, Dictionary<String, float>> tableAux2;
+            Dictionary<String, float> table1 = new Dictionary<string, float>();
+            Dictionary<String, float> table3 = new Dictionary<string, float>();
+            Dictionary<String, float> tableSomas = new Dictionary<string, float>();
+            Dictionary<String, Dictionary<String, float>> tableAux = new Dictionary<string, Dictionary<string, float>>();
+            Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorm = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
+
 
             foreach (String idChar in table.Keys)
             {
@@ -473,53 +497,64 @@ namespace Business
                         totalValor += valor;
                     }
                     tableSomas.Add(idSofA, totalValor);
+
                 }
             }
-
-
+            
+            Dictionary<String, float> tableCorrespondencia;
+            Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
+            Dictionary<String, float> tableAuxiliar1 = new Dictionary<string, float>();
+            Dictionary<String, Dictionary<String, float>> tableAuxiliar2;
+            
             foreach (String idCh in table.Keys)
             {
                 table.TryGetValue(idCh, out tableAux2);
+                tableAuxiliar2 = new Dictionary<String, Dictionary<string, float>>();
                 foreach (String idSofA in tableAux2.Keys)
                 {
-                    tableSomas.TryGetValue(idSofA, out total);
-                    if (total > 1)
+
+                    tableAux2.TryGetValue(idSofA, out tableAuxiliar);
+                    tableCorrespondencia = new Dictionary<string, float>();
+                    foreach (String idSofB in tableAuxiliar.Keys)
                     {
-                        tableAux2.TryGetValue(idSofA, out table1);
-                        foreach (String idSofB in table1.Keys)
+                        tableAuxiliar.TryGetValue(idSofB, out valor);
+                        tableSomas.TryGetValue(idSofA, out total);
+                        resultado = valor / valor1;
+
+                        if (!tableAuxiliar2.ContainsKey(idSofA))
                         {
-                            table1.TryGetValue(idSofB, out valor);
-                            foreach (String id in tableSomas.Keys)
-                            {
-                                if (id.Equals(idSofB))
-                                {
-                                    tableSomas.TryGetValue(id, out valor1);
-                                }
-                            }
-                            resultado = valor / valor1;
-                            table3.Add(idSofB, resultado);
+                            tableCorrespondencia.Add(idSofB, resultado);
+                            tableAuxiliar2.Add(idSofA, tableCorrespondencia);
                         }
-                        tableAux.Add(idSofA, table3);
-                    }
-                    else
-                    {
-                        tableAux = tableAux2;
+
+                        else
+                        {
+                            tableAuxiliar2.TryGetValue(idSofA, out tableAuxiliar1);
+                            tableAuxiliar2.Remove(idSofA);
+                            tableAuxiliar1.Add(idSofB, resultado);
+                            tableAuxiliar2.Add(idSofA, tableAuxiliar1);
+                        }
                     }
                 }
-                tableNorm.Add(idCh, tableAux);
+                tableNorm.Add(idCh, tableAuxiliar2);
             }
+             
             return tableNorm;
         }
+
+
+
 
         //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
         public Dictionary<String, Dictionary<String, float>> pesosPriorFinais(Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorma)
         {
+            Dictionary<String, float> tableCorrespondencia;
+            Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
+            Dictionary<String, float> tableAuxiliar1;
+            Dictionary<String, float> tableAuxiliar2 = new Dictionary<string, float>();
             Dictionary<String, Dictionary<String, float>> tablePesosFinais = new Dictionary<String, Dictionary<string, float>>();
+            Dictionary<String, Dictionary<String, float>> tableNormalInvertedAux = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNormalInverted = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
-            Dictionary<String, Dictionary<String, float>> tableNormalInvertedAux;
-            Dictionary<String, float> table1 = new Dictionary<string, float>();
-            Dictionary<String, float> table2 = new Dictionary<string, float>();
-            Dictionary<String, float> table3 = new Dictionary<string, float>();
             float valor;
             int numCar = 0;
 
@@ -527,58 +562,64 @@ namespace Business
             foreach (String idChar in tableNorma.Keys)
             {
                 tableNorma.TryGetValue(idChar, out tableNormalInvertedAux);
+
                 foreach (String idSofA in tableNormalInvertedAux.Keys)
                 {
-                    tableNormalInvertedAux.TryGetValue(idSofA, out table1);
-                    foreach (String idSofB in table1.Keys)
+                    tableNormalInvertedAux.TryGetValue(idSofA, out tableAuxiliar);
+                    tableAuxiliar1 = new Dictionary<string, float>();
+                    foreach (String idSofB in tableAuxiliar.Keys)
                     {
-                        table1.TryGetValue(idSofB, out valor);
+                        tableCorrespondencia = new Dictionary<string, float>();
+                        tableAuxiliar.TryGetValue(idSofB, out valor);
                         if (!tableNormalInvertedAux.ContainsKey(idSofB))
                         {
-                            table2.Add(idSofA, valor);
-                            tableNormalInvertedAux.Add(idSofB, table2);
+                            tableCorrespondencia.Add(idSofA, valor);
+                            tableNormalInvertedAux.Add(idSofB, tableCorrespondencia);
                         }
                         else
                         {
-                            tableNormalInvertedAux.TryGetValue(idSofB, out table3);
-                            table3.Add(idSofA, valor);
+                            tableNormalInvertedAux.TryGetValue(idSofB, out tableAuxiliar1);
+                            tableNormalInverted.Remove(idSofB);
+                            tableAuxiliar1.Add(idSofA, valor);
+                            tableNormalInvertedAux.Add(idSofB, tableAuxiliar1);
                         }
                     }
                 }
+
                 tableNormalInverted.Add(idChar, tableNormalInvertedAux);
             }
 
-            table1.Clear();
-            table2.Clear();
-            table3.Clear();
+            tableAuxiliar.Clear();
+            tableAuxiliar1 = new Dictionary<string, float>();
 
             foreach (String idCh in tableNormalInverted.Keys)
             {
-                tableNormalInverted.TryGetValue(idCh, out tableNormalInvertedAux);
                 foreach (String idSofA in tableNormalInvertedAux.Keys)
                 {
                     float valorTotal = 0;
-                    tableNormalInvertedAux.TryGetValue(idSofA, out table1);
-                    foreach (String idSofB in table1.Keys)
+                    tableNormalInvertedAux.TryGetValue(idSofA, out tableAuxiliar);
+
+                    foreach (String idSofB in tableAuxiliar.Keys)
                     {
-                        table1.TryGetValue(idSofB, out valor);
+                        tableAuxiliar.TryGetValue(idSofB, out valor);
                         valorTotal += valor;
                     }
 
-                    table2.Add(idSofA, valorTotal);
+                    tableAuxiliar1.Add(idSofA, valorTotal);
                 }
 
-                foreach (String id in table1.Keys)
+                foreach (String id in tableAuxiliar.Keys)
                 {
                     numCar++;
                 }
 
-                foreach (String id in table2.Keys)
+                foreach (String id in tableAuxiliar1.Keys)
                 {
-                    table2.TryGetValue(id, out valor);
-                    table3.Add(id, (valor / numCar));
+                    tableAuxiliar1.TryGetValue(id, out valor);
+                    tableAuxiliar2.Add(id, (valor / numCar));
                 }
-                tablePesosFinais.Add(idCh, table3);
+                
+                tablePesosFinais.Add(idCh, tableAuxiliar2);
             }
 
             return tablePesosFinais;
@@ -587,22 +628,6 @@ namespace Business
         // Testar Consistência para Prioridades
 
 
-
-
-
-
-        public void limparTabelas()
-        {
-            // quando fechar o programa deve limpar todas as tabelas
-            _tableCH.Clear();
-            _tableSW.Clear();
-            _tableX.Clear();
-            _tableClass.Clear();
-            _tableResult.Clear();
-
-
-
-        }
 
 
 
