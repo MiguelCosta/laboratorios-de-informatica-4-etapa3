@@ -34,19 +34,25 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBoxCharactList = new System.Windows.Forms.GroupBox();
             this.dataGridViewTabelaSoftware = new System.Windows.Forms.DataGridView();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonNext = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonNew = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.buttonSMART = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonAHP = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonSMART = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,12 +73,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonNext = new System.Windows.Forms.Button();
-            this.buttonNew = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -90,10 +90,10 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -167,6 +167,13 @@
             this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(527, 384);
             this.dataGridViewTabelaSoftware.TabIndex = 0;
             // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "";
+            this.Column3.MinimumWidth = 35;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 40;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -179,6 +186,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(536, 49);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNext.Location = new System.Drawing.Point(230, 12);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(75, 25);
+            this.buttonNext.TabIndex = 0;
+            this.buttonNext.Text = "Next   >";
+            this.buttonNext.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -239,6 +257,30 @@
             this.dataGridView2.Size = new System.Drawing.Size(527, 378);
             this.dataGridView2.TabIndex = 1;
             // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.MinimumWidth = 35;
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Criteria";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // buttonNew
+            // 
+            this.buttonNew.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNew.Location = new System.Drawing.Point(230, 17);
+            this.buttonNew.Name = "buttonNew";
+            this.buttonNew.Size = new System.Drawing.Size(75, 25);
+            this.buttonNew.TabIndex = 1;
+            this.buttonNew.Text = "Next   >";
+            this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panel1);
@@ -251,38 +293,27 @@
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
-            // groupBox3
+            // panel1
             // 
-            this.groupBox3.Controls.Add(this.buttonSMART);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(46, 104);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(429, 93);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "SMART Method";
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(536, 457);
+            this.panel1.TabIndex = 6;
             // 
-            // buttonSMART
+            // label5
             // 
-            this.buttonSMART.Location = new System.Drawing.Point(27, 31);
-            this.buttonSMART.Name = "buttonSMART";
-            this.buttonSMART.Size = new System.Drawing.Size(60, 35);
-            this.buttonSMART.TabIndex = 0;
-            this.buttonSMART.Text = "SMART";
-            this.buttonSMART.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(122, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(301, 64);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Assign 10 points to the least important attribute.\r\n\r\nGive points (>10) to reflec" +
-                "t the importance of \r\nthe attribute relative to the least important attribute.\r\n" +
-                "";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(26, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(393, 16);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Define the weights of each criterion in choosing the best software. ";
             // 
             // groupBox2
             // 
@@ -318,15 +349,38 @@
                 "ues​​).";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // label5
+            // groupBox3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(393, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Define the weights of each criterion in choosing the best software. ";
+            this.groupBox3.Controls.Add(this.buttonSMART);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(46, 104);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(429, 93);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "SMART Method";
+            // 
+            // buttonSMART
+            // 
+            this.buttonSMART.Location = new System.Drawing.Point(27, 31);
+            this.buttonSMART.Name = "buttonSMART";
+            this.buttonSMART.Size = new System.Drawing.Size(60, 35);
+            this.buttonSMART.TabIndex = 0;
+            this.buttonSMART.Text = "SMART";
+            this.buttonSMART.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(122, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(301, 64);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Assign 10 points to the least important attribute.\r\n\r\nGive points (>10) to reflec" +
+                "t the importance of \r\nthe attribute relative to the least important attribute.\r\n" +
+                "";
             // 
             // label6
             // 
@@ -370,12 +424,14 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.ToolTipText = "Create a new database";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.ToolTipText = "Open database";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
@@ -383,18 +439,21 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.ToolTipText = "Save database to a file";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "Save as...";
+            this.saveAsToolStripMenuItem.ToolTipText = "Save as database to a file";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.ToolTipText = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // softwareToolStripMenuItem
@@ -411,6 +470,7 @@
             this.editSoftwareListToolStripMenuItem.Name = "editSoftwareListToolStripMenuItem";
             this.editSoftwareListToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.editSoftwareListToolStripMenuItem.Text = "Edit Software List";
+            this.editSoftwareListToolStripMenuItem.ToolTipText = "Change the list of software";
             this.editSoftwareListToolStripMenuItem.Click += new System.EventHandler(this.editSoftwareListToolStripMenuItem_Click);
             // 
             // viewSoftwareWebpageToolStripMenuItem
@@ -418,6 +478,7 @@
             this.viewSoftwareWebpageToolStripMenuItem.Name = "viewSoftwareWebpageToolStripMenuItem";
             this.viewSoftwareWebpageToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.viewSoftwareWebpageToolStripMenuItem.Text = "View Software Webpage";
+            this.viewSoftwareWebpageToolStripMenuItem.ToolTipText = "Consult the website of the software";
             this.viewSoftwareWebpageToolStripMenuItem.Click += new System.EventHandler(this.viewSoftwareWebpageToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -437,37 +498,41 @@
             this.sMARTTutorialToolStripMenuItem,
             this.valueFNTutorialToolStripMenuItem});
             this.tutorialsToolStripMenuItem.Name = "tutorialsToolStripMenuItem";
-            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tutorialsToolStripMenuItem.Text = "Tutorials";
+            this.tutorialsToolStripMenuItem.ToolTipText = "Consult the tutorial of the methods";
             // 
             // aHPTutorialToolStripMenuItem
             // 
             this.aHPTutorialToolStripMenuItem.Name = "aHPTutorialToolStripMenuItem";
             this.aHPTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.aHPTutorialToolStripMenuItem.Text = "AHP Tutorial";
+            this.aHPTutorialToolStripMenuItem.ToolTipText = "Consult the tutorial of AHP method";
             // 
             // sMARTTutorialToolStripMenuItem
             // 
             this.sMARTTutorialToolStripMenuItem.Name = "sMARTTutorialToolStripMenuItem";
             this.sMARTTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.sMARTTutorialToolStripMenuItem.Text = "SMART Tutorial";
+            this.sMARTTutorialToolStripMenuItem.ToolTipText = "Consult the tutorial of SMART method";
             // 
             // valueFNTutorialToolStripMenuItem
             // 
             this.valueFNTutorialToolStripMenuItem.Name = "valueFNTutorialToolStripMenuItem";
             this.valueFNTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.valueFNTutorialToolStripMenuItem.Text = "ValueFN Tutorial";
+            this.valueFNTutorialToolStripMenuItem.ToolTipText = "Consult the tutorial of ValueFN method";
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // editAccountToolStripMenuItem
@@ -483,60 +548,7 @@
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(536, 457);
-            this.panel1.TabIndex = 6;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "";
-            this.Column3.MinimumWidth = 35;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 40;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "";
-            this.dataGridViewCheckBoxColumn1.MinimumWidth = 35;
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Criteria";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // buttonNext
-            // 
-            this.buttonNext.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNext.Location = new System.Drawing.Point(230, 12);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(75, 25);
-            this.buttonNext.TabIndex = 0;
-            this.buttonNext.Text = "Next   >";
-            this.buttonNext.UseVisualStyleBackColor = true;
-            // 
-            // buttonNew
-            // 
-            this.buttonNew.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNew.Location = new System.Drawing.Point(230, 17);
-            this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(75, 25);
-            this.buttonNew.TabIndex = 1;
-            this.buttonNew.Text = "Next   >";
-            this.buttonNew.UseVisualStyleBackColor = true;
-            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            this.logoutToolStripMenuItem.ToolTipText = "Leave account";
             // 
             // chooseProcess
             // 
@@ -567,14 +579,14 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
