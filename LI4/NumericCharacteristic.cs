@@ -13,14 +13,14 @@ namespace Business
          * Constructor default
          * */
         public NumericCharacteristic():
-            base("","") {
+            base(0,"") {
                 _value = 0;
         }
 
         /**
          * Constructor with parameters
          * */
-        public NumericCharacteristic(string id, string name, int value):
+        public NumericCharacteristic(int id, string name, int value):
             base(id, name) {
                 _value = value;
         }
@@ -56,7 +56,7 @@ namespace Business
 
             NumericCharacteristic n = (NumericCharacteristic)o;
 
-            if (_id.Equals(n.Id) && _name.Equals(n.Name) && _value == n.Value) return true;
+            if (_id == n.Id && _name.Equals(n.Name) && _value == n.Value) return true;
 
             return false;
         }

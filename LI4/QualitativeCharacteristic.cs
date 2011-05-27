@@ -12,17 +12,19 @@ namespace Business
         /**
          * Constructor default
          * */
-        public QualitativeCharacteristic():
-            base("","") {
-                _values = new Dictionary<string,Value>();
+        public QualitativeCharacteristic() :
+            base(0, "")
+        {
+            _values = new Dictionary<string, Value>();
         }
 
         /**
          * Constructor with parameters
          * */
-        public QualitativeCharacteristic(string id, string name, Dictionary<string, Value> values):
-            base(id, name) {
-                _values = values;
+        public QualitativeCharacteristic(int id, string name, Dictionary<string, Value> values) :
+            base(id, name)
+        {
+            _values = values;
         }
 
         /**
@@ -30,7 +32,8 @@ namespace Business
          * */
 
         public QualitativeCharacteristic(QualitativeCharacteristic nc) :
-            base(nc.Id, nc.Name) {
+            base(nc.Id, nc.Name)
+        {
             _values = nc.Values;
         }
 
@@ -60,7 +63,7 @@ namespace Business
 
             QualitativeCharacteristic n = (QualitativeCharacteristic)o;
 
-            if (_id.Equals(n.Id) && _name.Equals(n.Name) && _values.Equals(n.Values)) return true;
+            if (_id == n.Id && _name.Equals(n.Name) && _values.Equals(n.Values)) return true;
 
             return false;
         }
