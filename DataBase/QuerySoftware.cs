@@ -76,14 +76,15 @@ namespace DataBase
                                                     " GROUP BY caracteristics.catacyeristics_name";
            
             // executa a query e coloca numa tabela
-            SqlDataReader nome_caracteristicas = executeQuery(select_nomes_caracteristicas);
+            SqlDataReader nomes_caracteristicas = executeQuery(select_nomes_caracteristicas);
             DataTable tabelaNomeCaracteristicas = new DataTable();
-            tabelaNomeCaracteristicas.Load(nome_caracteristicas);
+            tabelaNomeCaracteristicas.Load(nomes_caracteristicas);
 
             foreach (DataRow linha_nome_caracteristica in tabelaNomeCaracteristicas.Rows)
             {
                 string nome_da_caracteristica = (string) linha_nome_caracteristica[0];
                 result.Columns.Add(nome_da_caracteristica);
+                nomes_das_colunas = nomes_das_colunas + nome_da_caracteristica + "\n";
             }
 
 
