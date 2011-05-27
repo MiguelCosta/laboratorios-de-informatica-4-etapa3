@@ -125,7 +125,6 @@
             this.label9.Size = new System.Drawing.Size(219, 13);
             this.label9.TabIndex = 9;
             this.label9.Text = "3. Choose the multicriteria method to be used";
-            //this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // groupBox1
             // 
@@ -226,6 +225,7 @@
             this.Name = "Init";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "beSMART Software";
+            this.Load += new System.EventHandler(this.Init_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
