@@ -58,6 +58,12 @@
     <Compile Include="ConsultHelp.Designer.cs">
       <DependentUpon>ConsultHelp.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditSWList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSWList.Designer.cs">
+      <DependentUpon>EditSWList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultHelp.resx">
       <DependentUpon>ConsultHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSWList.resx">
+      <DependentUpon>EditSWList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

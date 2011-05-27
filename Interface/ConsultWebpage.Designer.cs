@@ -46,6 +46,7 @@
             this.sMARTTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.valueFNTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,6 @@
             this.lI4DataSet = new Interface.LI4DataSet();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.softwareTableAdapter = new Interface.LI4DataSetTableAdapters.softwareTableAdapter();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -158,7 +158,7 @@
             this.sMARTTutorialToolStripMenuItem,
             this.valueFNTutorialToolStripMenuItem});
             this.tutorialsToolStripMenuItem.Name = "tutorialsToolStripMenuItem";
-            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.tutorialsToolStripMenuItem.Text = "Tutorials";
             // 
             // aHPTutorialToolStripMenuItem
@@ -182,8 +182,14 @@
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.helpToolStripMenuItem1.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // menuStrip1
             // 
@@ -210,7 +216,7 @@
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // imageList1
@@ -309,12 +315,6 @@
             // softwareTableAdapter
             // 
             this.softwareTableAdapter.ClearBeforeFill = true;
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem.Text = "About";
             // 
             // ConsultWebpage
             // 
