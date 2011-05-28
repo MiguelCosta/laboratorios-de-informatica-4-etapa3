@@ -52,21 +52,6 @@ namespace Interface
             Close();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //vai buscar os softwares a bd
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ConsultWebpage_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'lI4DataSet.software' table. You can move, or remove it, as needed.
@@ -74,20 +59,10 @@ namespace Interface
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void editSoftwareListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditSWList editList = new EditSWList();
             editList.Show();
-        }
-
-        private void viewSoftwareWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,6 +80,7 @@ namespace Interface
                 webBrowser.Navigate(cellValue);
             }
         }
+
 
     }
 }

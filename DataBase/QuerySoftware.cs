@@ -96,6 +96,7 @@ namespace DataBase
             catch (Exception e)
             {
                 MessageBox.Show("Não contêm caracteristicas associadas ao utilizador!");
+                Console.WriteLine(e.Message);
             }
             return result;
         }

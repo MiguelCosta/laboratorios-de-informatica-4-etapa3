@@ -78,7 +78,13 @@ namespace Interface
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog o = new OpenFileDialog();
-            o.ShowDialog();
+            o.Filter = "beSmart files (*.beSmart)|*.beSmart|All files (*.*)|*.*";
+            DialogResult ret = o.ShowDialog();
+
+            if (ret == DialogResult.OK)
+            {
+                MessageBox.Show("Ainda nao esta a funcionar!");
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,6 +96,20 @@ namespace Interface
         {
             EditSWList editList = new EditSWList();
             editList.Show();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog s = new SaveFileDialog();
+            s.Filter = "beSmart files (*.beSmart)|*.beSmart|All files (*.*)|*.*";
+            DialogResult ret = s.ShowDialog();
+
+            if (ret == DialogResult.OK)
+            {
+                string name = s.FileName;
+                _dataBase.saveInObject(name);
+
+            }
         }
 
     }
