@@ -19,6 +19,45 @@ namespace Interface
             _dataBase = dataBase;
 
             Business.User user = _dataBase.User;
+            
+            refresfTable();
+
+        }
+
+        private void refresfTable()
+        {
+            // actualizar a tabela inicial
+            DataTable tabela_softwares = new DataTable();
+            tabela_softwares.Columns.Add("ID");
+            tabela_softwares.Columns.Add("Name");
+            tabela_softwares.Columns.Add("Link");
+
+            // adicionar as colunas (nome das caracteristicas)
+            foreach (Business.Characteristic c in _dataBase.Charac.Values)
+            {
+                tabela_softwares.Columns.Add(c.Name);
+            }
+
+            // adiciona os linhas (info dos softwares)
+            foreach (Business.Software s in _dataBase.Software_list.Values)
+            {
+                // coloca todas as caracteristicas numa List
+                List<string> values = new List<string>();
+                values.Add(""+s.Id);
+                values.Add(s.Name);
+                values.Add(s.Link);
+                foreach (string cV in s.Charac.Values)
+                {
+                    values.Add(cV);
+                }
+                // passa para um array, para ser possivel adicionar uma linha
+                string[] array = values.ToArray();
+                tabela_softwares.Rows.Add(array);
+            }
+
+            // cria uma nova vista para a tabela
+            DataView view = new DataView(tabela_softwares);
+            dataGridViewTabelaSoftware.DataSource = view;
 
         }
 

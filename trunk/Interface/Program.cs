@@ -45,7 +45,6 @@ namespace Interface
 
             // inseres os softwares na base de dados
             querySoftware.querySoftwareUserSoftwares(dataBase);
-
             MessageBox.Show(dataBase.toString());
 
             // Apresenta a nova janela
