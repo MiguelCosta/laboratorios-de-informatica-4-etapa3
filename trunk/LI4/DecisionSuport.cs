@@ -815,14 +815,36 @@ namespace Business
             return matrixD;
         }
 
-        public double calculaLambdaMax(Dictionary<int, double> matrixD) 
+        public double calculaLambdaMax(Dictionary<int, double> matrixD)
         {
-            double lambMax;
+            double lambMax = 0;
+            double total = 0;
+            double valor;
+            int numTotal = 0;
+
+            foreach (int id in matrixD.Keys)
+            {
+                numTotal++;
+                matrixD.TryGetValue(id, out valor);
+                total += valor;
+            }
+            lambMax = (double)total / (double)numTotal;
 
             return lambMax;
         }
 
+        public double indiceConsistencia(Dictionary<int, double> matrixD, double lambda)
+        {
+            double ic;
+            int numTotal = 0;
+            foreach (int id in matrixD.Keys)
+            {
+                numTotal++;
+            }
 
+            ic = ((double)(lambda - numTotal) / (double)(numTotal - 1));
+            return ic;
+        }
 
 
 
