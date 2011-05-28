@@ -57,12 +57,6 @@ namespace Interface
             //vai buscar os softwares a bd
         }
 
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-        }
-
-
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
