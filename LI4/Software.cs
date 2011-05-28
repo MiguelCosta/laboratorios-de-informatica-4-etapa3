@@ -7,26 +7,26 @@ namespace Business
 {
     public class Software
     {
-        private string _id;
+        private int _id;
         private string _name;
         private string _link;
-        private Dictionary<String, Characteristic> _charac;
+        private Dictionary<int, string> _charac;
 
         /**
          * Constructor default
          * */
         public Software()
         {
-            _id = "";
+            _id = 0;
             _name = "";
             _link = "";
-            _charac = new Dictionary<string,Characteristic>();
+            _charac = new Dictionary<int, string>();
         }
 
         /**
          * Constructor with parameters
          * */
-        public Software(string id, string name, string link, Dictionary<String,Characteristic> charac)
+        public Software(int id, string name, string link, Dictionary<int, string> charac)
         {
             _id = id;
             _name = name;
@@ -45,7 +45,7 @@ namespace Business
             _charac = s.Charac;
         }
 
-        public string Id
+        public int Id
         {
             get { return _id; }
             set { _id = value; }
@@ -63,7 +63,7 @@ namespace Business
             set { _link = value; }
         }
 
-        public Dictionary<String,Characteristic> Charac
+        public Dictionary<int, string> Charac
         {
             get { return _charac; }
             set { _charac = value; }
@@ -84,7 +84,7 @@ namespace Business
             if (o == null || o.GetType() != this.GetType()) return false;
 
             Software s = (Software)o;
-            if (_id.Equals(s.Id) && _name.Equals(s.Name) && _link.Equals(s.Link) && _charac.Equals(s.Charac)) return true;
+            if (_id == s.Id && _name.Equals(s.Name) && _link.Equals(s.Link) && _charac.Equals(s.Charac)) return true;
 
             return false;
         }
@@ -92,11 +92,20 @@ namespace Business
         public string toString()
         {
             StringBuilder s = new StringBuilder("Software\n");
-            s.Append(_name);
-            s.Append("\n");
             s.Append(_id);
             s.Append("\n");
+            s.Append(_name);
+            s.Append("\n");
             s.Append(_link);
+            s.Append("\n");
+
+            foreach (KeyValuePair<int, string> pair in _charac)
+            {
+                s.Append(pair.Key);
+                s.Append("\t");
+                s.Append(pair.Value);
+                s.Append("\n");
+            }
             return s.ToString();
         }
     }

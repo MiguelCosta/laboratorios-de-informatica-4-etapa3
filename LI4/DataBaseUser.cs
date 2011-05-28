@@ -8,7 +8,7 @@ namespace Business
     public class DataBaseUser
     {
         private User _user;
-        private Dictionary<string, Software> _software_list;
+        private Dictionary<int, Software> _software_list;
         private Dictionary<int, Characteristic> _charac;
 
         /**
@@ -17,14 +17,14 @@ namespace Business
         public DataBaseUser()
         {
             _user = new User();
-            _software_list = new Dictionary<string,Software>();
-            _charac = new Dictionary<int,Characteristic>();
+            _software_list = new Dictionary<int, Software>();
+            _charac = new Dictionary<int, Characteristic>();
         }
 
         /**
          * Constructor with parameters
          * */
-        public DataBaseUser(User user, Dictionary<string,Software> software_list, Dictionary<int,Characteristic> charac)
+        public DataBaseUser(User user, Dictionary<int, Software> software_list, Dictionary<int, Characteristic> charac)
         {
             _user = user;
             _software_list = software_list;
@@ -47,7 +47,7 @@ namespace Business
             set { _user = value; }
         }
 
-        public Dictionary<string,Software> Software_list
+        public Dictionary<int, Software> Software_list
         {
             get { return _software_list; }
             set { _software_list = value; }
@@ -64,7 +64,7 @@ namespace Business
             _software_list.Add(s.Id, s);
         }
 
-        public void RemoveSoftware(string id)
+        public void RemoveSoftware(int id)
         {
             _software_list.Remove(id);
         }
@@ -83,6 +83,23 @@ namespace Business
         public void filterDB()
         {
             //ESTE MÉTODO AINDA NÃO ESTÁ IMPLEMENTADO
+        }
+
+        public string toString()
+        {
+            StringBuilder s = new StringBuilder("DATA BASE");
+            s.Append(User.toString());
+            s.Append("Software:\n");
+            foreach (Software soft in _software_list.Values)
+            {
+                s.Append(soft.toString());
+            }
+            s.Append("Characteristics:\n");
+            foreach (Characteristic c in _charac.Values)
+            {
+                s.Append(c.toString());
+            }
+            return s.ToString();
         }
     }
 

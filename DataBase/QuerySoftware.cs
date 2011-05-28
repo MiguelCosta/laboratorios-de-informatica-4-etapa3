@@ -46,6 +46,7 @@ namespace DataBase
         }
 
 
+        /*#############################################################################################*/
         /*######## vai criar todas as caracteristicas do utilizador e colocar na base de dados ########*/
         public void querySoftwareUserCarcteristics(Business.DataBaseUser base_dados)
         {
@@ -61,14 +62,16 @@ namespace DataBase
             // agora é preciso pegar nesses ids e procurar na tabela de caracteristicas
             Dictionary<int, Business.Characteristic> car = queryCriar_as_caracteristicas(ids_caracteristicas);
 
+            /*
             MessageBox.Show("Aqui_1");
             foreach (Business.Characteristic c in car.Values)
             {
                 MessageBox.Show(c.toString());
             }
-
+            */
             base_dados.Charac = car;
         }
+
 
 
 
@@ -79,7 +82,6 @@ namespace DataBase
 
             try
             {
-
                 // id do software para procurar as caracteristicas
                 DataRow linha = softwares.Rows[0];
                 int id_software = (int)linha["ID"];
@@ -93,7 +95,7 @@ namespace DataBase
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Não contêm caracteristicas associadas ao utilizador!");
             }
             return result;
         }
@@ -187,6 +189,87 @@ namespace DataBase
 
             return r;
         }
+
+        /*#############################################################################################*/
+
+        /*#############################################################################################*/
+        /*########### vai criar todos os softwares do utilizador e colocar na base de dados ###########*/
+        public void querySoftwareUserSoftwares(Business.DataBaseUser base_dados)
+        {
+            // username do utilizador
+            string username = base_dados.User.Username;
+
+            // vai buscar todos os softwares do utilizador
+            DataTable softwares = querySoftwareUser(username);
+
+            // dictionary com os softwares
+            Dictionary<int, Business.Software> software_list = querySoftwareUserCreateDictionarySoftware(softwares);
+
+            // coloca os softwares na base de dados
+            base_dados.Software_list = software_list;
+
+
+        }
+
+        // recebe a informacao dos softwares, vai associar as caracteristicas e cria-los
+        public Dictionary<int, Business.Software> querySoftwareUserCreateDictionarySoftware(DataTable softwares)
+        {
+            // resultado de todos os softwares
+            Dictionary<int, Business.Software> software_list = new Dictionary<int, Business.Software>();
+
+            foreach (DataRow linha in softwares.Rows)
+            {
+                int id_software = (int)linha["ID"];
+                string name = (string)linha["NAME"];
+                string link = (string)linha["LINK"];
+                // tabela com as caracteristicas de um software
+                DataTable caracteristicas_do_software = querySoftwareCaracteristicsOfSoftware(id_software);
+                // cria um software
+                Business.Software software = querySoftwareCreateSoftwareWithCaracteristics(id_software, name, link, caracteristicas_do_software);
+                //MessageBox.Show(software.toString());
+                // adiciona à lista de softwares
+                software_list.Add(software.Id, software);
+            }
+
+            return software_list;
+        }
+
+        
+        // devolve uma tabela com o id e o valor das caracteristicas do software
+        public DataTable querySoftwareCaracteristicsOfSoftware(int id_software)
+        {
+            string select = @"SELECT    [id_software]           AS ID_SOFTWARE, 
+                                        [caracteristics_id]     AS ID_CARACTERISTICS, 
+                                        [caracteristics_value]  AS CARACTERISTICS_VALUE
+                                    FROM [LI4].[dbo].[software_list]
+                                    WHERE id_software =" + id_software;
+
+            DataTable caracteristicas_do_software = executeQuery_DataTable(select);
+            return caracteristicas_do_software;
+        }
+
+
+
+        // através de uma tabela com as caracteristicas vai criar o software
+        public Business.Software querySoftwareCreateSoftwareWithCaracteristics(int id_software, string nome, string link, DataTable caracteristicas_do_software)
+        {
+            Business.Software sof = new Business.Software();
+            sof.Id = id_software;
+            sof.Name = nome;
+            sof.Link = link;
+
+            Dictionary<int, string> charac = new Dictionary<int, string>();
+            foreach (DataRow linha in caracteristicas_do_software.Rows)
+            {
+                int caracteristics_id = (int)linha["ID_CARACTERISTICS"];
+                string caracteristics_value = (string)linha["CARACTERISTICS_VALUE"];
+                charac.Add(caracteristics_id, caracteristics_value);
+            }
+            // coloca as caracteristicas no software
+            sof.Charac = charac;
+            return sof;
+        }
+        /*#############################################################################################*/
 
         // recebe uma query e executa
         public SqlDataReader executeQuery(string select)
