@@ -38,7 +38,7 @@ namespace Interface
                 tabela_softwares.Columns.Add(c.Name);
             }
 
-            // adiciona os linhas (info dos softwares)
+            // adiciona as linhas (info dos softwares)
             foreach (Business.Software s in _dataBase.Software_list.Values)
             {
                 // coloca todas as caracteristicas numa List
@@ -70,7 +70,7 @@ namespace Interface
 
         private void viewSoftwareWebpageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConsultWebpage cwp = new ConsultWebpage();
+            ConsultWebpage cwp = new ConsultWebpage(_dataBase);
             cwp.Show();
             
         }

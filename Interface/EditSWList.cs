@@ -29,8 +29,8 @@ namespace Interface
 
         private void viewSoftwareWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConsultWebpage consultwp = new ConsultWebpage();
-            consultwp.Show();
+            //ConsultWebpage consultwp = new ConsultWebpage();
+            //consultwp.Show();
         }
 
         private void editSoftwareListToolStripMenuItem_Click(object sender, EventArgs e)
