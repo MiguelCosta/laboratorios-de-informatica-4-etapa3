@@ -163,6 +163,9 @@
             // 
             // dataGridViewTabelaSoftware
             // 
+            this.dataGridViewTabelaSoftware.AllowUserToAddRows = false;
+            this.dataGridViewTabelaSoftware.AllowUserToDeleteRows = false;
+            this.dataGridViewTabelaSoftware.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewTabelaSoftware.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewTabelaSoftware.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -173,7 +176,6 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTabelaSoftware.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTabelaSoftware.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTabelaSoftware.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column3});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -249,7 +251,8 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);            // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
+            // 
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.buttonNew);

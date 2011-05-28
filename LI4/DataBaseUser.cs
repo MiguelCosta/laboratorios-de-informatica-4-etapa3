@@ -87,14 +87,14 @@ namespace Business
 
         public string toString()
         {
-            StringBuilder s = new StringBuilder("DATA BASE");
+            StringBuilder s = new StringBuilder("DATA BASE\n");
             s.Append(User.toString());
-            s.Append("Software:\n");
+            s.Append("\n\nSOFTWARES:\n");
             foreach (Software soft in _software_list.Values)
             {
                 s.Append(soft.toString());
             }
-            s.Append("Characteristics:\n");
+            s.Append("\n\nCHARACTERISTICS:\n");
             foreach (Characteristic c in _charac.Values)
             {
                 s.Append(c.toString());
