@@ -36,19 +36,15 @@ namespace Interface
             Init abertura = new Init(dataBase, conn, queryUser);
             Application.Run(abertura);
 
-            MessageBox.Show(dataBase.toString());
-
             // insere as caracteristicas na base de dados            
             querySoftware.querySoftwareUserCarcteristics(dataBase);
 
-            MessageBox.Show(dataBase.toString());
-
             // inseres os softwares na base de dados
             querySoftware.querySoftwareUserSoftwares(dataBase);
-            MessageBox.Show(dataBase.toString());
+
+            MessageBox.Show("#### TODA A INFORMAÇÂO DA BASE DE DADOS ####\n"+dataBase.toString());
 
             // Apresenta a nova janela
-           
             chooseProcess cp = new chooseProcess(dataBase);
             Application.Run(cp);
 
