@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Business
 {
-    public class DataBaseUser
+    [Serializable()]
+    public class DataBaseUser : ISerializable
     {
         private User _user;
         private Dictionary<int, Software> _software_list;
@@ -84,6 +88,23 @@ namespace Business
         {
             //ESTE MÉTODO AINDA NÃO ESTÁ IMPLEMENTADO
         }
+
+        public void saveInObject(String filename)
+        {
+            Stream stream = File.Open(filename, FileMode.Create);
+            BinaryFormatter bformatter = new BinaryFormatter();
+
+            bformatter.Serialize(stream, this);
+            stream.Close();
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("User", _user);
+            info.AddValue("Charac", _charac);
+            info.AddValue("Software_List", _software_list);
+        }
+        
 
         public string toString()
         {

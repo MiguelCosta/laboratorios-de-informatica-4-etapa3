@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Business
 {
-    public class User
+    [Serializable()]
+    public class User : ISerializable
     {
         private string _username;
         private string _email;
@@ -61,6 +64,14 @@ namespace Business
             get { return _password; }
             set { _password = value; }
         }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("Username", _username);
+            info.AddValue("EMail", _email);
+            info.AddValue("Password", _password);
+        }
+        
 
             /**
              * Method clone

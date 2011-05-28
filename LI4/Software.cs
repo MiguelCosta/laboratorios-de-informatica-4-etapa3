@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Business
 {
-    public class Software
+    [Serializable()]
+    public class Software : ISerializable
     {
         private int _id;
         private string _name;
@@ -67,6 +70,14 @@ namespace Business
         {
             get { return _charac; }
             set { _charac = value; }
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("Id", _id);
+            info.AddValue("Name", _name);
+            info.AddValue("Link", _link);
+            info.AddValue("Charac", _charac);
         }
 
         /**
