@@ -80,6 +80,7 @@ namespace Business
                 s.Append(v.Name);
                 s.Append("\t");
                 s.Append(v.Classification);
+                s.Append("\n");
             }
             return s.ToString();
         }
