@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Business
 {
-    public class YesNoCharacteristic : Characteristic
+    [Serializable()]
+    public class YesNoCharacteristic : Characteristic, ISerializable
     {
         private bool _state;
 
@@ -45,6 +48,12 @@ namespace Business
             if (_state) _state = false;
             else _state = true;
         }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("State", _state);
+        }
+        
 
         /**
          * Method clone

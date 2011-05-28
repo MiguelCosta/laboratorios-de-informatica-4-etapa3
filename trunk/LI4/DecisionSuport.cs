@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Business
 {
+
     class DecisionSuport
     {
         private Dictionary<String, int> _tableCH;
@@ -675,8 +676,6 @@ namespace Business
         // testa consistencia
         //análises finais
         //
-
-
 
 
 

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Business
 {
-    public abstract class Characteristic
+    [Serializable()]
+    public abstract class Characteristic : ISerializable
     {
         protected int _id;
         protected string _name;
@@ -48,6 +51,12 @@ namespace Business
         {
             get { return _name; }
             set { _name = value; }
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("Id", _id);
+            info.AddValue("Name", _name);
         }
 
         public abstract string toString();

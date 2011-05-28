@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Business
 {
-    public class NumericCharacteristic : Characteristic
+    [Serializable()]
+    public class NumericCharacteristic : Characteristic, ISerializable
     {
         private int _value;
 
@@ -38,6 +41,11 @@ namespace Business
         {
             get { return _value; }
             set { _value = value; }
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("Value", _value);
         }
 
         /**

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Business
 {
-    public class DataBaseManagement
+    [Serializable()]
+    public class DataBaseManagement : ISerializable
     {
         private DataBaseUser _db;
         private Dictionary<string, Dictionary<string, int>> _tableSW;
@@ -95,6 +98,12 @@ namespace Business
             }
             //ESTE MÉTODO AINDA NÃO FAZ COISAS
             return _tableSW;
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("DB", _db);
+            info.AddValue("TableSW", _tableSW);
         }
         
     }
