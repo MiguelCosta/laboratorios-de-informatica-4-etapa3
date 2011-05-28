@@ -28,17 +28,17 @@ namespace Business
             _matrizIndicesAleatorios = new Dictionary<int, double>();
 
             // Matriz de Indices aleatórios de Saaty
-            _matrizIndicesAleatorios.Add(1,0.00);
-            _matrizIndicesAleatorios.Add(2,0.00);
-            _matrizIndicesAleatorios.Add(3,0.58);
-            _matrizIndicesAleatorios.Add(4,0.90);
-            _matrizIndicesAleatorios.Add(5,1.12);
-            _matrizIndicesAleatorios.Add(6,1.24);
-            _matrizIndicesAleatorios.Add(7,1.32);
-            _matrizIndicesAleatorios.Add(8,1.41);
-            _matrizIndicesAleatorios.Add(9,1.45);
-            _matrizIndicesAleatorios.Add(10,1.49);
-            _matrizIndicesAleatorios.Add(11,1.51);
+            _matrizIndicesAleatorios.Add(1, 0.00);
+            _matrizIndicesAleatorios.Add(2, 0.00);
+            _matrizIndicesAleatorios.Add(3, 0.58);
+            _matrizIndicesAleatorios.Add(4, 0.90);
+            _matrizIndicesAleatorios.Add(5, 1.12);
+            _matrizIndicesAleatorios.Add(6, 1.24);
+            _matrizIndicesAleatorios.Add(7, 1.32);
+            _matrizIndicesAleatorios.Add(8, 1.41);
+            _matrizIndicesAleatorios.Add(9, 1.45);
+            _matrizIndicesAleatorios.Add(10, 1.49);
+            _matrizIndicesAleatorios.Add(11, 1.51);
 
 
         }
@@ -259,7 +259,7 @@ namespace Business
 
 
         /*Métodos dé Cálculo de Prioridades*/
-        
+
         // **************Value Fn***************
         public Dictionary<String, Dictionary<String, int>> filter(String idChar)
         {
@@ -429,7 +429,7 @@ namespace Business
 
             return tablePrior;
         }
-                
+
         public Dictionary<String, Dictionary<String, float>> registerPriority(String idChar, Dictionary<String, float> tablePrior)
         {
             if (!_tableResult.ContainsKey(idChar))
@@ -448,7 +448,7 @@ namespace Business
 
 
         // **************AHP***************
-        
+
         //A diferença entre estes métodos e os métodos da classificação é que têm que andar com o id da caracteristica porque cada uma pode ter o seu método
         // regista os resultados
         public Dictionary<String, Dictionary<String, Dictionary<String, float>>> registerPriorAHP(String idChar, String idSofA, String idSofB, float points)
@@ -687,11 +687,22 @@ namespace Business
          * deve-se ir a tabela grande buscar os dados de prioridades para aquela caracteristica.
          */
 
+
+        /* FASE 1
+         * Fazer os primeiros calculos para a taxa de consistencia
+         * Caso não seja consistente deve-se passar para a fase 2;
+         * 
+         * metodo geral recebe:
+         *      - Matriz AHP
+         *      - Matriz de Classificações
+         */
+
+
         public Dictionary<int, double> calculaMatrizC(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<String, float> matrixFinalPesos)
         {
             Dictionary<String, float> tableAuxiliar1;
             Dictionary<string, float> tableCorrespondencia;
-            Dictionary<int, float> matrixPesos= new Dictionary<int,float>();
+            Dictionary<int, float> matrixPesos = new Dictionary<int, float>();
             Dictionary<int, double> matrixC = new Dictionary<int, double>();
             Dictionary<String, float> tableAuxiliar = new Dictionary<String, float>();
             Dictionary<String, Dictionary<String, float>> matrizRegisterAHPinverted = new Dictionary<string, Dictionary<string, float>>();
@@ -724,28 +735,28 @@ namespace Business
             // Converte a matriz de pesos finais numa associação numero - float
             int num = 1;
             float valorP;
-            foreach (String id in matrixFinalPesos.Keys) 
+            foreach (String id in matrixFinalPesos.Keys)
             {
-                matrixFinalPesos.TryGetValue(id,out valorP);
-                matrixPesos.Add(num,valorP);
+                matrixFinalPesos.TryGetValue(id, out valorP);
+                matrixPesos.Add(num, valorP);
                 num++;
             }
 
 
-            
+
             tableCorrespondencia = new Dictionary<string, float>();
             float peso;
-            int idNumber=0;
-            
-            float valorA=0; // valor que se retira da matriz de correspondencias
-            
-            foreach(String idA in matrizRegisterAHPinverted.Keys)
+            int idNumber = 0;
+
+            float valorA = 0; // valor que se retira da matriz de correspondencias
+
+            foreach (String idA in matrizRegisterAHPinverted.Keys)
             {
                 idNumber++;
                 int idColum = 0;
                 double totalFinal = 0;
-                matrizRegisterAHPinverted.TryGetValue(idA,out tableCorrespondencia);
-                foreach (String idB in tableCorrespondencia.Keys) 
+                matrizRegisterAHPinverted.TryGetValue(idA, out tableCorrespondencia);
+                foreach (String idB in tableCorrespondencia.Keys)
                 {
                     idColum++;
                     tableCorrespondencia.TryGetValue(idB, out valorA);
@@ -760,14 +771,56 @@ namespace Business
                 }
                 matrixC.Add(idNumber, totalFinal);
             }
-            
+
             return matrixC;
         }
 
-        
+        public Dictionary<int, double> calculaMatrizD(Dictionary<int, double> matrixC, Dictionary<String, float> matrixFinalPesos)
+        {
+            Dictionary<int, double> matrixD = new Dictionary<int, double>();
+            Dictionary<int, float> matrixPesos = new Dictionary<int, float>();
+
+
+            int num = 1;
+            float valorP;
+            foreach (String id in matrixFinalPesos.Keys)
+            {
+                matrixFinalPesos.TryGetValue(id, out valorP);
+                matrixPesos.Add(num, valorP);
+                num++;
+            }
 
 
 
+            float peso;
+            double valorC;
+
+            double totalFinal = 0;
+            foreach (int idP in matrixPesos.Keys)
+            {
+                matrixPesos.TryGetValue(idP, out peso);
+                foreach (int idC in matrixC.Keys)
+                {
+                    if (idC == idP)
+                    {
+                        matrixC.TryGetValue(idC, out valorC);
+                        totalFinal = (float)valorC / (float)peso;
+                    }
+                }
+                matrixD.Add(idP, totalFinal);
+            }
+
+
+
+            return matrixD;
+        }
+
+        public double calculaLambdaMax(Dictionary<int, double> matrixD) 
+        {
+            double lambMax;
+
+            return lambMax;
+        }
 
 
 
