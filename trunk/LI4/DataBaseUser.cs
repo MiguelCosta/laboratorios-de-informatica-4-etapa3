@@ -102,7 +102,7 @@ namespace Business
         {
             info.AddValue("User", _user);
             info.AddValue("Charac", _charac);
-            info.AddValue("Software_List", _software_list);
+            info.AddValue("Software_List", _software_list); 
         }
         
 
