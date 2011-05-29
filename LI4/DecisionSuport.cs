@@ -190,12 +190,12 @@ namespace Business
         }
 
         //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
-        public Dictionary<String, float> pesosFinais(Dictionary<String, Dictionary<String, float>> tableNorma)
+        public Dictionary<String, double> pesosFinais(Dictionary<String, Dictionary<String, float>> tableNorma)
         {
             Dictionary<String, float> tableCorrespondencia;
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
             Dictionary<String, float> tableAuxiliar1;
-            Dictionary<String, float> tablePesosFinais = new Dictionary<string, float>();
+            Dictionary<String, double> tablePesosFinais = new Dictionary<string, double>();
             Dictionary<String, Dictionary<String, float>> tableNormalInverted = new Dictionary<string, Dictionary<string, float>>();
 
             float valor;
@@ -560,13 +560,13 @@ namespace Business
         }
 
         //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
-        public Dictionary<String, Dictionary<String, float>> pesosPriorFinais(Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorma)
+        public Dictionary<String, Dictionary<String, double>> pesosPriorFinais(Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorma)
         {
             Dictionary<String, float> tableCorrespondencia;
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
             Dictionary<String, float> tableAuxiliar1;
-            Dictionary<String, float> tableAuxiliar2 = new Dictionary<string, float>();
-            Dictionary<String, Dictionary<String, float>> tablePesosFinais = new Dictionary<String, Dictionary<string, float>>();
+            Dictionary<String, double> tableAuxiliar2 = new Dictionary<string, double>();
+            Dictionary<String, Dictionary<String, double>> tablePesosFinais = new Dictionary<String, Dictionary<string, double>>();
             Dictionary<String, Dictionary<String, float>> tableNormalInvertedAux = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, float>> tableNormalized = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNormalInverted = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
@@ -698,11 +698,11 @@ namespace Business
          */
 
 
-        public Dictionary<int, double> calculaMatrizC(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<String, float> matrixFinalPesos)
+        public Dictionary<int, double> calculaMatrizC(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<String, double> matrixFinalPesos)
         {
             Dictionary<String, float> tableAuxiliar1;
             Dictionary<string, float> tableCorrespondencia;
-            Dictionary<int, float> matrixPesos = new Dictionary<int, float>();
+            Dictionary<int, double> matrixPesos = new Dictionary<int, double>();
             Dictionary<int, double> matrixC = new Dictionary<int, double>();
             Dictionary<String, float> tableAuxiliar = new Dictionary<String, float>();
             Dictionary<String, Dictionary<String, float>> matrizRegisterAHPinverted = new Dictionary<string, Dictionary<string, float>>();
@@ -734,7 +734,7 @@ namespace Business
 
             // Converte a matriz de pesos finais numa associação numero - float
             int num = 1;
-            float valorP;
+            double valorP;
             foreach (String id in matrixFinalPesos.Keys)
             {
                 matrixFinalPesos.TryGetValue(id, out valorP);
@@ -745,7 +745,188 @@ namespace Business
 
 
             tableCorrespondencia = new Dictionary<string, float>();
-            float peso;
+            double peso;
+            int idNumber = 0;
+
+            float valorA = 0; // valor que se retira da matriz de correspondencias
+
+            foreach (String idA in matrizRegisterAHPinverted.Keys)
+            {
+                idNumber++;
+                int idColum = 0;
+                double totalFinal = 0;
+                matrizRegisterAHPinverted.TryGetValue(idA, out tableCorrespondencia);
+                foreach (String idB in tableCorrespondencia.Keys)
+                {
+                    idColum++;
+                    tableCorrespondencia.TryGetValue(idB, out valorA);
+                    foreach (int id in matrixPesos.Keys)
+                    {
+                        if (idColum == id)
+                        {
+                            matrixPesos.TryGetValue(id, out peso);
+                            totalFinal = totalFinal + (peso * valorA);
+                        }
+                    }
+                }
+                matrixC.Add(idNumber, totalFinal);
+            }
+
+            return matrixC;
+        } 
+
+        public Dictionary<int, double> calculaMatrizD(Dictionary<int, double> matrixC, Dictionary<String, double> matrixFinalPesos)
+        {
+            Dictionary<int, double> matrixD = new Dictionary<int, double>();
+            Dictionary<int, double> matrixPesos = new Dictionary<int, double>();
+
+
+            int num = 1;
+            double valorP;
+            foreach (String id in matrixFinalPesos.Keys)
+            {
+                matrixFinalPesos.TryGetValue(id, out valorP);
+                matrixPesos.Add(num, valorP);
+                num++;
+            }
+
+
+
+            double peso;
+            double valorC;
+
+            double totalFinal = 0;
+            foreach (int idP in matrixPesos.Keys)
+            {
+                matrixPesos.TryGetValue(idP, out peso);
+                foreach (int idC in matrixC.Keys)
+                {
+                    if (idC == idP)
+                    {
+                        matrixC.TryGetValue(idC, out valorC);
+                        totalFinal = (float)valorC / (float)peso;
+                    }
+                }
+                matrixD.Add(idP, totalFinal);
+            }
+
+
+
+            return matrixD;
+        }
+
+        public double taxaConsitencia(Dictionary<int, double> matrixD)
+        {
+            double tc;
+            double ia;
+            double ic;
+            int numTotal = 0;
+            double lambMax = 0;
+            double total = 0;
+            double valor;
+
+            //calcula lambda max
+            foreach (int id in matrixD.Keys)
+            {
+                numTotal++;
+                matrixD.TryGetValue(id, out valor);
+                total += valor;
+            }
+
+
+            lambMax = (double)total / (double)numTotal;
+
+            // indice de inconsistencia
+            ic = ((double)(lambMax - numTotal) / (double)(numTotal - 1));
+
+            // taxa de inconsistencia
+            _matrizIndicesAleatorios.TryGetValue(numTotal, out ia);
+
+            if (ia == 0)
+            {
+                tc = 0;
+            }
+            else
+            {
+                tc = (double)ic / (double)ia;
+            }
+
+            return tc;
+        }
+
+        
+
+        // Metodos que recebem os pesos com int double em vez de string double. Auxiliares da iterações
+        public Dictionary<int, double> normalizaMatrizC(Dictionary<int, double> matrixC)
+        {
+            Dictionary<int, double> matrixCNorm = new Dictionary<int, double>();
+            double total = 0;
+            double valor;
+
+            foreach (int id in matrixC.Keys)
+            {
+                matrixC.TryGetValue(id, out valor);
+                total += valor;
+            }
+            double resultado;
+            foreach (int id in matrixC.Keys)
+            {
+                matrixC.TryGetValue(id, out valor);
+                resultado = (double)valor / (double)total;
+                matrixCNorm.Add(id, resultado);
+            }
+
+            return matrixCNorm;
+        }
+        
+        public Dictionary<int, double> calculaMatrizCInt(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<int, double> matrixFinalPesos)
+        {
+            Dictionary<String, float> tableAuxiliar1;
+            Dictionary<string, float> tableCorrespondencia;
+            Dictionary<int, double> matrixPesos = new Dictionary<int, double>();
+            Dictionary<int, double> matrixC = new Dictionary<int, double>();
+            Dictionary<String, float> tableAuxiliar = new Dictionary<String, float>();
+            Dictionary<String, Dictionary<String, float>> matrizRegisterAHPinverted = new Dictionary<string, Dictionary<string, float>>();
+            float valor;
+            // Como a matrixRegisterAHP está orientada á coluna e não à linha é perciso invertela para ficar orientada à linha;
+
+            foreach (String idA in matrixRegisterAHP.Keys)
+            {
+                matrixRegisterAHP.TryGetValue(idA, out tableAuxiliar);
+                tableAuxiliar1 = new Dictionary<string, float>();
+                foreach (String idB in tableAuxiliar.Keys)
+                {
+                    tableCorrespondencia = new Dictionary<string, float>();
+                    tableAuxiliar.TryGetValue(idB, out valor);
+                    if (!matrizRegisterAHPinverted.ContainsKey(idB))
+                    {
+                        tableCorrespondencia.Add(idA, valor);
+                        matrizRegisterAHPinverted.Add(idB, tableCorrespondencia);
+                    }
+                    else
+                    {
+                        matrizRegisterAHPinverted.TryGetValue(idB, out tableAuxiliar1);
+                        matrizRegisterAHPinverted.Remove(idB);
+                        tableAuxiliar1.Add(idA, valor);
+                        matrizRegisterAHPinverted.Add(idB, tableAuxiliar1);
+                    }
+                }
+            }
+
+            // Converte a matriz de pesos finais numa associação numero - float
+            int num = 1;
+            double valorP;
+            foreach (int id in matrixFinalPesos.Keys)
+            {
+                matrixFinalPesos.TryGetValue(id, out valorP);
+                matrixPesos.Add(num, valorP);
+                num++;
+            }
+
+
+
+            tableCorrespondencia = new Dictionary<string, float>();
+            double peso;
             int idNumber = 0;
 
             float valorA = 0; // valor que se retira da matriz de correspondencias
@@ -775,30 +956,16 @@ namespace Business
             return matrixC;
         }
 
-        public Dictionary<int, double> calculaMatrizD(Dictionary<int, double> matrixC, Dictionary<String, float> matrixFinalPesos)
+        public Dictionary<int, double> calculaMatrizDInt(Dictionary<int, double> matrixC, Dictionary<int, double> matrixFinalPesos)
         {
             Dictionary<int, double> matrixD = new Dictionary<int, double>();
-            Dictionary<int, float> matrixPesos = new Dictionary<int, float>();
-
-
-            int num = 1;
-            float valorP;
-            foreach (String id in matrixFinalPesos.Keys)
-            {
-                matrixFinalPesos.TryGetValue(id, out valorP);
-                matrixPesos.Add(num, valorP);
-                num++;
-            }
-
-
-
-            float peso;
+            double peso;
             double valorC;
 
             double totalFinal = 0;
-            foreach (int idP in matrixPesos.Keys)
+            foreach (int idP in matrixFinalPesos.Keys)
             {
-                matrixPesos.TryGetValue(idP, out peso);
+                matrixFinalPesos.TryGetValue(idP, out peso);
                 foreach (int idC in matrixC.Keys)
                 {
                     if (idC == idP)
@@ -809,53 +976,76 @@ namespace Business
                 }
                 matrixD.Add(idP, totalFinal);
             }
-
-
-
+            
             return matrixD;
         }
 
-        public double taxaConsitencia(Dictionary<int, double> matrixD) 
-        {   
-            double tc;
-            double ia; 
-            double ic;
-            int numTotal = 0;
-            double lambMax = 0;
-            double total = 0;
-            double valor;
 
-            //calcula lambda max
-            foreach (int id in matrixD.Keys)
+
+
+        // Não faço ideia se está certo tenho que ver e rever xD
+        public double iteracoesNaoConsistencia(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<int, double> matrixC) 
+        { 
+            double consFinal=0;
+
+            double diferenca =10;
+
+            Dictionary<int, double> matrixCNormalized = new Dictionary<int, double>();
+            Dictionary<int, double> matrixCNew = new Dictionary<int, double>();
+            Dictionary<int, double> matrixD = new Dictionary<int, double>();
+            Dictionary<int, double> matrixPesos = new Dictionary<int, double>();
+            matrixCNew = matrixC;
+
+            // numero total para fazer a media das diferencas
+            int numTotal = 0;
+
+            foreach(int id in matrixCNew.Keys) 
             {
                 numTotal++;
-                matrixD.TryGetValue(id, out valor);
-                total += valor;
+            }
+            
+            while (diferenca > 0.0001) 
+            {   
+                diferenca = 10;
+                matrixCNormalized = normalizaMatrizC(matrixCNew);
+                matrixPesos = matrixCNormalized;
+                matrixCNew = calculaMatrizCInt(_tableAHP, matrixCNormalized);
+
+                double valorNew;
+                double valorOld;
+                double resultado;
+                foreach(int id in matrixCNew.Keys)
+                {
+                    matrixCNew.TryGetValue(id, out valorNew);
+                    foreach (int idOld in matrixPesos.Keys) 
+                    {
+                        if (id == idOld)
+                        {
+                            matrixCNew.TryGetValue(id, out valorOld);
+                            resultado = valorNew - valorOld;
+                            diferenca += resultado;
+                        }
+                        
+                    
+                    }
+                
+                }
+
+                diferenca = (diferenca / numTotal);
             }
 
+            matrixD = calculaMatrizDInt(matrixCNew, matrixPesos);
 
-            lambMax = (double)total / (double)numTotal;
-
-            // indice de inconsistencia
-            ic = ((double)(lambMax - numTotal) / (double)(numTotal - 1));
-
-            // taxa de inconsistencia
-            _matrizIndicesAleatorios.TryGetValue(numTotal, out ia);
-
-            if (ia == 0)
-            {
-                tc = 0;
-            }
-            else 
-            {
-                tc = (double)ic / (double)ia;
-            }
-
-            return tc;
+            consFinal = taxaConsitencia(matrixD);
+            
+            return consFinal;        
         }
 
-        
 
 
+
+
+       
     }
+    // se der algum erro é porque mudei os pesos finais para retornarem String,double em vez de String,float
 }
