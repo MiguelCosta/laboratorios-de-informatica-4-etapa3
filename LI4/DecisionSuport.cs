@@ -1156,7 +1156,7 @@ namespace Business
 
                 foreach (String idA in tableClass.Keys)
                 {
-                    tableClass.TryGetValue(idA,out valorX);
+                    tableClass.TryGetValue(idA, out valorX);
                     if (!tableCl.ContainsKey(idA))
                     {
                         prior = new List<float>();
@@ -1188,42 +1188,46 @@ namespace Business
                 rankAux.Add(id, soma);
             }
 
-            float valorH;
-            float valorMax = 0;
-            int flag = 0;
-
+            
+            
             // Verifica qual o maior vai retiralo da matriz rankAux e acrescentar na matriz rank aux 2
             // É necessário verificar se ele adiciona à cabeça ou na cauda se for à cabeça alterar para ver o minimo
-            while (rankAux.Count() != 0)
+            while (rankAux.Count != 0)
             {
+                float valorMax = 0;
                 foreach (String id in rankAux.Keys)
                 {
+                    float valorH;
                     rankAux.TryGetValue(id, out valorH);
-                    if (flag == 0)
+
+                    if (valorH > valorMax)
                     {
                         valorMax = valorH;
-                    }
-                    else
-                    {
-                        if (valorH > valorMax)
-                        {
-                            valorMax = valorH;
-                        }
                     }
 
                 }
 
                 String idv = "";
+                float valorP;
                 foreach (String id in rankAux.Keys)
                 {
-                    rankAux.TryGetValue(id, out valorH);
-                    if (valorMax == valorH)
+                    rankAux.TryGetValue(id, out valorP);
+                    if (valorMax == valorP)
                     {
                         idv = String.Copy(id);
+                       
                     }
 
                 }
-                rankAux2.Add(idv, valorMax);
+                if (!rankAux2.ContainsKey(idv))
+                {
+                    rankAux2.Add(idv, valorMax);
+                }
+                else
+                {
+                    rankAux2.Remove(idv);
+                    rankAux2.Add(idv, valorMax);
+                }
                 rankAux.Remove(idv);
 
             }
@@ -1248,6 +1252,6 @@ namespace Business
     }
 
     // Atenção falta meter condições por exemplo para as consistencias que tem que ser menor que 0.1 se for maior tem que chamar a das iterações
-    // se der algum erro é porque mudei os pesos finais para retornarem String,double em vez de String,float
+
 }
 
