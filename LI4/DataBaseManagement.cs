@@ -40,6 +40,15 @@ namespace Business
             _tableSW = dbm.TableSW;
         }
 
+        /**
+         * Deserialization Constructor 
+         * */
+        public DataBaseManagement(SerializationInfo info, StreamingContext ctxt)
+        {
+            _db = (DataBaseUser)info.GetValue("DB", typeof(DataBaseUser));
+            _tableSW = (Dictionary<string, Dictionary<string, int>>)info.GetValue("TableSW", typeof(Dictionary<string, Dictionary<string, int>>));
+        }
+
 
         public DataBaseUser DB
         {

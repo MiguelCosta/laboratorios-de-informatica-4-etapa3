@@ -40,6 +40,14 @@ namespace Business
             _values = nc.Values;
         }
 
+        /**
+         * Deserialization Constructor 
+         * */
+        public QualitativeCharacteristic(SerializationInfo info, StreamingContext ctxt) :
+            base(info, ctxt)  {
+                _values = (Dictionary<string, Value>)info.GetValue("Values", typeof(Dictionary<string, Value>));
+        }
+
         public Dictionary<string, Value> Values
         {
             get { return _values; }
@@ -53,6 +61,7 @@ namespace Business
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
+            base.GetObjectData(info, ctxt);
             info.AddValue("Values", _values);
         }
 

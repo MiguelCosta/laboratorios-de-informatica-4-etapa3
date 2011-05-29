@@ -41,6 +41,16 @@ namespace Business
         }
 
 
+        /**
+         * Deserialization Constructor 
+         * */
+        public Characteristic(SerializationInfo info, StreamingContext ctxt)
+        {
+            _id = (int)info.GetValue("Id", typeof(int));
+            _name = (String)info.GetValue("Name", typeof(string));
+        }
+
+
         public int Id
         {
             get { return _id; }

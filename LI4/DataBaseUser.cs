@@ -45,6 +45,16 @@ namespace Business
             _charac = db.Charac;
         }
 
+        /**
+         * Deserialization Constructor 
+         * */
+        public DataBaseUser(SerializationInfo info, StreamingContext ctxt)
+        {
+            _user = (User)info.GetValue("User", typeof(User));
+            _software_list = (Dictionary<int, Software>)info.GetValue("Software_List", typeof(Dictionary<int, Software>));
+            _charac = (Dictionary<int, Characteristic>)info.GetValue("Charac", typeof(Dictionary<int, Characteristic>));
+        }
+
         public User User
         {
             get { return _user; }
@@ -97,6 +107,24 @@ namespace Business
             bformatter.Serialize(stream, this);
             stream.Close();
         }
+        /**O MÉTODO SEGUINTE SERVE PARA CARREGAR O FICHEIRO
+         * PROVAVELMENTE NÃO PODE ESTAR NESTA CLASSE
+         * DEVE TER DE ESTAR NA CLASSE ONDE SE CARREGAM FICHEIROS (NA INTERFACE?)
+         * Aí, deve ser troca o this para o nome da variável...
+         * O Código vai comentado devido ao erro óbvio
+         * */
+        /*
+        public void loadObject(String filename)
+        {
+            Stream stream = File.Open(filename, FileMode.Open);
+            BinaryFormatter bformatter = new BinaryFormatter();
+
+            this = (DataBaseUser)bformatter.Deserialize(stream);
+            stream.Close();
+        }*/
+
+
+        
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
