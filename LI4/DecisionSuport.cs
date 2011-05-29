@@ -773,7 +773,7 @@ namespace Business
             }
 
             return matrixC;
-        } 
+        }
 
         public Dictionary<int, double> calculaMatrizD(Dictionary<int, double> matrixC, Dictionary<String, double> matrixFinalPesos)
         {
@@ -850,11 +850,13 @@ namespace Business
             {
                 tc = (double)ic / (double)ia;
             }
-
+            Console.WriteLine("IC: " + ic);
+            Console.WriteLine("IA: " + ia);
+            Console.WriteLine("Lam: " + lambMax);
             return tc;
         }
 
-        
+
 
         // Metodos que recebem os pesos com int double em vez de string double. Auxiliares da iterações
         public Dictionary<int, double> normalizaMatrizC(Dictionary<int, double> matrixC)
@@ -878,7 +880,7 @@ namespace Business
 
             return matrixCNorm;
         }
-        
+
         public Dictionary<int, double> calculaMatrizCInt(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<int, double> matrixFinalPesos)
         {
             Dictionary<String, float> tableAuxiliar1;
@@ -976,7 +978,7 @@ namespace Business
                 }
                 matrixD.Add(idP, totalFinal);
             }
-            
+
             return matrixD;
         }
 
@@ -984,68 +986,91 @@ namespace Business
 
 
         // Não faço ideia se está certo tenho que ver e rever xD
-        public double iteracoesNaoConsistencia(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<int, double> matrixC) 
-        { 
-            double consFinal=0;
-
-            double diferenca =10;
-
-            Dictionary<int, double> matrixCNormalized = new Dictionary<int, double>();
-            Dictionary<int, double> matrixCNew = new Dictionary<int, double>();
+        public double iteracoesNaoConsistencia(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<int, double> matrixC)
+        {
+            double consFinal = 0;
+            int numIteracoes = 0;
+            double diferenca = 10;
+            double diferencaAnt=0;
+            Dictionary<int, double> matrixDif = new Dictionary<int, double>();
+            Dictionary<int, double> matrixCNewNormalized = new Dictionary<int, double>();
             Dictionary<int, double> matrixD = new Dictionary<int, double>();
             Dictionary<int, double> matrixPesos = new Dictionary<int, double>();
-            matrixCNew = matrixC;
+            Dictionary<int, double> matrixCNew = new Dictionary<int, double>();
+            Dictionary<int, double> matrixPesosAntigos = new Dictionary<int, double>();
+            matrixPesos = matrixC;
+            double aux;
 
-            // numero total para fazer a media das diferencas
-            int numTotal = 0;
 
-            foreach(int id in matrixCNew.Keys) 
+            while (diferenca > 0.0001)
             {
-                numTotal++;
-            }
-            
-            while (diferenca > 0.0001) 
-            {   
+                numIteracoes++;
                 diferenca = 10;
-                matrixCNormalized = normalizaMatrizC(matrixCNew);
-                matrixPesos = matrixCNormalized;
-                matrixCNew = calculaMatrizCInt(_tableAHP, matrixCNormalized);
-
+                matrixDif.Clear();
+                matrixPesos = normalizaMatrizC(matrixPesos);
+                
+                matrixCNew = calculaMatrizCInt(_tableAHP, matrixPesos);
+                matrixCNewNormalized = normalizaMatrizC(matrixCNew);
+                
+                matrixPesosAntigos = matrixPesos;
+                
+                matrixPesos = matrixCNewNormalized;
+                
+                // Tem que fazer a difrença entre a normalizada da primeira iteração e a normalizada da seuginda
                 double valorNew;
                 double valorOld;
                 double resultado;
-                foreach(int id in matrixCNew.Keys)
+
+                foreach (int id in matrixPesos.Keys)
                 {
-                    matrixCNew.TryGetValue(id, out valorNew);
-                    foreach (int idOld in matrixPesos.Keys) 
+                    matrixPesos.TryGetValue(id, out valorNew);
+                    foreach (int idOld in matrixPesosAntigos.Keys)
                     {
                         if (id == idOld)
                         {
-                            matrixCNew.TryGetValue(id, out valorOld);
+                            matrixPesosAntigos.TryGetValue(id, out valorOld);
                             resultado = valorNew - valorOld;
-                            diferenca += resultado;
+                            matrixDif.Add(id, Math.Abs(resultado));
                         }
-                        
-                    
                     }
-                
+                }
+                double al;
+                foreach (int id in matrixDif.Keys)
+                {
+                    matrixDif.TryGetValue(id, out al);
                 }
 
-                diferenca = (diferenca / numTotal);
+                int flag = 0;
+                foreach (int id in matrixDif.Keys)
+                {
+                    matrixDif.TryGetValue(id, out aux);
+                    if (flag == 0)
+                    {
+                        diferencaAnt = aux;
+                        flag = 1;
+                    }
+                    else
+                    {
+                        if (aux > diferencaAnt)
+                        {
+                            diferencaAnt = aux;
+                        }
+                    }
+                }
+                diferenca = diferencaAnt;
             }
 
-            matrixD = calculaMatrizDInt(matrixCNew, matrixPesos);
-
+            matrixD = calculaMatrizDInt(matrixCNew, matrixPesosAntigos);
+                          
             consFinal = taxaConsitencia(matrixD);
-            
-            return consFinal;        
+            return consFinal;
         }
 
 
 
 
 
-       
+
     }
     // se der algum erro é porque mudei os pesos finais para retornarem String,double em vez de String,float
 }
