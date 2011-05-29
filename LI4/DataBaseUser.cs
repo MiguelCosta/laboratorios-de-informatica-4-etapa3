@@ -107,10 +107,10 @@ namespace Business
             bformatter.Serialize(stream, this);
             stream.Close();
         }
-        /**O MÉTODO SEGUINTE SERVE PARA CARREGAR O FICHEIRO
+        /* * O MÉTODO SEGUINTE SERVE PARA CARREGAR O FICHEIRO
          * PROVAVELMENTE NÃO PODE ESTAR NESTA CLASSE
          * DEVE TER DE ESTAR NA CLASSE ONDE SE CARREGAM FICHEIROS (NA INTERFACE?)
-         * Aí, deve ser troca o this para o nome da variável...
+         * Aí, deve-se trocar o this para o nome da variável...
          * O Código vai comentado devido ao erro óbvio
          * */
         /*
