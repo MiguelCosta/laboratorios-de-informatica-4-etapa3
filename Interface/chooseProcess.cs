@@ -21,7 +21,6 @@ namespace Interface
             _dataBase = dataBase;
 
             Business.User user = _dataBase.User;
-
             refreshTableSoftwares();
             refreshTableCaracteristics();
 
@@ -29,9 +28,6 @@ namespace Interface
 
         private void initComponentsConfig()
         {
-            tabControlSeparates.DeselectTab(tabPageChooseCriteria);
-            tabControlSeparates.SelectedTab = tabPageChooseSoftwares;
-            //tabPageChooseCriteria;
 
         }
 
@@ -165,6 +161,7 @@ namespace Interface
             else
             {
                 tabControlSeparates.SelectedTab = tabPageChooseCriteria;
+                progressBar1.Value = 25;
             }
         }
 
@@ -177,6 +174,25 @@ namespace Interface
         private void buttonPreviewToSoftwares_Click(object sender, EventArgs e)
         {
             tabControlSeparates.SelectedTab = tabPageChooseSoftwares;
+            progressBar1.Value = 0;
+        }
+
+        private void buttonNextChooseCriteria_Click(object sender, EventArgs e)
+        {
+            tabControlSeparates.SelectedTab = tabPageClassificaoes;
+            progressBar1.Value = 50;
+        }
+
+        private void buttonPreviewDefiniotWeigths_Click(object sender, EventArgs e)
+        {
+            tabControlSeparates.SelectedTab = tabPageChooseCriteria;
+            progressBar1.Value = 25;
+        }
+
+        private void buttonNextDefinitonWeigths_Click(object sender, EventArgs e)
+        {
+            tabControlSeparates.SelectedTab = tabPageDefinitionPriorities;
+            progressBar1.Value = 75;
         }
 
 
