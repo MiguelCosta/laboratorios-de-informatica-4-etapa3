@@ -107,6 +107,28 @@ namespace Business
             return _tableCH;
         }
 
+        public Dictionary<String, float> normalizeSMART(Dictionary<string, int> tableCH)
+        {
+            Dictionary<String, float> smartNorm = new Dictionary<string, float>();
+            int valor;
+            int total = 0;
+            foreach (String id in tableCH.Keys)
+            {
+                tableCH.TryGetValue(id, out valor);
+                total += valor;
+            }
+            float resultado;
+            foreach (String id in tableCH.Keys)
+            {
+                tableCH.TryGetValue(id, out valor);
+                resultado = (float)valor / (float)total;
+                smartNorm.Add(id, resultado);
+            }
+
+
+            return smartNorm;
+        }
+
         // regista os resultados
         public Dictionary<String, Dictionary<String, float>> registerClassAHP(String idCharA, String idCharB, float points)
         {
@@ -269,6 +291,8 @@ namespace Business
         public Dictionary<String, Dictionary<String, int>> filter(String idChar)
         {
             Dictionary<String, int> tableAux = new Dictionary<string, int>();
+
+            Dictionary<String, Dictionary<String, int>> tableXAux = new Dictionary<string, Dictionary<string, int>>();
             int valor;
             Dictionary<String, int> ch; // se dps nao der declarar espaco
             foreach (String idSof in _tableSW.Keys)
@@ -283,20 +307,20 @@ namespace Business
                     }
                 }
             }
-            _tableX.Add(idChar, tableAux);
-            return _tableX;
+            tableXAux.Add(idChar, tableAux);
+            return tableXAux;
         }
 
-        public int calMin(String idChar)
+        public int calMin(String idChar, Dictionary<String, Dictionary<String, int>> tableX)
         {
             int min = 0;
             int flag = 1;
             Dictionary<String, int> list;
-            foreach (String id in _tableX.Keys)
+            foreach (String id in tableX.Keys)
             {
                 if (id.Equals(idChar))
                 {
-                    _tableX.TryGetValue(id, out list);
+                    tableX.TryGetValue(id, out list);
                     foreach (int valor in list.Values)
                     {
                         if (flag == 1)
@@ -317,16 +341,16 @@ namespace Business
             return min;
         }
 
-        public int calMax(String idChar)
+        public int calMax(String idChar , Dictionary<String, Dictionary<String, int>> tableX)
         {
             int max = 0;
             int flag = 1;
             Dictionary<String, int> list;
-            foreach (String id in _tableX.Keys)
+            foreach (String id in tableX.Keys)
             {
                 if (id.Equals(idChar))
                 {
-                    _tableX.TryGetValue(id, out list);
+                    tableX.TryGetValue(id, out list);
                     foreach (int valor in list.Values)
                     {
                         if (flag == 1)
@@ -363,7 +387,7 @@ namespace Business
             return (float)a / (float)b;
         }
 
-        public Dictionary<String, float> calValueMax(int min, int max)
+        public Dictionary<String, float> calValueMax(int min, int max, Dictionary<String, Dictionary<String, int>> tableX)
         {
             Dictionary<String, float> tablePrior = new Dictionary<string, float>();
             Dictionary<String, float> tableAux = new Dictionary<string, float>();
@@ -375,16 +399,24 @@ namespace Business
             float valorNorm;
             float resTotal = 0;
             //Calculos das prioridades
-            foreach (String idA in _tableX.Keys)
+            foreach (String idA in tableX.Keys)
             {
-                _tableX.TryGetValue(idA, out listClass);
+                tableX.TryGetValue(idA, out listClass);
 
                 foreach (String idSoft in listClass.Keys)
                 {
                     listClass.TryGetValue(idSoft, out valor);
                     resultado = formulaMax(min, max, valor);
                     resTotal += resultado;
-                    tableAux.Add(idSoft, resultado);
+                    if (!tableAux.ContainsKey(idSoft))
+                    {
+                        tableAux.Add(idSoft, resultado);
+                    }
+                    else
+                    {
+                        tableAux.Remove(idSoft);
+                        tableAux.Add(idSoft, resultado);
+                    }
                 }
             }
 
@@ -400,7 +432,7 @@ namespace Business
             return tablePrior;
         }
 
-        public Dictionary<String, float> calValueMin(int min, int max)
+        public Dictionary<String, float> calValueMin(int min, int max, Dictionary<String, Dictionary<String, int>> tableX)
         {
             Dictionary<String, float> tablePrior = new Dictionary<string, float>();
             Dictionary<String, float> tableAux = new Dictionary<string, float>();
@@ -412,15 +444,23 @@ namespace Business
             float valorNorm;
 
             //Calculos das prioridades
-            foreach (Dictionary<String, int> listClass in _tableX.Values)
+            foreach (Dictionary<String, int> listClass in tableX.Values)
             {
                 foreach (String idSoft in listClass.Keys)
                 {
                     numSoft++;
                     listClass.TryGetValue(idSoft, out valor);
                     resultado = formulaMin(min, max, valor);
-                    resTotal += resultado;
-                    tableAux.Add(idSoft, resultado);
+                    resTotal += resultado; 
+                    if (!tableAux.ContainsKey(idSoft))
+                    {
+                        tableAux.Add(idSoft, resultado);
+                    }
+                    else
+                    {
+                        tableAux.Remove(idSoft);
+                        tableAux.Add(idSoft, resultado);
+                    }
                 }
             }
             //Calculos das prioridades normalizadas
@@ -678,13 +718,6 @@ namespace Business
 
             return tablePesosFinais;
         }
-
-        /* Métodos a Criar*/
-
-        // testa consistencia
-        //análises finais
-        //
-
 
         /* TESTAR CONSISTENCIAS
          * Os métodos para teste de consistencia serão todos os que se seguem até ser indicado o contrário tem em atenção que no método principal este
@@ -987,16 +1020,12 @@ namespace Business
             return matrixD;
         }
 
-
-
-
-        // Não faço ideia se está certo tenho que ver e rever xD
         public double iteracoesNaoConsistencia(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<int, double> matrixC)
         {
             double consFinal = 0;
             int numIteracoes = 0;
             double diferenca = 10;
-            double diferencaAnt=0;
+            double diferencaAnt = 0;
             Dictionary<int, double> matrixDif = new Dictionary<int, double>();
             Dictionary<int, double> matrixCNewNormalized = new Dictionary<int, double>();
             Dictionary<int, double> matrixD = new Dictionary<int, double>();
@@ -1013,14 +1042,14 @@ namespace Business
                 diferenca = 10;
                 matrixDif.Clear();
                 matrixPesos = normalizaMatrizC(matrixPesos);
-                
+
                 matrixCNew = calculaMatrizCInt(_tableAHP, matrixPesos);
                 matrixCNewNormalized = normalizaMatrizC(matrixCNew);
-                
+
                 matrixPesosAntigos = matrixPesos;
-                
+
                 matrixPesos = matrixCNewNormalized;
-                
+
                 // Tem que fazer a difrença entre a normalizada da primeira iteração e a normalizada da seuginda
                 double valorNew;
                 double valorOld;
@@ -1066,13 +1095,130 @@ namespace Business
             }
 
             matrixD = calculaMatrizDInt(matrixCNew, matrixPesosAntigos);
-                          
+
             consFinal = taxaConsitencia(matrixD);
             return consFinal;
         }
+
+
+        /* ANÁLISES FINAIS
+         * Tem que existir tipos de análises finais, ou seja,
+         *  - SMART e ValueFn
+         *  - SMART e AHP
+         *  - AHP e ValueFn
+         *  - AHP e AHP
+         */
+
+        // ver se retorna double ou float?
+        public Dictionary<int, Dictionary<String, float>> analiseFinalSmartValueFn(Dictionary<String, float> tableCHNorm, Dictionary<String, Dictionary<String, float>> tableValueFn)
+        {
+            // Rank -> (IDSOft, prioridade)
+            Dictionary<int, Dictionary<String, float>> ranks = new Dictionary<int, Dictionary<string, float>>();
+            Dictionary<String, float> aux = new Dictionary<string, float>();
+            Dictionary<String, float> tablePrioXClass;
+            Dictionary<String, float> tableClass;
+            Dictionary<String, Dictionary<String, float>> tablePriorAux = new Dictionary<string, Dictionary<string, float>>();
+            float valorNorm;
+
+            foreach (String id in tableCHNorm.Keys)
+            {
+                tableCHNorm.TryGetValue(id, out valorNorm);
+                tablePrioXClass = new Dictionary<string, float>();
+                
+                tablePriorAux.Add(id, tablePrioXClass);
+
+            }
+           
+
+
+            Dictionary<String, List<float>> tableCl = new Dictionary<string, List<float>>();
+
+            List<float> prior;
+            List<float> priorAux;
+            float valorX;
+
+               tableCl.TryGetValue(idA, out priorAux);
+                        tableCl.Remove(idA);
+                        priorAux.Add(valorX);
+                    }
+                }
+            }
+
+            List<float> listP;
+
+            Dictionary<String, float> rankAux = new Dictionary<string, float>();
+            Dictionary<String, float> rankAux2 = new Dictionary<string, float>();
+            foreach (String id in tableCl.Keys)
+            {
+                float soma = 0;
+                tableCl.TryGetValue(id, out listP);
+                foreach (float valor in listP)
+                {
+                    soma += valor;
+                }
+                rankAux.Add(id, soma);
+            }
+
+            float valorH;
+            float valorMax = 0;
+            int flag = 0;
+
+            // Verifica qual o maior vai retiralo da matriz rankAux e acrescentar na matriz rank aux 2
+            // É necessário verificar se ele adiciona à cabeça ou na cauda se for à cabeça alterar para ver o minimo
+            while (rankAux.Count() != 0)
+            {
+                foreach (String id in rankAux.Keys)
+                {
+                    rankAux.TryGetValue(id, out valorH);
+                    if (flag == 0)
+                    {
+                        valorMax = valorH;
+                    }
+                    else
+                    {
+                        if (valorH > valorMax)
+                        {
+                            valorMax = valorH;
+                        }
+                    }
+
+                }
+
+                String idv = "";
+                foreach (String id in rankAux.Keys)
+                {
+                    rankAux.TryGetValue(id, out valorH);
+                    if (valorMax == valorH)
+                    {
+                        idv = String.Copy(id);
+                    }
+
+                }
+                rankAux2.Add(idv, valorMax);
+                rankAux.Remove(idv);
+
+            }
+
+
+            int i = 1;
+            float valorL;
+            // atribui o rank
+            Dictionary<String, float> rankAux3;
+            foreach (String id in rankAux2.Keys)
+            {
+                rankAux2.TryGetValue(id, out valorL);
+                rankAux3 = new Dictionary<string, float>();
+                rankAux3.Add(id, valorL);
+                ranks.Add(i, rankAux3);
+                i++;
+            }
+            return ranks;
+        }
+
 
     }
 
     // Atenção falta meter condições por exemplo para as consistencias que tem que ser menor que 0.1 se for maior tem que chamar a das iterações
     // se der algum erro é porque mudei os pesos finais para retornarem String,double em vez de String,float
 }
+
