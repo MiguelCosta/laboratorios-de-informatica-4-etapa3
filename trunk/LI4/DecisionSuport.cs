@@ -39,6 +39,11 @@ namespace Business
             _matrizIndicesAleatorios.Add(9, 1.45);
             _matrizIndicesAleatorios.Add(10, 1.49);
             _matrizIndicesAleatorios.Add(11, 1.51);
+            _matrizIndicesAleatorios.Add(12, 1.54);
+            _matrizIndicesAleatorios.Add(13, 1.56);
+            _matrizIndicesAleatorios.Add(14, 1.57);
+            _matrizIndicesAleatorios.Add(15, 1.58);
+            _matrizIndicesAleatorios.Add(16, 1.60);
 
 
         }
