@@ -1066,11 +1066,8 @@ namespace Business
             return consFinal;
         }
 
-
-
-
-
-
     }
+
+    // Atenção falta meter condições por exemplo para as consistencias que tem que ser menor que 0.1 se for maior tem que chamar a das iterações
     // se der algum erro é porque mudei os pesos finais para retornarem String,double em vez de String,float
 }
