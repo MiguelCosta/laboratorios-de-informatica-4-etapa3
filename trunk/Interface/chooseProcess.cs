@@ -154,9 +154,9 @@ namespace Interface
             //MessageBox.Show(linhas_selecionadas);
 
             // condição para se ter de seleccionar mais de 2 softwares
-            if (ids_dos_softwaresSeleccionados.Capacity < 2)
+            if (ids_dos_softwaresSeleccionados.Capacity < 2 || ids_dos_softwaresSeleccionados.Capacity > 16)
             {
-                MessageBox.Show("Select 2 or more softwares!");
+                MessageBox.Show("Select between 2 and 16 softwares!");
             }
             else
             {
