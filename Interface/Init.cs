@@ -63,17 +63,6 @@ namespace Interface
             r.Show();
         }
 
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Init_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        
 
 
     }

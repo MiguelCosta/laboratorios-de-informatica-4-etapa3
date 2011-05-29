@@ -156,7 +156,6 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(135, 20);
             this.textBoxPassword.TabIndex = 3;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // textBoxUsername
             // 
@@ -225,7 +224,6 @@
             this.Name = "Init";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "beSMART Software";
-            this.Load += new System.EventHandler(this.Init_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
