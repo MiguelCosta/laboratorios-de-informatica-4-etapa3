@@ -341,7 +341,7 @@ namespace Business
             return min;
         }
 
-        public int calMax(String idChar , Dictionary<String, Dictionary<String, int>> tableX)
+        public int calMax(String idChar, Dictionary<String, Dictionary<String, int>> tableX)
         {
             int max = 0;
             int flag = 1;
@@ -451,7 +451,7 @@ namespace Business
                     numSoft++;
                     listClass.TryGetValue(idSoft, out valor);
                     resultado = formulaMin(min, max, valor);
-                    resTotal += resultado; 
+                    resTotal += resultado;
                     if (!tableAux.ContainsKey(idSoft))
                     {
                         tableAux.Add(idSoft, resultado);
@@ -1119,16 +1119,29 @@ namespace Business
             Dictionary<String, float> tableClass;
             Dictionary<String, Dictionary<String, float>> tablePriorAux = new Dictionary<string, Dictionary<string, float>>();
             float valorNorm;
-
+            float valorDesnorm;
+            float resultado;
             foreach (String id in tableCHNorm.Keys)
             {
                 tableCHNorm.TryGetValue(id, out valorNorm);
                 tablePrioXClass = new Dictionary<string, float>();
-                
-                tablePriorAux.Add(id, tablePrioXClass);
 
+                foreach (String idA in tableValueFn.Keys)
+                {
+                    if (idA.Equals(id))
+                    {
+                        tablePrioXClass = new Dictionary<string, float>();
+                        tableValueFn.TryGetValue(idA, out aux);
+                        foreach (String idSof in aux.Keys)
+                        {
+                            aux.TryGetValue(idSof, out valorDesnorm);
+                            resultado = valorNorm * valorDesnorm;
+                            tablePrioXClass.Add(idSof, resultado);
+                        }
+                    }
+                }
+                tablePriorAux.Add(id, tablePrioXClass);
             }
-           
 
 
             Dictionary<String, List<float>> tableCl = new Dictionary<string, List<float>>();
@@ -1137,9 +1150,25 @@ namespace Business
             List<float> priorAux;
             float valorX;
 
-               tableCl.TryGetValue(idA, out priorAux);
+            foreach (String id in tablePriorAux.Keys)
+            {
+                tablePriorAux.TryGetValue(id, out tableClass);
+
+                foreach (String idA in tableClass.Keys)
+                {
+                    tableClass.TryGetValue(idA,out valorX);
+                    if (!tableCl.ContainsKey(idA))
+                    {
+                        prior = new List<float>();
+                        prior.Add(valorX);
+                        tableCl.Add(idA, prior);
+                    }
+                    else
+                    {
+                        tableCl.TryGetValue(idA, out priorAux);
                         tableCl.Remove(idA);
                         priorAux.Add(valorX);
+                        tableCl.Add(idA, priorAux);
                     }
                 }
             }
