@@ -534,7 +534,9 @@ namespace Business
         }
 
         /* Chama a tabela resultante do register class AHP. Devolve uma "Matriz" com os valores normalizados
-           SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1*/
+           SÓ NORMALIZA SE A SOMA DOS VALORES FOR DIFERENTE DE 1
+           Tudo direito
+         */
         public Dictionary<String, Dictionary<String, Dictionary<String, float>>> normalizePriorityAHP(Dictionary<String, Dictionary<String, Dictionary<String, float>>> table)
         {
             float valor;
@@ -568,7 +570,6 @@ namespace Business
                 tableGlobalSomas.Add(idChar, tableSomas);
             }
 
-            //tabela somas direita
   
             Dictionary<String, float> tableCorrespondencia;
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
@@ -606,6 +607,7 @@ namespace Business
                 }
                 tableNorm.Add(idCh, tableAuxiliar2);
             }
+
             return tableNorm;
         }
 
@@ -615,19 +617,18 @@ namespace Business
             Dictionary<String, float> tableCorrespondencia;
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
             Dictionary<String, float> tableAuxiliar1;
-            Dictionary<String, double> tableAuxiliar2 = new Dictionary<string, double>();
             Dictionary<String, Dictionary<String, double>> tablePesosFinais = new Dictionary<String, Dictionary<string, double>>();
             Dictionary<String, Dictionary<String, float>> tableNormalInvertedAux = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, float>> tableNormalized = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNormalInverted = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
             float valor;
-            int numCar = 0;
+            
 
             //inverter a tabela normalizada ou seja trocar as caracteristicas de <idCharA,<idcharB,valor>> para <idCharB,<idcharA,valor>>
             foreach (String idChar in tableNorma.Keys)
             {
                 tableNorma.TryGetValue(idChar, out tableNormalized);
-
+                tableNormalInvertedAux = new Dictionary<string, Dictionary<string, float>>();
                 foreach (String idSofA in tableNormalized.Keys)
                 {
                     tableNormalized.TryGetValue(idSofA, out tableAuxiliar);
@@ -685,17 +686,18 @@ namespace Business
                 }
             }
 
-
             tableAuxiliar.Clear();
-            tableAuxiliar1 = new Dictionary<string, float>();
-
+            
+            Dictionary<String, double> tableAuxiliar2;
             foreach (String idCh in tableNormalInverted.Keys)
             {
+                tableAuxiliar1 = new Dictionary<string, float>();
+                tableNormalInverted.TryGetValue(idCh, out tableNormalInvertedAux);
                 foreach (String idSofA in tableNormalInvertedAux.Keys)
                 {
                     float valorTotal = 0;
                     tableNormalInvertedAux.TryGetValue(idSofA, out tableAuxiliar);
-
+                    
                     foreach (String idSofB in tableAuxiliar.Keys)
                     {
                         tableAuxiliar.TryGetValue(idSofB, out valor);
@@ -704,31 +706,29 @@ namespace Business
 
                     tableAuxiliar1.Add(idSofA, valorTotal);
                 }
-
+                int numCar = 0;
                 foreach (String id in tableAuxiliar.Keys)
                 {
                     numCar++;
-
                 }
 
+                float valorG;
+                tableAuxiliar2 = new Dictionary<string, double>();
                 foreach (String id in tableAuxiliar1.Keys)
                 {
-                    tableAuxiliar1.TryGetValue(id, out valor);
-                    float result = (valor / numCar);
+                    tableAuxiliar1.TryGetValue(id, out valorG);
+                    float result = (valorG / numCar);
                     tableAuxiliar2.Add(id, result);
                 }
 
                 tablePesosFinais.Add(idCh, tableAuxiliar2);
+                Console.WriteLine("********************************************");
             }
 
             return tablePesosFinais;
         }
 
         #endregion
-
-
-
-
 
 
         /* TESTAR CONSISTENCIAS
