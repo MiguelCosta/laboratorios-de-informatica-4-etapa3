@@ -48,6 +48,17 @@ namespace Business
             _charac = s.Charac;
         }
 
+        /**
+         * Deserialization Constructor 
+         * */
+        public Software(SerializationInfo info, StreamingContext ctxt)
+        {
+            _id = (int)info.GetValue("Id", typeof(int));
+            _name = (string)info.GetValue("Name", typeof(string));
+            _link = (string)info.GetValue("Link", typeof(string));
+            _charac = (Dictionary<int, string>)info.GetValue("Charac", typeof(Dictionary<int, string>));
+        }
+
         public int Id
         {
             get { return _id; }

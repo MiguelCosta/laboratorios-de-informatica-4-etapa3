@@ -42,6 +42,15 @@ namespace Business
             _classification = v.Classification;
         }
 
+        /**
+         * Deserialization Constructor 
+         * */
+        public Value(SerializationInfo info, StreamingContext ctxt)
+        {
+            _name = (string)info.GetValue("Name", typeof(string));
+            _classification = (int)info.GetValue("Classification", typeof(int));
+        }
+
         public string Name
         {
             get { return _name; }

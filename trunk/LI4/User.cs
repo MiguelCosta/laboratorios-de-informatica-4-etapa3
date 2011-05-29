@@ -45,6 +45,16 @@ namespace Business
         }
 
         /**
+         * Deserialization Constructor 
+         * */
+        public User(SerializationInfo info, StreamingContext ctxt)
+        {
+            _username = (string)info.GetValue("Username", typeof(string));
+            _email = (string)info.GetValue("EMail", typeof(string));
+            _password = (string)info.GetValue("Password", typeof(string));
+        }
+
+        /**
          * Methods get and set
          * */
         public string Username

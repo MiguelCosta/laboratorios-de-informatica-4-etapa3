@@ -37,6 +37,14 @@ namespace Business
             _value = nc.Value;
         }
 
+        /**
+         * Deserialization Constructor 
+         * */
+        public NumericCharacteristic(SerializationInfo info, StreamingContext ctxt) :
+            base(info, ctxt)  {
+            _value = (int)info.GetValue("Value", typeof(int));
+        }
+
         public int Value
         {
             get { return _value; }
@@ -45,6 +53,7 @@ namespace Business
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
+            base.GetObjectData(info, ctxt);
             info.AddValue("Value", _value);
         }
 

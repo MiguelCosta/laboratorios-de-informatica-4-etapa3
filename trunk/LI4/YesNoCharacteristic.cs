@@ -29,13 +29,22 @@ namespace Business
         }
 
         /**
-         * Constructor with Numeric_Characteristic
+         * Constructor with YesNo_Characteristic
          * */
 
         public YesNoCharacteristic(YesNoCharacteristic nc) :
             base(nc.Id, nc.Name) {
             _state = nc.State;
         }
+
+        /**
+         * Deserialization Constructor 
+         * */
+        public YesNoCharacteristic(SerializationInfo info, StreamingContext ctxt) :
+            base(info, ctxt)  {
+            _state = (bool)info.GetValue("State", typeof(bool));
+        }
+
 
         public bool State
         {
@@ -51,6 +60,7 @@ namespace Business
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
+            base.GetObjectData(info, ctxt);
             info.AddValue("State", _state);
         }
         
