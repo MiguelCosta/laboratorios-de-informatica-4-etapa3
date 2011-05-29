@@ -12,19 +12,30 @@ namespace Interface
     public partial class chooseProcess : Form
     {
         private Business.DataBaseUser _dataBase;
+        public List<int> ids_dos_softwaresSeleccionados;
 
         public chooseProcess(Business.DataBaseUser dataBase)
         {
             InitializeComponent();
+            //initComponentsConfig();
             _dataBase = dataBase;
 
             Business.User user = _dataBase.User;
-            
-            refresfTable();
+
+            refreshTableSoftwares();
+            refreshTableCaracteristics();
 
         }
 
-        private void refresfTable()
+        private void initComponentsConfig()
+        {
+            tabControlSeparates.DeselectTab(tabPageChooseCriteria);
+            tabControlSeparates.SelectedTab = tabPageChooseSoftwares;
+            //tabPageChooseCriteria;
+
+        }
+
+        private void refreshTableSoftwares()
         {
             // actualizar a tabela inicial
             DataTable tabela_softwares = new DataTable();
@@ -43,7 +54,7 @@ namespace Interface
             {
                 // coloca todas as caracteristicas numa List
                 List<string> values = new List<string>();
-                values.Add(""+s.Id);
+                values.Add("" + s.Id);
                 values.Add(s.Name);
                 values.Add(s.Link);
                 foreach (string cV in s.Charac.Values)
@@ -61,6 +72,20 @@ namespace Interface
 
         }
 
+        private void refreshTableCaracteristics()
+        {
+            DataTable tabela_caracteristicas = new DataTable();
+            tabela_caracteristicas.Columns.Add("ID");
+            tabela_caracteristicas.Columns.Add("Name");
+            foreach (Business.Characteristic c in _dataBase.Charac.Values)
+            {
+                tabela_caracteristicas.Rows.Add(c.Id, c.Name);
+            }
+
+            DataView view = new DataView(tabela_caracteristicas);
+            dataGridViewCharacteristics.DataSource = view;
+
+        }
 
         private void FormChooseProcess_FormClosing(object sender, EventArgs e)
         {
@@ -72,7 +97,7 @@ namespace Interface
         {
             ConsultWebpage cwp = new ConsultWebpage(_dataBase);
             cwp.Show();
-            
+
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,6 +136,49 @@ namespace Interface
 
             }
         }
+
+        private void buttonNextChooseSoftwares_Click(object sender, EventArgs e)
+        {
+            // para apagar a lista já existente
+            ids_dos_softwaresSeleccionados = new List<int>();
+
+            string linhas_selecionadas = "Select Softwares ID:\n";
+
+            // vai a todas as linhas das tabelas ver quais estão seleccionadas
+            foreach (DataGridViewRow linha in dataGridViewTabelaSoftware.Rows)
+            {
+                if (linha.Cells[0].Value != null)
+                {
+                    // convert para int o ID
+                    int id = System.Convert.ToInt32(linha.Cells[1].Value);
+                    ids_dos_softwaresSeleccionados.Add(id);
+                    linhas_selecionadas += id + "\n";
+                }
+            }
+            //MessageBox.Show(linhas_selecionadas);
+
+            // condição para se ter de seleccionar mais de 2 softwares
+            if (ids_dos_softwaresSeleccionados.Capacity < 2)
+            {
+                MessageBox.Show("Select 2 or more softwares!");
+            }
+            else
+            {
+                tabControlSeparates.SelectedTab = tabPageChooseCriteria;
+            }
+        }
+
+        private void buttonViewWebPage_Click(object sender, EventArgs e)
+        {
+            ConsultWebpage cwp = new ConsultWebpage(_dataBase);
+            cwp.Show();
+        }
+
+        private void buttonPreviewToSoftwares_Click(object sender, EventArgs e)
+        {
+            tabControlSeparates.SelectedTab = tabPageChooseSoftwares;
+        }
+
 
     }
 }
