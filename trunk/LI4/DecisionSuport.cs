@@ -217,12 +217,12 @@ namespace Business
         }
 
         //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
-        public Dictionary<String, double> pesosFinais(Dictionary<String, Dictionary<String, float>> tableNorma)
+        public Dictionary<String, float> pesosFinais(Dictionary<String, Dictionary<String, float>> tableNorma)
         {
             Dictionary<String, float> tableCorrespondencia;
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
             Dictionary<String, float> tableAuxiliar1;
-            Dictionary<String, double> tablePesosFinais = new Dictionary<string, double>();
+            Dictionary<String, float> tablePesosFinais = new Dictionary<string, float>();
             Dictionary<String, Dictionary<String, float>> tableNormalInverted = new Dictionary<string, Dictionary<string, float>>();
 
             float valor;
@@ -748,9 +748,15 @@ namespace Business
                     float result = (valorG / numCar);
                     tableAuxiliar2.Add(id, result);
                 }
-
-                _tableResult.Add(idCh, tableAuxiliar2);
-                
+                if (!_tableResult.ContainsKey(idCh))
+                {
+                    _tableResult.Add(idCh, tableAuxiliar2);
+                }
+                else 
+                {
+                    _tableResult.Remove(idCh);
+                    _tableResult.Add(idCh, tableAuxiliar2);
+                }
             }
 
             return _tableResult;
@@ -775,7 +781,7 @@ namespace Business
          *      - Matriz de Classificações
          */
 
-        public Dictionary<int, double> calculaMatrizC(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<String, double> matrixFinalPesos)
+        public Dictionary<int, double> calculaMatrizC(Dictionary<String, Dictionary<String, float>> matrixRegisterAHP, Dictionary<String, float> matrixFinalPesos)
         {
             Dictionary<String, float> tableAuxiliar1;
             Dictionary<string, float> tableCorrespondencia;
@@ -811,7 +817,7 @@ namespace Business
 
             // Converte a matriz de pesos finais numa associação numero - float
             int num = 1;
-            double valorP;
+            float valorP;
             foreach (String id in matrixFinalPesos.Keys)
             {
                 matrixFinalPesos.TryGetValue(id, out valorP);
@@ -852,14 +858,14 @@ namespace Business
             return matrixC;
         }
 
-        public Dictionary<int, double> calculaMatrizD(Dictionary<int, double> matrixC, Dictionary<String, double> matrixFinalPesos)
+        public Dictionary<int, double> calculaMatrizD(Dictionary<int, double> matrixC, Dictionary<String, float> matrixFinalPesos)
         {
             Dictionary<int, double> matrixD = new Dictionary<int, double>();
             Dictionary<int, double> matrixPesos = new Dictionary<int, double>();
 
 
             int num = 1;
-            double valorP;
+            float valorP;
             foreach (String id in matrixFinalPesos.Keys)
             {
                 matrixFinalPesos.TryGetValue(id, out valorP);
