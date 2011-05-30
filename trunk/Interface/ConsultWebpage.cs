@@ -61,7 +61,7 @@ namespace Interface
 
         private void editSoftwareListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditSWList editList = new EditSWList();
+            EditSWList editList = new EditSWList(_dataBase);
             editList.Show();
         }
 
