@@ -22,7 +22,7 @@ namespace Interface
         public Dictionary<int, string> caracteristicas_escolhidas;
         public Business.DecisionSuport decision;
         public Dictionary<string, float> tabelaSmartNorm;
-        public Dictionary<string, double> pesosFinaisClassAHP;
+        public Dictionary<string, float> pesosFinaisClassAHP;
 
         public chooseProcess(Business.DataBaseUser dataBase)
         {
@@ -333,6 +333,9 @@ namespace Interface
         {
             Dictionary<int, double> matrixC = new Dictionary<int, double>();
             Dictionary<int, double> matrixD = new Dictionary<int, double>();
+
+
+
             matrixC = decision.calculaMatrizC(decision.TableAHP, pesosFinaisClassAHP);
             matrixD = decision.calculaMatrizD(matrixC, pesosFinaisClassAHP);
             double taxa = decision.taxaConsitencia(matrixD);
@@ -382,14 +385,14 @@ namespace Interface
 
             Dictionary<string, Dictionary<string, float>> tabelaNormAHP = new Dictionary<string, Dictionary<string, float>>();
             tabelaNormAHP = decision.normalizeAHP(decision.TableAHP);
-            pesosFinaisClassAHP = new Dictionary<string, double>();
+            pesosFinaisClassAHP = new Dictionary<string, float>();
             pesosFinaisClassAHP = decision.pesosFinais(tabelaNormAHP);
 
 
             DataTable pesos = new DataTable();
             pesos.Columns.Add("ID");
             pesos.Columns.Add("Weight");
-            foreach (KeyValuePair<string, double> pair in pesosFinaisClassAHP)
+            foreach (KeyValuePair<string, float> pair in pesosFinaisClassAHP)
             {
                 pesos.Rows.Add(pair.Key, pair.Value);
             }
@@ -542,7 +545,7 @@ namespace Interface
                 aux = decision.calValueMin(min, max, tableFilter);
             }
 
-            decision.TableResult = decision.registerPriority(id_carac, aux);
+            decision.registerPriority(id_carac, aux);
 
             DataTable prioridades = new DataTable();
             prioridades.Columns.Add("ID");
@@ -565,7 +568,86 @@ namespace Interface
 
         private void buttonCalcPrioAHP_Click(object sender, EventArgs e)
         {
+            int flag = 0;
+            foreach (DataGridViewColumn coluna in dataGridViewAHPPriority.Columns)
+            {
+                if (flag == 0)
+                {
+                    flag = 1;
+                }
+                else
+                {
+                    string idSofA = coluna.Name.ToString();
+                    foreach (DataGridViewRow linha in dataGridViewAHPPriority.Rows)
+                    {
+                        string idSofB = linha.Cells[0].Value.ToString();
+                        //MessageBox.Show(idSofB);
+                        string pointsStr = linha.Cells[idSofA].Value.ToString();
+                        float pointf = (float)System.Convert.ToDouble(pointsStr);
+                        //MessageBox.Show("idA: " + idA + "\tName: " + name + "\nIDB: " + idB + "\tNameB: " + nameB + "\nPoints: " + pointf);
+                        decision.registerPriorAHP(labelIDAHP.Text, idSofA, idSofB, pointf);
 
+                    }
+                }
+            }
+
+            Dictionary<string,Dictionary<string, Dictionary<string, float>>> tabelaNormAHP = new Dictionary<string,Dictionary<string, Dictionary<string, float>>>();
+            tabelaNormAHP = decision.normalizePriorityAHP(decision.TablePriorAHP);
+            decision.pesosPriorFinais(tabelaNormAHP);
+
+            DataTable prioridades = new DataTable();
+            prioridades.Columns.Add("ID");
+            prioridades.Columns.Add("Priority");
+
+            Dictionary<string, float> a;
+
+            decision.TableResult.TryGetValue(labelIDAHP.Text, out a);
+            foreach (KeyValuePair<string, float> pair2 in a)
+            {
+                prioridades.Rows.Add(pair2.Key, pair2.Value);
+            }
+
+            DataView view = new DataView(prioridades);
+            dataGridViewPesosAHPFinais.DataSource = view;
+
+
+            /*
+            foreach (KeyValuePair<string, double> pair in pesosFinaisClassAHP)
+            {
+                MessageBox.Show(pair.Key + "\t" + pair.Value);
+            }*/
+
+            // activa o butão de consistência
+            buttonTestCons.Enabled = true;
+            buttonCalcSmart.Enabled = false;
+
+        }
+
+        private void buttonTestConsitencyAHP_Click(object sender, EventArgs e)
+        {
+            Dictionary<int, double> matrixC = new Dictionary<int, double>();
+            Dictionary<int, double> matrixD = new Dictionary<int, double>();
+            Dictionary<string, Dictionary<string, float>> aux;
+            Dictionary<string, float> aux1;
+            decision.TablePriorAHP.TryGetValue(labelIDAHP.Text, out aux);
+            decision.TableResult.TryGetValue(labelIDAHP.Text, out aux1);
+            matrixC = decision.calculaMatrizC(aux, aux1);
+            matrixD = decision.calculaMatrizD(matrixC, aux1);
+            double taxa = decision.taxaConsitencia(matrixD);
+
+            if (taxa <= 0.10)
+            {
+                MessageBox.Show("The consistency Rate is good: " + taxa);
+                labelAHPPrioCons.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(81)))), ((int)(((byte)(19)))));
+            }
+            else
+            {
+                MessageBox.Show("The consistency Rate is bad: " + taxa);
+                labelAHPPrioCons.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            }
+
+            // actualiza a label com a taxa
+            labelAHPPrioCons.Text = "" + taxa;
         }
 
 
