@@ -44,6 +44,7 @@ namespace Interface
             buttonTestCons.Enabled = false;
             buttonNextDefinitonWeigths.Enabled = false;
             buttonFinish.Enabled = false;
+            buttonTestConsitencyAHP.Enabled = false;
             // formata as tabelas
             // smart();
         }
@@ -290,7 +291,7 @@ namespace Interface
             else
             {
                 tabControlSeparates.SelectedTab = tabPageClassificaoes;
-                progressBar1.Value = 75;
+                progressBar1.Value = 50;
                 refreshTableSmart();
                 refreshTableAHP();
             }
@@ -319,6 +320,7 @@ namespace Interface
 
 
             tabControlSeparates.SelectedTab = tabPageDefinitionPriorities;
+            progressBar1.Value = 75;
         }
 
         private string procuraIdCha(string name)
@@ -512,6 +514,7 @@ namespace Interface
 
         private void buttonCalculateValueFn_Click_1(object sender, EventArgs e)
         {
+            buttonCalcPrioAHP.Enabled = false;
             decision.TableSW = _dataBase.softwaresWithCaracteristics(ids_dos_softwaresSeleccionados);
 
             Dictionary<string, Dictionary<string, int>> tableFilter = new Dictionary<string, Dictionary<string, int>>();
@@ -573,10 +576,12 @@ namespace Interface
 
             buttonFinish.Enabled = true;
 
+
         }
 
         private void buttonCalcPrioAHP_Click(object sender, EventArgs e)
         {
+            buttonCalculateValueFn.Enabled = false;
             int flag = 0;
             foreach (DataGridViewColumn coluna in dataGridViewAHPPriority.Columns)
             {
@@ -627,8 +632,7 @@ namespace Interface
             }*/
 
             // activa o butão de consistência
-            buttonTestCons.Enabled = true;
-            buttonCalcSmart.Enabled = false;
+            buttonTestConsitencyAHP.Enabled = true;
 
         }
 
@@ -695,6 +699,7 @@ namespace Interface
             dataGridViewFinal.DataSource = view;
 
             tabControlSeparates.SelectedTab = tabPageFinal;
+            progressBar1.Value = 100;
         }
 
     }
