@@ -374,17 +374,31 @@ namespace Business
         /*Auxiliar da calcValueMax*/
         public float formulaMax(int min, int max, int x)
         {
+            float resultado;
             int a = x - min;
             int b = max - min;
-            return (float)a / (float)b;
+            if(b!=0)
+            {
+             resultado= (float)a / (float)b;
+            }
+            else resultado = 0;
+
+            return resultado;
         }
 
         /*Auxiliar da calcValueMin*/
         public float formulaMin(int min, int max, int x)
         {
+            float resultado;
             int a = max - x;
             int b = max - min;
-            return (float)a / (float)b;
+            if (b != 0)
+            {
+                resultado = (float)a / (float)b;
+            }
+            else resultado = 0;
+
+            return resultado;
         }
 
         public Dictionary<String, float> calValueMax(int min, int max, Dictionary<String, Dictionary<String, int>> tableX)
