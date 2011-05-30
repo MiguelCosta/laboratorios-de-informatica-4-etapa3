@@ -74,4 +74,3 @@ INSERT INTO [LI4].[dbo].[software] VALUES(65,'Hipriority','http://www.quartzstar
 INSERT INTO [LI4].[dbo].[software] VALUES(66,'Mediator','http://www.matchware.com/en/products/mediator/' ,'extra_database');
 
 GO
-
