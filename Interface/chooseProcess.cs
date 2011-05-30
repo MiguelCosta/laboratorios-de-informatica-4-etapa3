@@ -23,6 +23,9 @@ namespace Interface
         public Business.DecisionSuport decision;
         public Dictionary<string, float> tabelaSmartNorm;
         public Dictionary<string, float> pesosFinaisClassAHP;
+        public string metodo_fase_1 = "smart";
+
+        public Dictionary<int, Dictionary<string, float>> resultFinal;
 
         public chooseProcess(Business.DataBaseUser dataBase)
         {
@@ -410,6 +413,8 @@ namespace Interface
             // activa o butão de consistência
             buttonTestCons.Enabled = true;
             buttonCalcSmart.Enabled = false;
+
+            metodo_fase_1 = "ahp";
         }
 
         private void buttonCalcSmart_Click(object sender, EventArgs e)
@@ -439,6 +444,8 @@ namespace Interface
 
             buttonNextDefinitonWeigths.Enabled = true;
             buttonCalFinalWe.Enabled = false;
+
+            metodo_fase_1 = "smart";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -564,6 +571,8 @@ namespace Interface
             DataView view = new DataView(prioridades);
             dataGridViewValueFn.DataSource = view;
 
+            buttonFinish.Enabled = true;
+
         }
 
         private void buttonCalcPrioAHP_Click(object sender, EventArgs e)
@@ -591,7 +600,7 @@ namespace Interface
                 }
             }
 
-            Dictionary<string,Dictionary<string, Dictionary<string, float>>> tabelaNormAHP = new Dictionary<string,Dictionary<string, Dictionary<string, float>>>();
+            Dictionary<string, Dictionary<string, Dictionary<string, float>>> tabelaNormAHP = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
             tabelaNormAHP = decision.normalizePriorityAHP(decision.TablePriorAHP);
             decision.pesosPriorFinais(tabelaNormAHP);
 
@@ -648,8 +657,45 @@ namespace Interface
 
             // actualiza a label com a taxa
             labelAHPPrioCons.Text = "" + taxa;
+
+            buttonFinish.Enabled = true;
         }
 
+        private void buttonFinish_Click(object sender, EventArgs e)
+        {
+            resultFinal = new Dictionary<int, Dictionary<string, float>>();
+            if (metodo_fase_1.Equals("smart"))
+            {
+                resultFinal = decision.analiseFinalSmart(tabelaSmartNorm, decision.TableResult);
+            }
+
+            if (metodo_fase_1.Equals("ahp"))
+            {
+                resultFinal = decision.analiseFinalAHP(pesosFinaisClassAHP, decision.TableResult);
+            }
+
+
+            DataTable final = new DataTable();
+            final.Columns.Add("RANK");
+            final.Columns.Add("Software");
+            final.Columns.Add("Priority");
+
+
+            foreach (KeyValuePair<int, Dictionary<string, float>> pair in resultFinal)
+            {
+                Dictionary<string, float> a;
+                resultFinal.TryGetValue(pair.Key, out a);
+                foreach (KeyValuePair<string, float> pair2 in a)
+                {
+                    final.Rows.Add(pair.Key, pair2.Key, pair2.Value);
+                }
+            }
+
+            DataView view = new DataView(final);
+            dataGridViewFinal.DataSource = view;
+
+            tabControlSeparates.SelectedTab = tabPageFinal;
+        }
 
     }
 }
