@@ -115,8 +115,10 @@
             this.radioButtonMaximize = new System.Windows.Forms.RadioButton();
             this.radioButtonMinimize = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelCaracteristicaValueFn = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.labelCaracteristicaValueFnID = new System.Windows.Forms.Label();
+            this.labelCaracteristicaValueFn = new System.Windows.Forms.Label();
             this.dataGridViewValueFn = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
@@ -144,7 +146,6 @@
             this.dataGridViewFinal = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -162,8 +163,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelProgress = new System.Windows.Forms.Panel();
             this.panelTab = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabControlSeparates.SuspendLayout();
             this.tabPageChooseSoftwares.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -1231,15 +1230,27 @@
             this.tableLayoutPanel23.Size = new System.Drawing.Size(219, 105);
             this.tableLayoutPanel23.TabIndex = 1;
             // 
-            // labelCaracteristicaValueFn
+            // label8
             // 
-            this.labelCaracteristicaValueFn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelCaracteristicaValueFn.AutoSize = true;
-            this.labelCaracteristicaValueFn.Location = new System.Drawing.Point(115, 72);
-            this.labelCaracteristicaValueFn.Name = "labelCaracteristicaValueFn";
-            this.labelCaracteristicaValueFn.Size = new System.Drawing.Size(33, 13);
-            this.labelCaracteristicaValueFn.TabIndex = 1;
-            this.labelCaracteristicaValueFn.Text = "name";
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(62, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Name: ";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(81, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "ID: ";
             // 
             // labelCaracteristicaValueFnID
             // 
@@ -1250,6 +1261,16 @@
             this.labelCaracteristicaValueFnID.Size = new System.Drawing.Size(18, 13);
             this.labelCaracteristicaValueFnID.TabIndex = 2;
             this.labelCaracteristicaValueFnID.Text = "ID";
+            // 
+            // labelCaracteristicaValueFn
+            // 
+            this.labelCaracteristicaValueFn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCaracteristicaValueFn.AutoSize = true;
+            this.labelCaracteristicaValueFn.Location = new System.Drawing.Point(115, 72);
+            this.labelCaracteristicaValueFn.Name = "labelCaracteristicaValueFn";
+            this.labelCaracteristicaValueFn.Size = new System.Drawing.Size(33, 13);
+            this.labelCaracteristicaValueFn.TabIndex = 1;
+            this.labelCaracteristicaValueFn.Text = "name";
             // 
             // dataGridViewValueFn
             // 
@@ -1621,7 +1642,6 @@
             // dataBaseToolStripMenuItem
             // 
             this.dataBaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
@@ -1630,17 +1650,10 @@
             this.dataBaseToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.dataBaseToolStripMenuItem.Text = "DataBase";
             // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.ToolTipText = "Create a new database";
-            // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.ToolTipText = "Open database";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
@@ -1648,14 +1661,14 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.ToolTipText = "Save database to a file";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveAsToolStripMenuItem.Text = "Save as...";
             this.saveAsToolStripMenuItem.ToolTipText = "Save as database to a file";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
@@ -1663,7 +1676,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.ToolTipText = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
@@ -1719,6 +1732,7 @@
             this.aHPTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.aHPTutorialToolStripMenuItem.Text = "AHP Tutorial";
             this.aHPTutorialToolStripMenuItem.ToolTipText = "Consult the tutorial of AHP method";
+            this.aHPTutorialToolStripMenuItem.Click += new System.EventHandler(this.aHPTutorialToolStripMenuItem_Click);
             // 
             // sMARTTutorialToolStripMenuItem
             // 
@@ -1726,6 +1740,7 @@
             this.sMARTTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.sMARTTutorialToolStripMenuItem.Text = "SMART Tutorial";
             this.sMARTTutorialToolStripMenuItem.ToolTipText = "Consult the tutorial of SMART method";
+            this.sMARTTutorialToolStripMenuItem.Click += new System.EventHandler(this.sMARTTutorialToolStripMenuItem_Click);
             // 
             // valueFNTutorialToolStripMenuItem
             // 
@@ -1733,12 +1748,14 @@
             this.valueFNTutorialToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.valueFNTutorialToolStripMenuItem.Text = "ValueFN Tutorial";
             this.valueFNTutorialToolStripMenuItem.ToolTipText = "Consult the tutorial of ValueFN method";
+            this.valueFNTutorialToolStripMenuItem.Click += new System.EventHandler(this.valueFNTutorialToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -1769,28 +1786,6 @@
             this.panelTab.Name = "panelTab";
             this.panelTab.Size = new System.Drawing.Size(732, 569);
             this.panelTab.TabIndex = 48;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(81, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "ID: ";
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(62, 72);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Name: ";
             // 
             // chooseProcess
             // 
@@ -1889,7 +1884,6 @@
         private System.Windows.Forms.TabPage tabPageChooseCriteria;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dataBaseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;

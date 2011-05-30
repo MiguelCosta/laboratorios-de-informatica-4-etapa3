@@ -197,7 +197,7 @@ namespace Interface
 
         private void editSoftwareListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditSWList editList = new EditSWList();
+            EditSWList editList = new EditSWList(_dataBase);
             editList.Show();
         }
 
@@ -702,6 +702,33 @@ namespace Interface
             buttonCalFinalWe.Enabled = false;
 
             metodo_fase_1 = "smart";
+        }
+
+        private void aHPTutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string url = "C:\\HTML_tutoraials\\AHPtutorial.htm";
+            Tutorials t = new Tutorials(url);
+            t.Show();
+        }
+
+        private void sMARTTutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string url = "C:\\HTML_tutoraials\\SMARTtutorial.htm";
+            Tutorials t = new Tutorials(url);
+            t.Show();
+        }
+
+        private void valueFNTutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string url = "C:\\HTML_tutoraials\\ValueFntutorial.htm";
+            Tutorials t = new Tutorials(url);
+            t.Show();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox a = new AboutBox();
+            a.Show();
         }
 
     }

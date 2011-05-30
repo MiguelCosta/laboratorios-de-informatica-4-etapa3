@@ -34,8 +34,8 @@
             this.dataGridViewTabelaSoftware = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.buttonAddCharacteristics = new System.Windows.Forms.Button();
             this.buttonAddnew = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,8 +62,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(508, 515);
-            this.splitContainer1.SplitterDistance = 463;
+            this.splitContainer1.Size = new System.Drawing.Size(738, 568);
+            this.splitContainer1.SplitterDistance = 497;
             this.splitContainer1.TabIndex = 1;
             // 
             // groupBoxCharactList
@@ -76,7 +76,7 @@
             this.groupBoxCharactList.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.groupBoxCharactList.Location = new System.Drawing.Point(12, 27);
             this.groupBoxCharactList.Name = "groupBoxCharactList";
-            this.groupBoxCharactList.Size = new System.Drawing.Size(484, 433);
+            this.groupBoxCharactList.Size = new System.Drawing.Size(714, 454);
             this.groupBoxCharactList.TabIndex = 43;
             this.groupBoxCharactList.TabStop = false;
             this.groupBoxCharactList.Text = "Softwares List";
@@ -90,7 +90,7 @@
             this.dataGridViewTabelaSoftware.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTabelaSoftware.Location = new System.Drawing.Point(3, 20);
             this.dataGridViewTabelaSoftware.Name = "dataGridViewTabelaSoftware";
-            this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(478, 410);
+            this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(708, 431);
             this.dataGridViewTabelaSoftware.TabIndex = 0;
             this.dataGridViewTabelaSoftware.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTabelaSoftware_CellContentClick);
             // 
@@ -112,39 +112,41 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.buttonDelete);
-            this.splitContainer2.Size = new System.Drawing.Size(508, 48);
-            this.splitContainer2.SplitterDistance = 250;
+            this.splitContainer2.Panel2.Controls.Add(this.buttonAddCharacteristics);
+            this.splitContainer2.Size = new System.Drawing.Size(738, 67);
+            this.splitContainer2.SplitterDistance = 363;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // buttonAddCharacteristics
+            // 
+            this.buttonAddCharacteristics.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonAddCharacteristics.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddCharacteristics.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonAddCharacteristics.Location = new System.Drawing.Point(90, 21);
+            this.buttonAddCharacteristics.Name = "buttonAddCharacteristics";
+            this.buttonAddCharacteristics.Size = new System.Drawing.Size(159, 25);
+            this.buttonAddCharacteristics.TabIndex = 1;
+            this.buttonAddCharacteristics.Text = "Add new Characteristics";
+            this.buttonAddCharacteristics.UseVisualStyleBackColor = true;
+            this.buttonAddCharacteristics.Click += new System.EventHandler(this.buttonAddCharacteristics_Click);
             // 
             // buttonAddnew
             // 
             this.buttonAddnew.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonAddnew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddnew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonAddnew.Location = new System.Drawing.Point(112, 11);
+            this.buttonAddnew.Location = new System.Drawing.Point(114, 21);
             this.buttonAddnew.Name = "buttonAddnew";
-            this.buttonAddnew.Size = new System.Drawing.Size(125, 25);
+            this.buttonAddnew.Size = new System.Drawing.Size(142, 25);
             this.buttonAddnew.TabIndex = 0;
             this.buttonAddnew.Text = "Add new Sotfware";
             this.buttonAddnew.UseVisualStyleBackColor = true;
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.Location = new System.Drawing.Point(14, 11);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(125, 25);
-            this.buttonDelete.TabIndex = 1;
-            this.buttonDelete.Text = "Delete Software";
-            this.buttonDelete.UseVisualStyleBackColor = true;
             // 
             // EditSWList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 515);
+            this.ClientSize = new System.Drawing.Size(738, 568);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditSWList";
@@ -170,7 +172,7 @@
         private System.Windows.Forms.DataGridView dataGridViewTabelaSoftware;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button buttonAddnew;
-        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+        private System.Windows.Forms.Button buttonAddCharacteristics;
     }
 }
