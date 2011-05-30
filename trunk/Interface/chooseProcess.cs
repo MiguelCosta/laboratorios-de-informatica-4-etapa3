@@ -334,33 +334,6 @@ namespace Interface
             return r;
         }
 
-        private void buttonTestCons_Click(object sender, EventArgs e)
-        {
-            Dictionary<int, double> matrixC = new Dictionary<int, double>();
-            Dictionary<int, double> matrixD = new Dictionary<int, double>();
-
-
-
-            matrixC = decision.calculaMatrizC(decision.TableAHP, pesosFinaisClassAHP);
-            matrixD = decision.calculaMatrizD(matrixC, pesosFinaisClassAHP);
-            double taxa = decision.taxaConsitencia(matrixD);
-
-            if (taxa <= 0.10)
-            {
-                MessageBox.Show("The consistency Rate is good: " + taxa);
-                labelConsistencyRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(81)))), ((int)(((byte)(19)))));
-            }
-            else
-            {
-                MessageBox.Show("The consistency Rate is bad: " + taxa);
-                labelConsistencyRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            }
-
-            // actualiza a label com a taxa
-            labelConsistencyRate.Text = "" + taxa;
-            // activa o botão next
-            buttonNextDefinitonWeigths.Enabled = true;
-        }
 
         private void buttonCalFinalWe_Click(object sender, EventArgs e)
         {
@@ -419,36 +392,7 @@ namespace Interface
             metodo_fase_1 = "ahp";
         }
 
-        private void buttonCalcSmart_Click(object sender, EventArgs e)
-        {
 
-            foreach (DataGridViewRow linha in dataGridViewSmart.Rows)
-            {
-                string idChar = linha.Cells[1].Value.ToString();
-                int points = System.Convert.ToInt32(linha.Cells[0].Value.ToString());
-                decision.registerClass(idChar, points);
-            }
-
-            tabelaSmartNorm.Clear();
-            tabelaSmartNorm = decision.normalizeSMART(decision.TableCH);
-
-
-            DataTable pesos = new DataTable();
-            pesos.Columns.Add("ID");
-            pesos.Columns.Add("Weight");
-            foreach (KeyValuePair<string, float> pair in tabelaSmartNorm)
-            {
-                pesos.Rows.Add(pair.Key, pair.Value);
-            }
-
-            DataView view = new DataView(pesos);
-            dataGridViewPesosFinaisSmart.DataSource = view;
-
-            buttonNextDefinitonWeigths.Enabled = true;
-            buttonCalFinalWe.Enabled = false;
-
-            metodo_fase_1 = "smart";
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -700,6 +644,64 @@ namespace Interface
 
             tabControlSeparates.SelectedTab = tabPageFinal;
             progressBar1.Value = 100;
+        }
+
+        private void buttonTestCons_Click(object sender, EventArgs e)
+        {
+            Dictionary<int, double> matrixC = new Dictionary<int, double>();
+            Dictionary<int, double> matrixD = new Dictionary<int, double>();
+
+
+
+            matrixC = decision.calculaMatrizC(decision.TableAHP, pesosFinaisClassAHP);
+            matrixD = decision.calculaMatrizD(matrixC, pesosFinaisClassAHP);
+            double taxa = decision.taxaConsitencia(matrixD);
+
+            if (taxa <= 0.10)
+            {
+                MessageBox.Show("The consistency Rate is good: " + taxa);
+                labelConsistencyRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(81)))), ((int)(((byte)(19)))));
+            }
+            else
+            {
+                MessageBox.Show("The consistency Rate is bad: " + taxa);
+                labelConsistencyRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            }
+
+            // actualiza a label com a taxa
+            labelConsistencyRate.Text = "" + taxa;
+            // activa o botão next
+            buttonNextDefinitonWeigths.Enabled = true;
+        }
+
+        private void buttonCalcSmart_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow linha in dataGridViewSmart.Rows)
+            {
+                string idChar = linha.Cells[1].Value.ToString();
+                int points = System.Convert.ToInt32(linha.Cells[0].Value.ToString());
+                decision.registerClass(idChar, points);
+            }
+
+            tabelaSmartNorm.Clear();
+            tabelaSmartNorm = decision.normalizeSMART(decision.TableCH);
+
+
+            DataTable pesos = new DataTable();
+            pesos.Columns.Add("ID");
+            pesos.Columns.Add("Weight");
+            foreach (KeyValuePair<string, float> pair in tabelaSmartNorm)
+            {
+                pesos.Rows.Add(pair.Key, pair.Value);
+            }
+
+            DataView view = new DataView(pesos);
+            dataGridViewPesosFinaisSmart.DataSource = view;
+
+            buttonNextDefinitonWeigths.Enabled = true;
+            buttonCalFinalWe.Enabled = false;
+
+            metodo_fase_1 = "smart";
         }
 
     }
