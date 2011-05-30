@@ -399,6 +399,7 @@ namespace Interface
 
             // activa o butão de consistência
             buttonTestCons.Enabled = true;
+            buttonCalcSmart.Enabled = false;
         }
 
         private void buttonCalcSmart_Click(object sender, EventArgs e)
@@ -427,6 +428,7 @@ namespace Interface
             dataGridViewPesosFinaisSmart.DataSource = view;
 
             buttonNextDefinitonWeigths.Enabled = true;
+            buttonCalFinalWe.Enabled = false;
         }
 
 
