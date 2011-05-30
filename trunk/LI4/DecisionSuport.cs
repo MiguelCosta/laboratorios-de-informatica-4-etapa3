@@ -645,7 +645,6 @@ namespace Business
             Dictionary<String, float> tableCorrespondencia;
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
             Dictionary<String, float> tableAuxiliar1;
-            Dictionary<String, Dictionary<String, float>> tablePesosFinais = new Dictionary<String, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, float>> tableNormalInvertedAux = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, float>> tableNormalized = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNormalInverted = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
@@ -750,11 +749,11 @@ namespace Business
                     tableAuxiliar2.Add(id, result);
                 }
 
-                tablePesosFinais.Add(idCh, tableAuxiliar2);
+                _tableResult.Add(idCh, tableAuxiliar2);
                 
             }
 
-            return tablePesosFinais;
+            return _tableResult;
         }
 
         #endregion
