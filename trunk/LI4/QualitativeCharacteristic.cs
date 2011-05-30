@@ -37,7 +37,7 @@ namespace Business
         public QualitativeCharacteristic(QualitativeCharacteristic nc) :
             base(nc.Id, nc.Name)
         {
-            _values = nc.Values;
+            _values = nc.Values_A;
         }
 
         /**
@@ -48,7 +48,7 @@ namespace Business
                 _values = (Dictionary<string, Value>)info.GetValue("Values", typeof(Dictionary<string, Value>));
         }
 
-        public Dictionary<string, Value> Values
+        public Dictionary<string, Value> Values_A
         {
             get { return _values; }
             set { _values = value; }
@@ -80,7 +80,7 @@ namespace Business
 
             QualitativeCharacteristic n = (QualitativeCharacteristic)o;
 
-            if (_id == n.Id && _name.Equals(n.Name) && _values.Equals(n.Values)) return true;
+            if (_id == n.Id && _name.Equals(n.Name) && _values.Equals(n.Values_A)) return true;
 
             return false;
         }

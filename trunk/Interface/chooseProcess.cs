@@ -303,9 +303,16 @@ namespace Interface
 
         private void buttonNextDefinitonWeigths_Click(object sender, EventArgs e)
         {
+            DataTable carc = new DataTable();
+            carc.Columns.Add("ID");
+            carc.Columns.Add("Name");
+            foreach (KeyValuePair<int, string> pair in caracteristicas_escolhidas)
+            {
+                carc.Rows.Add(pair.Key, pair.Value);
+            }
 
-
-
+            DataView view = new DataView(carc);
+            dataGridViewCaracteristicasPrioridades.DataSource = view;
 
 
             tabControlSeparates.SelectedTab = tabPageDefinitionPriorities;
@@ -342,7 +349,7 @@ namespace Interface
             }
 
             // actualiza a label com a taxa
-            labelConsistencyRate.Text = ""+taxa;
+            labelConsistencyRate.Text = "" + taxa;
             // activa o botão next
             buttonNextDefinitonWeigths.Enabled = true;
         }
@@ -429,6 +436,41 @@ namespace Interface
 
             buttonNextDefinitonWeigths.Enabled = true;
             buttonCalFinalWe.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int linha = dataGridViewCaracteristicasPrioridades.CurrentRow.Index;
+            if (linha >= 0)
+            {
+                string id = dataGridViewCaracteristicasPrioridades["ID", linha].Value.ToString();
+                string name = dataGridViewCaracteristicasPrioridades["Name", linha].Value.ToString();
+                MessageBox.Show(id + "\t" + name);
+                labelCaracteristicaValueFn.Text = name;
+            }
+        }
+
+        private void buttonCalculateValueFn_Click(object sender, EventArgs e)
+        {
+            // maximizar
+            if (radioButtonMaximize.Checked)
+            {
+
+            }
+
+            // maximizar
+            if (radioButtonMinimize.Checked)
+            {
+
+            }
+
+        }
+
+
+
+        private void buttonCalculateValueFn_Click_1(object sender, EventArgs e)
+        {
+            _dataBase.softwaresWithCaracteristics(ids_dos_softwaresSeleccionados);
         }
 
 
