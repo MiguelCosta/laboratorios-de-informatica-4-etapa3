@@ -5,6 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Business
 {
@@ -124,15 +125,15 @@ namespace Business
         }*/
 
 
-        
+
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("User", _user);
             info.AddValue("Charac", _charac);
-            info.AddValue("Software_List", _software_list); 
+            info.AddValue("Software_List", _software_list);
         }
-        
+
 
         public string toString()
         {
@@ -150,6 +151,112 @@ namespace Business
             }
             return s.ToString();
         }
+
+
+
+        // quero o id do software com todas as caracteristicas associadas
+        public Dictionary<string, Dictionary<string, int>> softwaresWithCaracteristics(List<int> ids_softwares)
+        {
+            // resultado
+            Dictionary<string, Dictionary<string, int>> r = new Dictionary<string, Dictionary<string, int>>();
+
+            // tenho de ir a todos os softwares da lista
+            foreach (int id_s in ids_softwares)
+            {
+                // vou buscar um software com um id da lista
+                Software s = null;
+                _software_list.TryGetValue(id_s, out s);
+
+                // agora tenho de ir buscar todas as caracteristicas desse software
+                Dictionary<int, string> carac_sof = new Dictionary<int, string>();
+                carac_sof = s.Charac;
+
+                // vai guardar temporariamente as caracteristicas do software
+                Dictionary<string, int> carcteristicas_do_software = new Dictionary<string, int>();
+
+                // depois de ter as caracteristicas é necessário buscar o valor ou valor de ordem
+                foreach (KeyValuePair<int, string> pair in carac_sof)
+                {
+                    int value_order = valueCaracteristics(pair.Key, pair.Value);
+
+                    carcteristicas_do_software.Add("" + pair.Key, value_order);
+                }
+
+                // depois de ir buscar toda as caracteristicas vai inserir na estrutura final
+                r.Add("" + id_s, carcteristicas_do_software);
+
+            }
+
+            /*
+            string result = "";
+            foreach (KeyValuePair<String, Dictionary<string, int>> pair in r)
+            {
+                result += "\nSoftware: " + pair.Key;
+                foreach (KeyValuePair<string, int> pair2 in pair.Value)
+                {
+                    result += "\n\tID: " + pair2.Key + "\tValue: " + pair2.Value;
+                }
+            }
+            MessageBox.Show(result);
+            */
+            return r;
+        }
+
+        // recebe uma caracteristica e atribui um valor de ordem
+        private int valueCaracteristics(int id, string value)
+        {
+            int r = 0;
+            Characteristic c = null;
+            _charac.TryGetValue(id, out c);
+            //MessageBox.Show("Valor:" + value + "\nTipo de Caracteristica: " + c.GetType().Name);
+            if (c.GetType().Name.Equals("QualitativeCharacteristic"))
+            {
+                //MessageBox.Show("Qualidative");
+                return valurOrderCaracteristicsQualitative(id, value);
+            }
+
+            if (c.GetType().Name.Equals("YesNoCharacteristic"))
+            {
+                //MessageBox.Show("YesNo");
+                if (value.Equals("false"))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+
+            if (c.GetType().Name.Equals("NumericCharacteristic"))
+            {
+                //MessageBox.Show("Numeric: " + value);
+                return System.Convert.ToInt32(value);
+            }
+
+            return r;
+        }
+
+        // para uma caracteristica Qualitative devolve o valor de ordem
+        private int valurOrderCaracteristicsQualitative(int id_carac, string value)
+        {
+            int r = 0;
+            Characteristic c = null;
+            _charac.TryGetValue(id_carac, out c);
+            QualitativeCharacteristic q = new QualitativeCharacteristic();
+            q = (QualitativeCharacteristic)c;
+            Dictionary<string, Value> values_c = q.Values_A;
+
+
+            foreach (Value v in values_c.Values)
+            {
+                if (value.Equals(v.Name)) return v.Classification;
+            }
+
+
+            return r;
+        }
+
     }
 
 }
