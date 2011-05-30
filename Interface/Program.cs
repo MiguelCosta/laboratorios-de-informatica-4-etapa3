@@ -42,7 +42,7 @@ namespace Interface
             // inseres os softwares na base de dados
             querySoftware.querySoftwareUserSoftwares(dataBase);
 
-            MessageBox.Show("#### TODA A INFORMAÇÂO DA BASE DE DADOS ####\n"+dataBase.toString());
+            //MessageBox.Show("#### TODA A INFORMAÇÂO DA BASE DE DADOS ####\n"+dataBase.toString());
 
             // Apresenta a nova janela
             chooseProcess cp = new chooseProcess(dataBase);

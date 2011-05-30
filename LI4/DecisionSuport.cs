@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business
 {
-    class DecisionSuport
+    public class DecisionSuport
     {
         private Dictionary<String, int> _tableCH;
         private Dictionary<String, Dictionary<String, int>> _tableSW;

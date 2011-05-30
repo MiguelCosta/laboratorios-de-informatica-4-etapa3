@@ -9,30 +9,53 @@ using System.IO;
 using System.Windows.Forms;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using DataGridViewNumericUpDownElements;
 
 
 namespace Interface
 {
-    
+
     public partial class chooseProcess : Form
     {
         private Business.DataBaseUser _dataBase;
         public List<int> ids_dos_softwaresSeleccionados;
+        public Dictionary<int, string> caracteristicas_escolhidas;
+        public Business.DecisionSuport decision;
+        public Dictionary<string, float> tabelaSmartNorm;
+        public Dictionary<string, double> pesosFinaisClassAHP;
 
         public chooseProcess(Business.DataBaseUser dataBase)
         {
             InitializeComponent();
-            //initComponentsConfig();
             _dataBase = dataBase;
 
+            // estruturas auxiliares para calculo da decisão
+            decision = new Business.DecisionSuport();
+            tabelaSmartNorm = new Dictionary<string, float>();
+
             Business.User user = _dataBase.User;
+
+            // configurações iniciais
             refreshTableSoftwares();
             refreshTableCaracteristics();
+            buttonTestCons.Enabled = false;
+            buttonNextDefinitonWeigths.Enabled = false;
 
+            // formata as tabelas
+            // smart();
         }
 
-        private void initComponentsConfig()
+        private void smart()
         {
+            DataGridViewNumericUpDownColumn UpDnColumn = new DataGridViewNumericUpDownColumn();
+            UpDnColumn.HeaderText = "Weights";
+            UpDnColumn.Width = 130;
+            // Set the Minimum, Maximum, and initial Value.
+            UpDnColumn.Maximum = 1000;
+            UpDnColumn.Minimum = 10;
+
+            // Add UpDnColumn onto DataGridView layout  
+            dataGridViewSmart.Columns.Add(UpDnColumn);
 
         }
 
@@ -85,7 +108,44 @@ namespace Interface
 
             DataView view = new DataView(tabela_caracteristicas);
             dataGridViewCharacteristics.DataSource = view;
+        }
 
+        private void refreshTableSmart()
+        {
+            DataTable pesos = new DataTable();
+            pesos.Columns.Add("ID");
+            pesos.Columns.Add("Name");
+
+            foreach (KeyValuePair<int, string> pair in caracteristicas_escolhidas)
+            {
+                pesos.Rows.Add(pair.Key, pair.Value);
+            }
+
+            DataView view = new DataView(pesos);
+            dataGridViewSmart.DataSource = view;
+        }
+
+        private void refreshTableAHP()
+        {
+            DataTable pesos = new DataTable();
+            pesos.Columns.Add("Best Software");
+            foreach (string name in caracteristicas_escolhidas.Values)
+            {
+                pesos.Columns.Add(name);
+                pesos.Rows.Add(name);
+            }
+
+            DataView view = new DataView(pesos);
+            dataGridViewAHP.DataSource = view;
+
+            int i = 0;
+            int num_ca = caracteristicas_escolhidas.Count;
+
+            while (i < num_ca)
+            {
+                dataGridViewAHP[i + 1, i].Value = "1";
+                i++;
+            }
         }
 
         private void FormChooseProcess_FormClosing(object sender, EventArgs e)
@@ -100,7 +160,7 @@ namespace Interface
             cwp.Show();
 
         }
-        
+
         public void loadObject(String filename)
         {
             Stream stream = File.Open(filename, FileMode.Open);
@@ -197,8 +257,42 @@ namespace Interface
 
         private void buttonNextChooseCriteria_Click(object sender, EventArgs e)
         {
-            tabControlSeparates.SelectedTab = tabPageClassificaoes;
-            progressBar1.Value = 50;
+            // apagar a estrutura
+            caracteristicas_escolhidas = new Dictionary<int, string>();
+            caracteristicas_escolhidas.Clear();
+
+
+            string linhas_selecionadas = "Select Characteristics ID:\n";
+
+            // vai a todas as linhas das tabelas ver quais estão seleccionadas
+            foreach (DataGridViewRow linha in dataGridViewCharacteristics.Rows)
+            {
+                if (linha.Cells[0].Value != null)
+                {
+
+                    // convert para int o ID
+                    int id = System.Convert.ToInt32(linha.Cells[1].Value);
+                    string name = (string)linha.Cells[2].Value;
+                    caracteristicas_escolhidas.Add(id, name);
+                    linhas_selecionadas += id + "\n";
+                }
+            }
+            //MessageBox.Show(linhas_selecionadas);
+
+            // condição para se ter de seleccionar mais de 2 softwares
+            if (caracteristicas_escolhidas.Count < 1)
+            {
+                MessageBox.Show("Select at least one characteristics!");
+            }
+            else
+            {
+                tabControlSeparates.SelectedTab = tabPageClassificaoes;
+                progressBar1.Value = 75;
+                refreshTableSmart();
+                refreshTableAHP();
+            }
+
+
         }
 
         private void buttonPreviewDefiniotWeigths_Click(object sender, EventArgs e)
@@ -209,28 +303,130 @@ namespace Interface
 
         private void buttonNextDefinitonWeigths_Click(object sender, EventArgs e)
         {
+
+
+
+
+
             tabControlSeparates.SelectedTab = tabPageDefinitionPriorities;
-            progressBar1.Value = 75;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private string procuraIdCha(string name)
         {
+            string r = "";
+            foreach (KeyValuePair<int, string> pair in caracteristicas_escolhidas)
+            {
+                if (pair.Value.Equals(name)) r = "" + pair.Key;
+            }
 
+            return r;
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        private void buttonTestCons_Click(object sender, EventArgs e)
         {
+            Dictionary<int, double> matrixC = new Dictionary<int, double>();
+            Dictionary<int, double> matrixD = new Dictionary<int, double>();
+            matrixC = decision.calculaMatrizC(decision.TableAHP, pesosFinaisClassAHP);
+            matrixD = decision.calculaMatrizD(matrixC, pesosFinaisClassAHP);
+            double taxa = decision.taxaConsitencia(matrixD);
 
+            if (taxa <= 0.10)
+            {
+                MessageBox.Show("The consistency Rate is good: " + taxa);
+                labelConsistencyRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(81)))), ((int)(((byte)(19)))));
+            }
+            else
+            {
+                MessageBox.Show("The consistency Rate is bad: " + taxa);
+                labelConsistencyRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            }
+
+            // actualiza a label com a taxa
+            labelConsistencyRate.Text = ""+taxa;
+            // activa o botão next
+            buttonNextDefinitonWeigths.Enabled = true;
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void buttonCalFinalWe_Click(object sender, EventArgs e)
         {
+            int flag = 0;
+            foreach (DataGridViewColumn coluna in dataGridViewAHP.Columns)
+            {
+                if (flag == 0)
+                {
+                    flag = 1;
+                }
+                else
+                {
+                    string name = coluna.Name.ToString();
+                    string idA = procuraIdCha(name);
+                    foreach (DataGridViewRow linha in dataGridViewAHP.Rows)
+                    {
+                        string nameB = linha.Cells[0].Value.ToString();
+                        string idB = procuraIdCha(nameB);
+                        string pointsStr = linha.Cells[name].Value.ToString();
+                        float pointf = (float)System.Convert.ToDouble(pointsStr);
+                        //MessageBox.Show("idA: " + idA + "\tName: " + name + "\nIDB: " + idB + "\tNameB: " + nameB + "\nPoints: " + pointf);
+                        decision.registerClassAHP(idA, idB, pointf);
 
+                    }
+                }
+            }
+
+            Dictionary<string, Dictionary<string, float>> tabelaNormAHP = new Dictionary<string, Dictionary<string, float>>();
+            tabelaNormAHP = decision.normalizeAHP(decision.TableAHP);
+            pesosFinaisClassAHP = new Dictionary<string, double>();
+            pesosFinaisClassAHP = decision.pesosFinais(tabelaNormAHP);
+
+
+            DataTable pesos = new DataTable();
+            pesos.Columns.Add("ID");
+            pesos.Columns.Add("Weight");
+            foreach (KeyValuePair<string, double> pair in pesosFinaisClassAHP)
+            {
+                pesos.Rows.Add(pair.Key, pair.Value);
+            }
+
+            DataView view = new DataView(pesos);
+            dataGridViewPesosAHP.DataSource = view;
+
+
+            /*
+            foreach (KeyValuePair<string, double> pair in pesosFinaisClassAHP)
+            {
+                MessageBox.Show(pair.Key + "\t" + pair.Value);
+            }*/
+
+            // activa o butão de consistência
+            buttonTestCons.Enabled = true;
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void buttonCalcSmart_Click(object sender, EventArgs e)
         {
 
+            foreach (DataGridViewRow linha in dataGridViewSmart.Rows)
+            {
+                string idChar = linha.Cells[1].Value.ToString();
+                int points = System.Convert.ToInt32(linha.Cells[0].Value.ToString());
+                decision.registerClass(idChar, points);
+            }
+
+            tabelaSmartNorm.Clear();
+            tabelaSmartNorm = decision.normalizeSMART(decision.TableCH);
+
+
+            DataTable pesos = new DataTable();
+            pesos.Columns.Add("ID");
+            pesos.Columns.Add("Weight");
+            foreach (KeyValuePair<string, float> pair in tabelaSmartNorm)
+            {
+                pesos.Rows.Add(pair.Key, pair.Value);
+            }
+
+            DataView view = new DataView(pesos);
+            dataGridViewPesosFinaisSmart.DataSource = view;
+
+            buttonNextDefinitonWeigths.Enabled = true;
         }
 
 
