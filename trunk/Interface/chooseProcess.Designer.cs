@@ -157,12 +157,13 @@
             this.aHPTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sMARTTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.valueFNTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelProgress = new System.Windows.Forms.Panel();
             this.panelTab = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControlSeparates.SuspendLayout();
             this.tabPageChooseSoftwares.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -1213,23 +1214,28 @@
             // 
             // tableLayoutPanel23
             // 
-            this.tableLayoutPanel23.ColumnCount = 1;
+            this.tableLayoutPanel23.ColumnCount = 2;
             this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel23.Controls.Add(this.labelCaracteristicaValueFn, 0, 1);
-            this.tableLayoutPanel23.Controls.Add(this.labelCaracteristicaValueFnID, 0, 0);
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanel23.Controls.Add(this.label8, 0, 1);
+            this.tableLayoutPanel23.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel23.Controls.Add(this.labelCaracteristicaValueFnID, 1, 0);
+            this.tableLayoutPanel23.Controls.Add(this.labelCaracteristicaValueFn, 1, 1);
+            this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel23.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
             this.tableLayoutPanel23.RowCount = 2;
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel23.Size = new System.Drawing.Size(118, 79);
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(219, 105);
             this.tableLayoutPanel23.TabIndex = 1;
             // 
             // labelCaracteristicaValueFn
             // 
-            this.labelCaracteristicaValueFn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCaracteristicaValueFn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelCaracteristicaValueFn.AutoSize = true;
-            this.labelCaracteristicaValueFn.Location = new System.Drawing.Point(42, 52);
+            this.labelCaracteristicaValueFn.Location = new System.Drawing.Point(115, 72);
             this.labelCaracteristicaValueFn.Name = "labelCaracteristicaValueFn";
             this.labelCaracteristicaValueFn.Size = new System.Drawing.Size(33, 13);
             this.labelCaracteristicaValueFn.TabIndex = 1;
@@ -1237,9 +1243,9 @@
             // 
             // labelCaracteristicaValueFnID
             // 
-            this.labelCaracteristicaValueFnID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCaracteristicaValueFnID.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelCaracteristicaValueFnID.AutoSize = true;
-            this.labelCaracteristicaValueFnID.Location = new System.Drawing.Point(50, 13);
+            this.labelCaracteristicaValueFnID.Location = new System.Drawing.Point(115, 19);
             this.labelCaracteristicaValueFnID.Name = "labelCaracteristicaValueFnID";
             this.labelCaracteristicaValueFnID.Size = new System.Drawing.Size(18, 13);
             this.labelCaracteristicaValueFnID.TabIndex = 2;
@@ -1691,7 +1697,6 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tutorialsToolStripMenuItem,
-            this.helpToolStripMenuItem1,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -1704,7 +1709,7 @@
             this.sMARTTutorialToolStripMenuItem,
             this.valueFNTutorialToolStripMenuItem});
             this.tutorialsToolStripMenuItem.Name = "tutorialsToolStripMenuItem";
-            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tutorialsToolStripMenuItem.Text = "Tutorials";
             this.tutorialsToolStripMenuItem.ToolTipText = "Consult the tutorial of the methods";
             // 
@@ -1729,16 +1734,10 @@
             this.valueFNTutorialToolStripMenuItem.Text = "ValueFN Tutorial";
             this.valueFNTutorialToolStripMenuItem.ToolTipText = "Consult the tutorial of ValueFN method";
             // 
-            // helpToolStripMenuItem1
-            // 
-            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
-            this.helpToolStripMenuItem1.Text = "Help";
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // openFileDialog1
@@ -1770,6 +1769,28 @@
             this.panelTab.Name = "panelTab";
             this.panelTab.Size = new System.Drawing.Size(732, 569);
             this.panelTab.TabIndex = 48;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(81, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "ID: ";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(62, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Name: ";
             // 
             // chooseProcess
             // 
@@ -1879,7 +1900,6 @@
         private System.Windows.Forms.ToolStripMenuItem sMARTTutorialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem valueFNTutorialToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPageClassificaoes;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1979,5 +1999,7 @@
         private System.Windows.Forms.DataGridView dataGridViewFinal;
         private System.Windows.Forms.Button buttonTestCons;
         private System.Windows.Forms.Button buttonCalcSmart;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
