@@ -439,7 +439,14 @@ namespace Business
             foreach (String id in tableAux.Keys)
             {
                 tableAux.TryGetValue(id, out valueX);
-                valorNorm = valueX / resTotal;
+                if (resTotal != 0)
+                {
+                    valorNorm = valueX / resTotal;
+                }
+                else 
+                {
+                    valorNorm = 0;
+                }
                 tablePrior.Add(id, valorNorm);
             }
 
