@@ -5,10 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace Interface
 {
+    
     public partial class chooseProcess : Form
     {
         private Business.DataBaseUser _dataBase;
@@ -95,16 +100,27 @@ namespace Interface
             cwp.Show();
 
         }
+        
+        public void loadObject(String filename)
+        {
+            Stream stream = File.Open(filename, FileMode.Open);
+            BinaryFormatter bformatter = new BinaryFormatter();
+
+            _dataBase = (Business.DataBaseUser)bformatter.Deserialize(stream);
+            stream.Close();
+        }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog o = new OpenFileDialog();
             o.Filter = "beSmart files (*.beSmart)|*.beSmart|All files (*.*)|*.*";
             DialogResult ret = o.ShowDialog();
+            String filename = o.FileName;
 
             if (ret == DialogResult.OK)
             {
-                MessageBox.Show("Ainda nao esta a funcionar!");
+                loadObject(filename);
+                MessageBox.Show("Agora já deve estar...!");
             }
         }
 
