@@ -41,6 +41,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(chooseProcess));
             this.tabControlSeparates = new System.Windows.Forms.TabControl();
             this.tabPageChooseSoftwares = new System.Windows.Forms.TabPage();
@@ -158,7 +160,9 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelProgress = new System.Windows.Forms.Panel();
             this.panelTab = new System.Windows.Forms.Panel();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPageFinal = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewFinal = new System.Windows.Forms.DataGridView();
             this.tabControlSeparates.SuspendLayout();
             this.tabPageChooseSoftwares.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -218,6 +222,9 @@
             this.menuStrip1.SuspendLayout();
             this.panelProgress.SuspendLayout();
             this.panelTab.SuspendLayout();
+            this.tabPageFinal.SuspendLayout();
+            this.tableLayoutPanel31.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinal)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlSeparates
@@ -227,7 +234,7 @@
             this.tabControlSeparates.Controls.Add(this.tabPageChooseCriteria);
             this.tabControlSeparates.Controls.Add(this.tabPageClassificaoes);
             this.tabControlSeparates.Controls.Add(this.tabPageDefinitionPriorities);
-            this.tabControlSeparates.Controls.Add(this.tabPage3);
+            this.tabControlSeparates.Controls.Add(this.tabPageFinal);
             this.tabControlSeparates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlSeparates.Location = new System.Drawing.Point(0, 0);
             this.tabControlSeparates.Multiline = true;
@@ -1266,6 +1273,14 @@
             this.dataGridViewValueFn.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridViewValueFn.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewValueFn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewValueFn.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewValueFn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewValueFn.Location = new System.Drawing.Point(3, 103);
             this.dataGridViewValueFn.Name = "dataGridViewValueFn";
@@ -1540,6 +1555,7 @@
             this.buttonFinish.TabIndex = 0;
             this.buttonFinish.Text = "Finish!";
             this.buttonFinish.UseVisualStyleBackColor = true;
+            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
             // 
             // menuStrip1
             // 
@@ -1728,15 +1744,49 @@
             this.panelTab.Size = new System.Drawing.Size(732, 569);
             this.panelTab.TabIndex = 48;
             // 
-            // tabPage3
+            // tabPageFinal
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(724, 540);
-            this.tabPage3.TabIndex = 4;
-            this.tabPage3.Text = "Final Results";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPageFinal.Controls.Add(this.tableLayoutPanel31);
+            this.tabPageFinal.Location = new System.Drawing.Point(4, 25);
+            this.tabPageFinal.Name = "tabPageFinal";
+            this.tabPageFinal.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageFinal.Size = new System.Drawing.Size(724, 540);
+            this.tabPageFinal.TabIndex = 4;
+            this.tabPageFinal.Text = "Final Results";
+            this.tabPageFinal.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel31
+            // 
+            this.tableLayoutPanel31.ColumnCount = 1;
+            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.Controls.Add(this.dataGridViewFinal, 0, 0);
+            this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel31.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel31.Name = "tableLayoutPanel31";
+            this.tableLayoutPanel31.RowCount = 1;
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.Size = new System.Drawing.Size(718, 534);
+            this.tableLayoutPanel31.TabIndex = 0;
+            // 
+            // dataGridViewFinal
+            // 
+            this.dataGridViewFinal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataGridViewFinal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewFinal.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.dataGridViewFinal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewFinal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewFinal.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewFinal.Location = new System.Drawing.Point(124, 166);
+            this.dataGridViewFinal.Name = "dataGridViewFinal";
+            this.dataGridViewFinal.Size = new System.Drawing.Size(470, 201);
+            this.dataGridViewFinal.TabIndex = 0;
             // 
             // chooseProcess
             // 
@@ -1823,6 +1873,9 @@
             this.menuStrip1.PerformLayout();
             this.panelProgress.ResumeLayout(false);
             this.panelTab.ResumeLayout(false);
+            this.tabPageFinal.ResumeLayout(false);
+            this.tableLayoutPanel31.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1946,6 +1999,8 @@
         private System.Windows.Forms.DataGridView dataGridViewAHPPriority;
         private System.Windows.Forms.DataGridView dataGridViewPesosAHPFinais;
         private System.Windows.Forms.Label labelAHPPrioCons;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPageFinal;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel31;
+        private System.Windows.Forms.DataGridView dataGridViewFinal;
     }
 }

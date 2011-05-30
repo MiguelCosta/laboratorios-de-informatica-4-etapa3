@@ -1295,7 +1295,7 @@ namespace Business
             return ranks;
         }
 
-        public Dictionary<int, Dictionary<String, float>> analiseFinalAHP(Dictionary<String, double> pesosFinais, Dictionary<String, Dictionary<String, float>> tableValueFn)
+        public Dictionary<int, Dictionary<String, float>> analiseFinalAHP(Dictionary<String, float> pesosFinais, Dictionary<String, Dictionary<String, float>> tableValueFn)
         {
             // Rank -> (IDSOft, prioridade)
             Dictionary<int, Dictionary<String, float>> ranks = new Dictionary<int, Dictionary<string, float>>();
@@ -1303,7 +1303,7 @@ namespace Business
             Dictionary<String, float> tablePrioXClass;
             Dictionary<String, float> tableClass;
             Dictionary<String, Dictionary<String, float>> tablePriorAux = new Dictionary<string, Dictionary<string, float>>();
-            double valorNorm;
+            float valorNorm;
             float valorDesnorm;
             float resultado;
 
