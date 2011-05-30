@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.textBoxPasswordConfirmation = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,7 +50,6 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.textBoxPasswordConfirmation);
             this.panel1.Controls.Add(this.textBoxEmail);
             this.panel1.Controls.Add(this.label6);
@@ -68,16 +66,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(337, 307);
             this.panel1.TabIndex = 0;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(90, 196);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "(maximum of 10 characters)";
             // 
             // textBoxPasswordConfirmation
             // 
@@ -238,7 +226,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxPasswordConfirmation;
     }
 }
