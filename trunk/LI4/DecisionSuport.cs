@@ -663,10 +663,11 @@ namespace Business
                 tableNormalInverted.Add(idChar, tableNormalInvertedAux);
             }
 
-
+            /*
             Dictionary<String, Dictionary<String, float>> tableA;
             Dictionary<String, float> tableB;
             float x;
+            
             Console.WriteLine("\n************ Inverted Normalized *************");
             foreach (String idChar in tableNormalInverted.Keys)
             {
@@ -685,7 +686,7 @@ namespace Business
 
                 }
             }
-
+            */
             tableAuxiliar.Clear();
             
             Dictionary<String, double> tableAuxiliar2;
@@ -722,7 +723,7 @@ namespace Business
                 }
 
                 tablePesosFinais.Add(idCh, tableAuxiliar2);
-                Console.WriteLine("********************************************");
+                
             }
 
             return tablePesosFinais;
@@ -1120,7 +1121,6 @@ namespace Business
          *  - AHP e AHP
          */
 
-        // ver se retorna double ou float?
         public Dictionary<int, Dictionary<String, float>> analiseFinalSmartValueFn(Dictionary<String, float> tableCHNorm, Dictionary<String, Dictionary<String, float>> tableValueFn)
         {
             // Rank -> (IDSOft, prioridade)
