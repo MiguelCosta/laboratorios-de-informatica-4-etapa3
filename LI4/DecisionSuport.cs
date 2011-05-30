@@ -640,12 +640,12 @@ namespace Business
         }
 
         //Recebe a matriz normalizada. Calcular Médias da matriz normalizada
-        public Dictionary<String, Dictionary<String, double>> pesosPriorFinais(Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorma)
+        public Dictionary<String, Dictionary<String, float>> pesosPriorFinais(Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNorma)
         {
             Dictionary<String, float> tableCorrespondencia;
             Dictionary<String, float> tableAuxiliar = new Dictionary<string, float>();
             Dictionary<String, float> tableAuxiliar1;
-            Dictionary<String, Dictionary<String, double>> tablePesosFinais = new Dictionary<String, Dictionary<string, double>>();
+            Dictionary<String, Dictionary<String, float>> tablePesosFinais = new Dictionary<String, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, float>> tableNormalInvertedAux = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, float>> tableNormalized = new Dictionary<string, Dictionary<string, float>>();
             Dictionary<String, Dictionary<String, Dictionary<String, float>>> tableNormalInverted = new Dictionary<string, Dictionary<string, Dictionary<string, float>>>();
@@ -717,7 +717,7 @@ namespace Business
             */
             tableAuxiliar.Clear();
             
-            Dictionary<String, double> tableAuxiliar2;
+            Dictionary<String, float> tableAuxiliar2;
             foreach (String idCh in tableNormalInverted.Keys)
             {
                 tableAuxiliar1 = new Dictionary<string, float>();
@@ -742,7 +742,7 @@ namespace Business
                 }
 
                 float valorG;
-                tableAuxiliar2 = new Dictionary<string, double>();
+                tableAuxiliar2 = new Dictionary<string, float>();
                 foreach (String id in tableAuxiliar1.Keys)
                 {
                     tableAuxiliar1.TryGetValue(id, out valorG);
@@ -1149,7 +1149,7 @@ namespace Business
          *  - AHP e AHP
          */
 
-        public Dictionary<int, Dictionary<String, float>> analiseFinalSmartValueFn(Dictionary<String, float> tableCHNorm, Dictionary<String, Dictionary<String, float>> tableValueFn)
+        public Dictionary<int, Dictionary<String, float>> analiseFinalSmart(Dictionary<String, float> tableCHNorm, Dictionary<String, Dictionary<String, float>> tableValueFn)
         {
             // Rank -> (IDSOft, prioridade)
             Dictionary<int, Dictionary<String, float>> ranks = new Dictionary<int, Dictionary<string, float>>();
@@ -1290,147 +1290,7 @@ namespace Business
             return ranks;
         }
 
-        public Dictionary<int, Dictionary<String, float>> analiseFinalSmartAHP(Dictionary<String, float> tableCHNorm, Dictionary<String, Dictionary<String, double>> pesosPriorFinais)
-        {
-            // Rank -> (IDSOft, prioridade)
-            Dictionary<int, Dictionary<String, float>> ranks = new Dictionary<int, Dictionary<string, float>>();
-            Dictionary<String, double> aux = new Dictionary<string, double>();
-            Dictionary<String, float> tablePrioXClass;
-            Dictionary<String, float> tableClass;
-            Dictionary<String, Dictionary<String, float>> tablePriorAux = new Dictionary<string, Dictionary<string, float>>();
-            float valorNorm;
-            double valorDesnorm;
-            float resultado;
-
-            //Multiplica os valores das prioridades pelas classificações 
-            foreach (String id in tableCHNorm.Keys)
-            {
-                tableCHNorm.TryGetValue(id, out valorNorm);
-                tablePrioXClass = new Dictionary<string, float>();
-
-                foreach (String idA in pesosPriorFinais.Keys)
-                {
-                    if (idA.Equals(id))
-                    {
-                        tablePrioXClass = new Dictionary<string, float>();
-                        pesosPriorFinais.TryGetValue(idA, out aux);
-                        foreach (String idSof in aux.Keys)
-                        {
-                            aux.TryGetValue(idSof, out valorDesnorm);
-                            resultado = valorNorm * (float) valorDesnorm;
-                            tablePrioXClass.Add(idSof, resultado);
-                        }
-                    }
-                }
-                tablePriorAux.Add(id, tablePrioXClass);
-            }
-
-
-
-            Dictionary<String, List<float>> tableCl = new Dictionary<string, List<float>>();
-            List<float> prior;
-            List<float> priorAux;
-            float valorX;
-            // associa a um dado software uma lista com as classificações obtidas em todas as caracteriscas
-            foreach (String id in tablePriorAux.Keys)
-            {
-                tablePriorAux.TryGetValue(id, out tableClass);
-
-                foreach (String idA in tableClass.Keys)
-                {
-                    tableClass.TryGetValue(idA, out valorX);
-                    if (!tableCl.ContainsKey(idA))
-                    {
-                        prior = new List<float>();
-                        prior.Add(valorX);
-                        tableCl.Add(idA, prior);
-                    }
-                    else
-                    {
-                        tableCl.TryGetValue(idA, out priorAux);
-                        tableCl.Remove(idA);
-                        priorAux.Add(valorX);
-                        tableCl.Add(idA, priorAux);
-                    }
-                }
-            }
-
-            List<float> listP;
-
-            Dictionary<String, float> rankAux = new Dictionary<string, float>();
-            Dictionary<String, float> rankAux2 = new Dictionary<string, float>();
-            foreach (String id in tableCl.Keys)
-            {
-                float soma = 0;
-                tableCl.TryGetValue(id, out listP);
-                foreach (float valor in listP)
-                {
-                    soma += valor;
-                }
-                rankAux.Add(id, soma);
-            }
-
-
-
-            // Verifica qual o maior vai retiralo da matriz rankAux e acrescentar na matriz rank aux 2
-            // É necessário verificar se ele adiciona à cabeça ou na cauda se for à cabeça alterar para ver o minimo
-            while (rankAux.Count != 0)
-            {
-                float valorMax = 0;
-                foreach (String id in rankAux.Keys)
-                {
-                    float valorH;
-                    rankAux.TryGetValue(id, out valorH);
-
-                    if (valorH > valorMax)
-                    {
-                        valorMax = valorH;
-                    }
-
-                }
-
-                String idv = "";
-                float valorP;
-                foreach (String id in rankAux.Keys)
-                {
-                    rankAux.TryGetValue(id, out valorP);
-                    if (valorMax == valorP)
-                    {
-                        idv = String.Copy(id);
-
-                    }
-
-                }
-                if (!rankAux2.ContainsKey(idv))
-                {
-                    rankAux2.Add(idv, valorMax);
-                }
-                else
-                {
-                    rankAux2.Remove(idv);
-                    rankAux2.Add(idv, valorMax);
-                }
-                rankAux.Remove(idv);
-
-            }
-
-
-            int i = 1;
-            float valorL;
-            // atribui o rank
-            Dictionary<String, float> rankAux3;
-            foreach (String id in rankAux2.Keys)
-            {
-                rankAux2.TryGetValue(id, out valorL);
-                rankAux3 = new Dictionary<string, float>();
-                rankAux3.Add(id, valorL);
-                ranks.Add(i, rankAux3);
-                i++;
-            }
-            return ranks;
-        }
-
-        public Dictionary<int, Dictionary<String, float>> analiseFinalAHPValueFn(Dictionary<String, double> pesosFinais, Dictionary<String, Dictionary<String, float>> tableValueFn)
+        public Dictionary<int, Dictionary<String, float>> analiseFinalAHP(Dictionary<String, double> pesosFinais, Dictionary<String, Dictionary<String, float>> tableValueFn)
         {
             // Rank -> (IDSOft, prioridade)
             Dictionary<int, Dictionary<String, float>> ranks = new Dictionary<int, Dictionary<string, float>>();
@@ -1571,146 +1431,6 @@ namespace Business
             return ranks;
         }
 
-        public Dictionary<int, Dictionary<String, float>> analiseFinalAHPAHP(Dictionary<String, double> pesosFinais, Dictionary<String, Dictionary<String, double>> pesosPriorFinais)
-        {
-            // Rank -> (IDSOft, prioridade)
-            Dictionary<int, Dictionary<String, float>> ranks = new Dictionary<int, Dictionary<string, float>>();
-            Dictionary<String, double> aux = new Dictionary<string, double>();
-            Dictionary<String, float> tablePrioXClass;
-            Dictionary<String, float> tableClass;
-            Dictionary<String, Dictionary<String, float>> tablePriorAux = new Dictionary<string, Dictionary<string, float>>();
-            double valorNorm;
-            double valorDesnorm;
-            float resultado;
-
-            //Multiplica os valores das prioridades pelas classificações 
-            foreach (String id in pesosFinais.Keys)
-            {
-                pesosFinais.TryGetValue(id, out valorNorm);
-                tablePrioXClass = new Dictionary<string, float>();
-
-                foreach (String idA in pesosPriorFinais.Keys)
-                {
-                    if (idA.Equals(id))
-                    {
-                        tablePrioXClass = new Dictionary<string, float>();
-                        pesosPriorFinais.TryGetValue(idA, out aux);
-                        foreach (String idSof in aux.Keys)
-                        {
-                            aux.TryGetValue(idSof, out valorDesnorm);
-                            resultado = (float)valorNorm * (float)valorDesnorm;
-                            tablePrioXClass.Add(idSof, resultado);
-                        }
-                    }
-                }
-                tablePriorAux.Add(id, tablePrioXClass);
-            }
-
-
-
-
-            Dictionary<String, List<float>> tableCl = new Dictionary<string, List<float>>();
-            List<float> prior;
-            List<float> priorAux;
-            float valorX;
-            // associa a um dado software uma lista com as classificações obtidas em todas as caracteriscas
-            foreach (String id in tablePriorAux.Keys)
-            {
-                tablePriorAux.TryGetValue(id, out tableClass);
-
-                foreach (String idA in tableClass.Keys)
-                {
-                    tableClass.TryGetValue(idA, out valorX);
-                    if (!tableCl.ContainsKey(idA))
-                    {
-                        prior = new List<float>();
-                        prior.Add(valorX);
-                        tableCl.Add(idA, prior);
-                    }
-                    else
-                    {
-                        tableCl.TryGetValue(idA, out priorAux);
-                        tableCl.Remove(idA);
-                        priorAux.Add(valorX);
-                        tableCl.Add(idA, priorAux);
-                    }
-                }
-            }
-
-            List<float> listP;
-
-            Dictionary<String, float> rankAux = new Dictionary<string, float>();
-            Dictionary<String, float> rankAux2 = new Dictionary<string, float>();
-            foreach (String id in tableCl.Keys)
-            {
-                float soma = 0;
-                tableCl.TryGetValue(id, out listP);
-                foreach (float valor in listP)
-                {
-                    soma += valor;
-                }
-                rankAux.Add(id, soma);
-            }
-
-
-
-            // Verifica qual o maior vai retiralo da matriz rankAux e acrescentar na matriz rank aux 2
-            // É necessário verificar se ele adiciona à cabeça ou na cauda se for à cabeça alterar para ver o minimo
-            while (rankAux.Count != 0)
-            {
-                float valorMax = 0;
-                foreach (String id in rankAux.Keys)
-                {
-                    float valorH;
-                    rankAux.TryGetValue(id, out valorH);
-
-                    if (valorH > valorMax)
-                    {
-                        valorMax = valorH;
-                    }
-
-                }
-
-                String idv = "";
-                float valorP;
-                foreach (String id in rankAux.Keys)
-                {
-                    rankAux.TryGetValue(id, out valorP);
-                    if (valorMax == valorP)
-                    {
-                        idv = String.Copy(id);
-
-                    }
-
-                }
-                if (!rankAux2.ContainsKey(idv))
-                {
-                    rankAux2.Add(idv, valorMax);
-                }
-                else
-                {
-                    rankAux2.Remove(idv);
-                    rankAux2.Add(idv, valorMax);
-                }
-                rankAux.Remove(idv);
-
-            }
-
-
-            int i = 1;
-            float valorL;
-            // atribui o rank
-            Dictionary<String, float> rankAux3;
-            foreach (String id in rankAux2.Keys)
-            {
-                rankAux2.TryGetValue(id, out valorL);
-                rankAux3 = new Dictionary<string, float>();
-                rankAux3.Add(id, valorL);
-                ranks.Add(i, rankAux3);
-                i++;
-            }
-            return ranks;
-        }
         
     }
 
