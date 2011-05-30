@@ -40,7 +40,7 @@ namespace Interface
             refreshTableCaracteristics();
             buttonTestCons.Enabled = false;
             buttonNextDefinitonWeigths.Enabled = false;
-
+            buttonFinish.Enabled = false;
             // formata as tabelas
             // smart();
         }
@@ -445,8 +445,40 @@ namespace Interface
             {
                 string id = dataGridViewCaracteristicasPrioridades["ID", linha].Value.ToString();
                 string name = dataGridViewCaracteristicasPrioridades["Name", linha].Value.ToString();
-                MessageBox.Show(id + "\t" + name);
+                //MessageBox.Show(id + "\t" + name);
                 labelCaracteristicaValueFn.Text = name;
+                labelCaracteristicaValueFnID.Text = id;
+
+                labelIDAHP.Text = id;
+                labelName_AHP.Text = name;
+
+                refreshTableAHPPriority(name);
+            }
+
+
+
+        }
+
+        private void refreshTableAHPPriority(string nameC)
+        {
+            DataTable pesos = new DataTable();
+            pesos.Columns.Add(nameC);
+            foreach (int id in ids_dos_softwaresSeleccionados)
+            {
+                pesos.Columns.Add("" + id);
+                pesos.Rows.Add("" + id);
+            }
+
+            DataView view = new DataView(pesos);
+            dataGridViewAHPPriority.DataSource = view;
+
+            int i = 0;
+            int num_ca = ids_dos_softwaresSeleccionados.Count;
+
+            while (i < num_ca)
+            {
+                dataGridViewAHPPriority[i + 1, i].Value = "1";
+                i++;
             }
         }
 
@@ -470,7 +502,70 @@ namespace Interface
 
         private void buttonCalculateValueFn_Click_1(object sender, EventArgs e)
         {
-            _dataBase.softwaresWithCaracteristics(ids_dos_softwaresSeleccionados);
+            decision.TableSW = _dataBase.softwaresWithCaracteristics(ids_dos_softwaresSeleccionados);
+
+            Dictionary<string, Dictionary<string, int>> tableFilter = new Dictionary<string, Dictionary<string, int>>();
+
+            string id_carac = labelCaracteristicaValueFnID.Text;
+            tableFilter = decision.filter(id_carac);
+            /*
+            string erro = "nada";
+
+            foreach (KeyValuePair<string, Dictionary<string, int>> p in tableFilter)
+            {
+                erro += "\n" + p.Key;
+                foreach (KeyValuePair<string, int> p2 in p.Value)
+                {
+                    erro += "\n\t" + p2.Key + " " + "int " + p2.Value;
+                }
+
+            }
+            
+            MessageBox.Show(erro);
+            */
+            int min = decision.calMin(id_carac, tableFilter);
+            int max = decision.calMax(id_carac, tableFilter);
+
+            //MessageBox.Show("Min: " + min + "\tMax: " + max);
+
+            Dictionary<string, float> aux = new Dictionary<string, float>();
+            // maximizar
+            if (radioButtonMaximize.Checked)
+            {
+                aux = decision.calValueMax(min, max, tableFilter);
+
+            }
+
+            // maximizar
+            if (radioButtonMinimize.Checked)
+            {
+                aux = decision.calValueMin(min, max, tableFilter);
+            }
+
+            decision.TableResult = decision.registerPriority(id_carac, aux);
+
+            DataTable prioridades = new DataTable();
+            prioridades.Columns.Add("ID");
+            prioridades.Columns.Add("Priority");
+
+            Dictionary<string, float> a;
+
+            decision.TableResult.TryGetValue(id_carac, out a);
+            foreach (KeyValuePair<string, float> pair2 in a)
+            {
+                prioridades.Rows.Add(pair2.Key, pair2.Value);
+            }
+
+
+
+            DataView view = new DataView(prioridades);
+            dataGridViewValueFn.DataSource = view;
+
+        }
+
+        private void buttonCalcPrioAHP_Click(object sender, EventArgs e)
+        {
+
         }
 
 
