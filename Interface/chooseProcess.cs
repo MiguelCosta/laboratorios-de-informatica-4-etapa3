@@ -120,6 +120,8 @@ namespace Interface
             if (ret == DialogResult.OK)
             {
                 loadObject(filename);
+                refreshTableSoftwares();
+                refreshTableCaracteristics();
                 MessageBox.Show("Agora já deve estar...!");
             }
         }
