@@ -24,13 +24,15 @@ namespace Interface
         public Dictionary<string, float> tabelaSmartNorm;
         public Dictionary<string, float> pesosFinaisClassAHP;
         public string metodo_fase_1 = "smart";
+        public DataBase.QueryUser _queryUser;
 
         public Dictionary<int, Dictionary<string, float>> resultFinal;
 
-        public chooseProcess(Business.DataBaseUser dataBase)
+        public chooseProcess(Business.DataBaseUser dataBase, DataBase.QueryUser queryUser)
         {
             InitializeComponent();
             _dataBase = dataBase;
+            _queryUser = queryUser;
 
             // estruturas auxiliares para calculo da decisão
             decision = new Business.DecisionSuport();
@@ -45,6 +47,7 @@ namespace Interface
             buttonNextDefinitonWeigths.Enabled = false;
             buttonFinish.Enabled = false;
             buttonTestConsitencyAHP.Enabled = false;
+            buttonNextChooseSoftwares.Enabled = false;
             // formata as tabelas
             // smart();
         }
@@ -729,6 +732,29 @@ namespace Interface
         {
             AboutBox a = new AboutBox();
             a.Show();
+        }
+
+        private void startANewComparationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ids_dos_softwaresSeleccionados = new List<int>();
+            caracteristicas_escolhidas = new Dictionary<int, string>();
+            tabelaSmartNorm = new Dictionary<string, float>();
+            pesosFinaisClassAHP = new Dictionary<string, float>();
+            refreshTableSoftwares();
+            refreshTableCaracteristics();
+            ids_dos_softwaresSeleccionados.Clear();
+            caracteristicas_escolhidas.Clear();
+            decision.TableCH.Clear();
+            decision.TableAHP.Clear();
+            decision.TableResult.Clear();
+            tabelaSmartNorm.Clear();
+            pesosFinaisClassAHP.Clear();
+            buttonCalFinalWe.Enabled = true;
+            buttonNextChooseSoftwares.Enabled = true;
+            dataGridViewPesosAHP.DataSource = null;
+            dataGridViewPesosFinaisSmart.DataSource = null;
+            tabControlSeparates.SelectedTab = tabPageChooseSoftwares;
+
         }
 
     }

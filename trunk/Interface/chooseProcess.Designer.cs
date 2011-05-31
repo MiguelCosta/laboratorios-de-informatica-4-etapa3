@@ -163,6 +163,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelProgress = new System.Windows.Forms.Panel();
             this.panelTab = new System.Windows.Forms.Panel();
+            this.startANewComparationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlSeparates.SuspendLayout();
             this.tabPageChooseSoftwares.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -1684,6 +1685,7 @@
             // softwareToolStripMenuItem
             // 
             this.softwareToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startANewComparationToolStripMenuItem,
             this.editSoftwareListToolStripMenuItem,
             this.viewSoftwareWebpageToolStripMenuItem});
             this.softwareToolStripMenuItem.Name = "softwareToolStripMenuItem";
@@ -1693,7 +1695,7 @@
             // editSoftwareListToolStripMenuItem
             // 
             this.editSoftwareListToolStripMenuItem.Name = "editSoftwareListToolStripMenuItem";
-            this.editSoftwareListToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.editSoftwareListToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.editSoftwareListToolStripMenuItem.Text = "Edit Software List";
             this.editSoftwareListToolStripMenuItem.ToolTipText = "Change the list of software";
             this.editSoftwareListToolStripMenuItem.Click += new System.EventHandler(this.editSoftwareListToolStripMenuItem_Click);
@@ -1701,7 +1703,7 @@
             // viewSoftwareWebpageToolStripMenuItem
             // 
             this.viewSoftwareWebpageToolStripMenuItem.Name = "viewSoftwareWebpageToolStripMenuItem";
-            this.viewSoftwareWebpageToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.viewSoftwareWebpageToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.viewSoftwareWebpageToolStripMenuItem.Text = "View Software Webpage";
             this.viewSoftwareWebpageToolStripMenuItem.ToolTipText = "Consult the website of the software";
             this.viewSoftwareWebpageToolStripMenuItem.Click += new System.EventHandler(this.viewSoftwareWebpageToolStripMenuItem_Click);
@@ -1722,7 +1724,7 @@
             this.sMARTTutorialToolStripMenuItem,
             this.valueFNTutorialToolStripMenuItem});
             this.tutorialsToolStripMenuItem.Name = "tutorialsToolStripMenuItem";
-            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tutorialsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.tutorialsToolStripMenuItem.Text = "Tutorials";
             this.tutorialsToolStripMenuItem.ToolTipText = "Consult the tutorial of the methods";
             // 
@@ -1753,7 +1755,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -1786,6 +1788,13 @@
             this.panelTab.Name = "panelTab";
             this.panelTab.Size = new System.Drawing.Size(732, 569);
             this.panelTab.TabIndex = 48;
+            // 
+            // startANewComparationToolStripMenuItem
+            // 
+            this.startANewComparationToolStripMenuItem.Name = "startANewComparationToolStripMenuItem";
+            this.startANewComparationToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.startANewComparationToolStripMenuItem.Text = "Start a new Comparation";
+            this.startANewComparationToolStripMenuItem.Click += new System.EventHandler(this.startANewComparationToolStripMenuItem_Click);
             // 
             // chooseProcess
             // 
@@ -1995,5 +2004,6 @@
         private System.Windows.Forms.Button buttonCalcSmart;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripMenuItem startANewComparationToolStripMenuItem;
     }
 }

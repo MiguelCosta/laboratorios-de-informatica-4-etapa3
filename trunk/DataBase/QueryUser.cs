@@ -85,6 +85,34 @@ namespace DataBase
             return u;
         }
 
+        /*Insere um user*/
+        public bool insertUser(string username, string mail, string password)
+        {
+            
+            string select = @"INSERT INTO [LI4].[dbo].[user] VALUES ('" + username + "','" + password + "','" + mail + "',CURRENT_TIMESTAMP);";
+            MessageBox.Show(select);
+
+            SqlCommand command = new SqlCommand(select, _myConnection);
+
+            SqlTransaction tr = _myConnection.BeginTransaction();
+            command.Transaction = tr;
+
+            try
+            {
+                command.ExecuteNonQuery();
+                
+                tr.Commit();
+                MessageBox.Show("Efectuado");
+                return true;
+            }
+            catch (SqlException e)
+            {
+                tr.Rollback();
+                return false;
+            }
+
+        }
+
 
     }
 }
