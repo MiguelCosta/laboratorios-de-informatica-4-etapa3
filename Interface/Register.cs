@@ -11,13 +11,17 @@ namespace Interface
 {
     public partial class Register : Form
     {
-        public Register()
+        public DataBase.QueryUser _queryUser;
+
+        public Register(DataBase.QueryUser queryUser)
         {
             InitializeComponent();
             textBoxPassword.PasswordChar = '*';
             textBoxPassword.MaxLength = 10;
             textBoxPasswordConfirmation.PasswordChar = '*';
-            textBoxPasswordConfirmation.MaxLength = 10;
+            //textBoxPasswordConfirmation.MaxLength = 10;
+
+            _queryUser = queryUser;
         }
 
 
@@ -30,7 +34,32 @@ namespace Interface
         private void buttonOk_Click(object sender, EventArgs e)
         {
 
-           //ler texto e adicionar user na bd
+            string name = textBoxUserName.Text;
+            string email = textBoxEmail.Text;
+            string password = textBoxPassword.Text;
+            string passwordConfirmation = textBoxPasswordConfirmation.Text;
+
+            MessageBox.Show(name+"\n"+email+"\n"+password+"\n"+passwordConfirmation);
+
+            bool r = _queryUser.queryUserLoginUsername(name,email);
+            if (r)
+            {
+                MessageBox.Show("The register is already in Database.");
+            }
+            else
+            {
+                if (!name.Equals("") && !email.Equals("") && password.Equals(passwordConfirmation))
+                {
+                    _queryUser.insertUser(name, email, password);
+                    MessageBox.Show("You are successful register.");
+                }
+                else
+                {
+                    MessageBox.Show("The information isn't correct!");
+                }
+            }
+            
+
         }
 
 

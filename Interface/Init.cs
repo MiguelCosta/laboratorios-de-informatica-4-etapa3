@@ -59,7 +59,7 @@ namespace Interface
 
         private void buttonRegisterNow_Click_1(object sender, EventArgs e)
         {
-            Register r = new Register();
+            Register r = new Register(_queryUser);
             r.Show();
         }
 

@@ -45,7 +45,7 @@ namespace Interface
             //MessageBox.Show("#### TODA A INFORMAÇÂO DA BASE DE DADOS ####\n"+dataBase.toString());
 
             // Apresenta a nova janela
-            chooseProcess cp = new chooseProcess(dataBase);
+            chooseProcess cp = new chooseProcess(dataBase,queryUser);
             Application.Run(cp);
 
 
