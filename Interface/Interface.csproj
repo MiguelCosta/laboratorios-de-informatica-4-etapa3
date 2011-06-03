@@ -151,6 +151,7 @@
       <DependentUpon>Tutorials.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="LI4DataSet.xsc">
       <DependentUpon>LI4DataSet.xsd</DependentUpon>
     </None>

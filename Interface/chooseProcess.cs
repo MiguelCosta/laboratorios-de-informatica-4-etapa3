@@ -414,8 +414,11 @@ namespace Interface
                 refreshTableAHPPriority(name);
             }
 
-
-
+            buttonCalculateValueFn.Enabled = true;
+            buttonCalcPrioAHP.Enabled = true;
+            buttonTestConsitencyAHP.Enabled = false;
+            dataGridViewValueFn.DataSource = null;
+            dataGridViewPesosAHPFinais.DataSource = null;
         }
 
         private void refreshTableAHPPriority(string nameC)

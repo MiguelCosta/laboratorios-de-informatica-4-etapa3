@@ -16,5 +16,10 @@ namespace Interface
             InitializeComponent();
             webBrowser.Navigate(url);
         }
+
+        private void Tutorials_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
