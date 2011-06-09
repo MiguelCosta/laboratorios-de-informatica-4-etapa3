@@ -752,10 +752,30 @@ namespace Interface
             decision.TableResult.Clear();
             tabelaSmartNorm.Clear();
             pesosFinaisClassAHP.Clear();
+
             buttonCalFinalWe.Enabled = true;
             buttonNextChooseSoftwares.Enabled = true;
+            buttonCalcSmart.Enabled = true;
+            buttonTestCons.Enabled = false;
+            buttonCalculateValueFn.Enabled = true;
+            buttonTestConsitencyAHP.Enabled = false;
+            buttonCalcPrioAHP.Enabled = true;
+
+
             dataGridViewPesosAHP.DataSource = null;
             dataGridViewPesosFinaisSmart.DataSource = null;
+            dataGridViewPesosAHPFinais.DataSource = null;
+            dataGridViewValueFn.DataSource = null;
+            dataGridViewFinal.DataSource = null;
+            
+            progressBar1.Value = 0;
+
+            labelAHPPrioCons.Text = "consitencia";
+            labelIDAHP.Text = "ID";
+            labelName_AHP.Text = "name";
+            labelCaracteristicaValueFnID.Text = "ID";
+            labelConsistencyRate.Text = "";
+            labelCaracteristicaValueFn.Text = "name";
             tabControlSeparates.SelectedTab = tabPageChooseSoftwares;
 
         }
