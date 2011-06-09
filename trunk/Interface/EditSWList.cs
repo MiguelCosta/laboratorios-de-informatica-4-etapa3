@@ -68,6 +68,8 @@ namespace Interface
 
         }
 
+
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog o = new OpenFileDialog();

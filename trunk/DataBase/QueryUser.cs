@@ -89,10 +89,10 @@ namespace DataBase
         public bool insertUser(string username, string mail, string password)
         {
             
-            string select = @"INSERT INTO [LI4].[dbo].[user] VALUES ('" + username + "','" + password + "','" + mail + "',CURRENT_TIMESTAMP);";
-            MessageBox.Show(select);
+            string insert = @"INSERT INTO [LI4].[dbo].[user] VALUES ('" + username + "','" + password + "','" + mail + "',CURRENT_TIMESTAMP);";
+            MessageBox.Show(insert);
 
-            SqlCommand command = new SqlCommand(select, _myConnection);
+            SqlCommand command = new SqlCommand(insert, _myConnection);
 
             SqlTransaction tr = _myConnection.BeginTransaction();
             command.Transaction = tr;
