@@ -51,40 +51,32 @@ INSERT INTO [LI4].[dbo].[software_list] VALUES(39,5,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(39,6,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(39,7,'true');
 
-INSERT INTO [LI4].[dbo].[software_list] VALUES(39,1,'false');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(39,2,'1955');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(39,3,'good');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(39,4,'true');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(39,5,'true');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(39,6,'true');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(39,7,'true');
-
-INSERT INTO [LI4].[dbo].[software_list] VALUES(40,1,'true');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(40,2,'1100');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(40,1,'false');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(40,2,'1955');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(40,3,'good');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(40,4,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(40,5,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(40,6,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(40,7,'true');
 
-INSERT INTO [LI4].[dbo].[software_list] VALUES(41,1,'false');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(41,2,'566');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(41,1,'true');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(41,2,'1100');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(41,3,'good');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(41,4,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(41,5,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(41,6,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(41,7,'true');
 
-INSERT INTO [LI4].[dbo].[software_list] VALUES(42,1,'true');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(42,2,'1750');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(42,1,'false');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(42,2,'566');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(42,3,'good');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(42,4,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(42,5,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(42,6,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(42,7,'true');
 
-INSERT INTO [LI4].[dbo].[software_list] VALUES(43,1,'false');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(43,2,'640');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(43,1,'true');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(43,2,'1750');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(43,3,'good');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(43,4,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(43,5,'true');
@@ -92,17 +84,17 @@ INSERT INTO [LI4].[dbo].[software_list] VALUES(43,6,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(43,7,'true');
 
 INSERT INTO [LI4].[dbo].[software_list] VALUES(44,1,'false');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(44,2,'0');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(44,3,'acceptable');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(44,4,'false');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(44,5,'false');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(44,6,'false');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(44,2,'640');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(44,3,'good');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(44,4,'true');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(44,5,'true');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(44,6,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(44,7,'true');
 
 INSERT INTO [LI4].[dbo].[software_list] VALUES(45,1,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(45,2,'0');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(45,3,'good');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(45,4,'true');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(45,3,'acceptable');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(45,4,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(45,5,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(45,6,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(45,7,'true');
@@ -111,7 +103,7 @@ INSERT INTO [LI4].[dbo].[software_list] VALUES(46,1,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(46,2,'0');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(46,3,'good');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(46,4,'true');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(46,5,'true');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(46,5,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(46,6,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(46,7,'true');
 
@@ -120,8 +112,9 @@ INSERT INTO [LI4].[dbo].[software_list] VALUES(47,2,'0');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(47,3,'good');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(47,4,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(47,5,'true');
-INSERT INTO [LI4].[dbo].[software_list] VALUES(47,6,'true');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(47,6,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(47,7,'true');
+
 
 INSERT INTO [LI4].[dbo].[software_list] VALUES(48,1,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(48,2,'696');
@@ -131,7 +124,7 @@ INSERT INTO [LI4].[dbo].[software_list] VALUES(48,5,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(48,6,'true');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(48,7,'true');
 
-INSERT INTO [LI4].[dbo].[software_list] VALUES(49,1'false');
+INSERT INTO [LI4].[dbo].[software_list] VALUES(49,1,'false');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(49,2,'519');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(49,3,'good');
 INSERT INTO [LI4].[dbo].[software_list] VALUES(49,4,'true');
