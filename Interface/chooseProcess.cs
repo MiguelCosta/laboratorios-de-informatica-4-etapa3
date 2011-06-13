@@ -189,7 +189,7 @@ namespace Interface
                 loadObject(filename);
                 refreshTableSoftwares();
                 refreshTableCaracteristics();
-                MessageBox.Show("Agora já deve estar...!");
+                //MessageBox.Show("Agora já deve estar...!");
             }
         }
 
