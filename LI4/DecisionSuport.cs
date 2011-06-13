@@ -435,12 +435,7 @@ namespace Business
             }
 
             //Calculos das prioridades normalizadas
-            int sofTotal = 0;
-            foreach (String id in tableAux.Keys)
-            {
-                sofTotal++;
-            }
-
+            int sofTotal = tableAux.Count();
             foreach (String id in tableAux.Keys)
             {
                 tableAux.TryGetValue(id, out valueX);
@@ -450,7 +445,7 @@ namespace Business
                 }
                 else 
                 {
-                    valorNorm = (float)1 / (float) sofTotal; ;
+                    valorNorm = (float)1 / (float) sofTotal;
                 }
                 tablePrior.Add(id, valorNorm);
             }
@@ -490,12 +485,7 @@ namespace Business
                 }
             }
             //Calculos das prioridades normalizadas
-            int sofTotal=0;
-
-            foreach (String id in tableAux.Keys) 
-            {
-                sofTotal++;
-            }
+            int sofTotal = tableAux.Count();
 
             foreach (String id in tableAux.Keys)
             {
