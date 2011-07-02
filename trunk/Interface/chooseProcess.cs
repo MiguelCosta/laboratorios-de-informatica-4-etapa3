@@ -122,7 +122,8 @@ namespace Interface
             DataTable pesos = new DataTable();
             pesos.Columns.Add("ID");
             pesos.Columns.Add("Name");
-
+            pesos.Columns["ID"].ReadOnly = true;
+            pesos.Columns["Name"].ReadOnly = true;
             foreach (KeyValuePair<int, string> pair in caracteristicas_escolhidas)
             {
                 pesos.Rows.Add(pair.Key, pair.Value);
