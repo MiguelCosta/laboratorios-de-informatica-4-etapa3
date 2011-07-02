@@ -223,29 +223,38 @@ namespace Interface
             // para apagar a lista já existente
             ids_dos_softwaresSeleccionados = new List<int>();
 
+            // mensagem que vai aparecer dos softwares seleccionados
             string linhas_selecionadas = "Select Softwares ID:\n";
 
             // vai a todas as linhas das tabelas ver quais estão seleccionadas
             foreach (DataGridViewRow linha in dataGridViewTabelaSoftware.Rows)
             {
-                if (linha.Cells[0].Value != null)
+                // seleccionada apenas as linhas que tem o checbox activo
+                if (linha.Cells[0].Value != null && (bool)linha.Cells[0].Value == true)
                 {
                     // convert para int o ID
                     int id = System.Convert.ToInt32(linha.Cells[1].Value);
+                    // nome do software
+                    string name = linha.Cells[2].Value.ToString();
+                    // adiciona o id do software à lista de software
                     ids_dos_softwaresSeleccionados.Add(id);
-                    linhas_selecionadas += id + "\n";
+                    // adiciona à msg o software
+                    linhas_selecionadas += id + "\t" + name + "\n";
                 }
             }
-            //MessageBox.Show(linhas_selecionadas);
 
             // condição para se ter de seleccionar mais de 2 softwares
-            if (ids_dos_softwaresSeleccionados.Capacity < 2 || ids_dos_softwaresSeleccionados.Capacity > 16)
+            if (ids_dos_softwaresSeleccionados.Count < 2 || ids_dos_softwaresSeleccionados.Count > 16)
             {
                 MessageBox.Show("Select between 2 and 16 softwares!");
             }
             else
             {
+                // apresenta os softwares seleccionados
+                MessageBox.Show(linhas_selecionadas);
+                // selecciona o separador seguinte
                 tabControlSeparates.SelectedTab = tabPageChooseCriteria;
+                // aumenta a barra de progresso
                 progressBar1.Value = 25;
             }
         }
@@ -778,6 +787,28 @@ namespace Interface
             labelCaracteristicaValueFn.Text = "name";
             tabControlSeparates.SelectedTab = tabPageChooseSoftwares;
 
+        }
+
+        private void buttonNextChooseSoftwares_MouseEnter(object sender, EventArgs e)
+        {
+            buttonNextChooseSoftwares.ForeColor = System.Drawing.Color.Blue;
+        }
+
+        private void buttonNextChooseSoftwares_MouseLeave(object sender, EventArgs e)
+        {
+            buttonNextChooseSoftwares.ForeColor = System.Drawing.Color.Black;
+        }
+
+        private void buttonViewWebPage_MouseEnter(object sender, EventArgs e)
+        {
+            buttonViewWebPage.Font = new Font(buttonViewWebPage.Font, FontStyle.Bold);
+            buttonViewWebPage.ForeColor = System.Drawing.Color.Blue;
+        }
+
+        private void buttonViewWebPage_MouseLeave(object sender, EventArgs e)
+        {
+            buttonViewWebPage.Font = new Font(buttonViewWebPage.Font, FontStyle.Regular);
+            buttonViewWebPage.ForeColor = System.Drawing.Color.Black;
         }
 
     }

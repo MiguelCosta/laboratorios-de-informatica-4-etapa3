@@ -151,6 +151,7 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.softwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startANewComparationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editSoftwareListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewSoftwareWebpageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -163,7 +164,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelProgress = new System.Windows.Forms.Panel();
             this.panelTab = new System.Windows.Forms.Panel();
-            this.startANewComparationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlSeparates.SuspendLayout();
             this.tabPageChooseSoftwares.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -287,13 +287,14 @@
             // 
             // dataGridViewTabelaSoftware
             // 
-            this.dataGridViewTabelaSoftware.AllowDrop = true;
             this.dataGridViewTabelaSoftware.AllowUserToAddRows = false;
             this.dataGridViewTabelaSoftware.AllowUserToDeleteRows = false;
             this.dataGridViewTabelaSoftware.AllowUserToOrderColumns = true;
+            this.dataGridViewTabelaSoftware.AllowUserToResizeRows = false;
             this.dataGridViewTabelaSoftware.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewTabelaSoftware.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridViewTabelaSoftware.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewTabelaSoftware.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -302,11 +303,12 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTabelaSoftware.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTabelaSoftware.ColumnHeadersHeight = 45;
             this.dataGridViewTabelaSoftware.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column3});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowFrame;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Orange;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -323,7 +325,10 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTabelaSoftware.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTabelaSoftware.RowHeadersVisible = false;
+            this.dataGridViewTabelaSoftware.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTabelaSoftware.Size = new System.Drawing.Size(706, 451);
+            this.dataGridViewTabelaSoftware.StandardTab = true;
             this.dataGridViewTabelaSoftware.TabIndex = 0;
             // 
             // Column3
@@ -352,25 +357,31 @@
             // buttonNextChooseSoftwares
             // 
             this.buttonNextChooseSoftwares.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonNextChooseSoftwares.AutoSize = true;
             this.buttonNextChooseSoftwares.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNextChooseSoftwares.Location = new System.Drawing.Point(359, 11);
             this.buttonNextChooseSoftwares.Name = "buttonNextChooseSoftwares";
-            this.buttonNextChooseSoftwares.Size = new System.Drawing.Size(75, 25);
+            this.buttonNextChooseSoftwares.Size = new System.Drawing.Size(75, 26);
             this.buttonNextChooseSoftwares.TabIndex = 0;
             this.buttonNextChooseSoftwares.Text = "Next   >";
             this.buttonNextChooseSoftwares.UseVisualStyleBackColor = true;
             this.buttonNextChooseSoftwares.Click += new System.EventHandler(this.buttonNextChooseSoftwares_Click);
+            this.buttonNextChooseSoftwares.MouseEnter += new System.EventHandler(this.buttonNextChooseSoftwares_MouseEnter);
+            this.buttonNextChooseSoftwares.MouseLeave += new System.EventHandler(this.buttonNextChooseSoftwares_MouseLeave);
             // 
             // buttonViewWebPage
             // 
             this.buttonViewWebPage.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonViewWebPage.Location = new System.Drawing.Point(210, 12);
+            this.buttonViewWebPage.AutoSize = true;
+            this.buttonViewWebPage.Location = new System.Drawing.Point(210, 11);
             this.buttonViewWebPage.Name = "buttonViewWebPage";
-            this.buttonViewWebPage.Size = new System.Drawing.Size(143, 23);
+            this.buttonViewWebPage.Size = new System.Drawing.Size(143, 25);
             this.buttonViewWebPage.TabIndex = 1;
             this.buttonViewWebPage.Text = "View Software WebPage";
             this.buttonViewWebPage.UseVisualStyleBackColor = true;
             this.buttonViewWebPage.Click += new System.EventHandler(this.buttonViewWebPage_Click);
+            this.buttonViewWebPage.MouseEnter += new System.EventHandler(this.buttonViewWebPage_MouseEnter);
+            this.buttonViewWebPage.MouseLeave += new System.EventHandler(this.buttonViewWebPage_MouseLeave);
             // 
             // tabPageChooseCriteria
             // 
@@ -1692,6 +1703,13 @@
             this.softwareToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.softwareToolStripMenuItem.Text = "Software";
             // 
+            // startANewComparationToolStripMenuItem
+            // 
+            this.startANewComparationToolStripMenuItem.Name = "startANewComparationToolStripMenuItem";
+            this.startANewComparationToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.startANewComparationToolStripMenuItem.Text = "Start a new Comparation";
+            this.startANewComparationToolStripMenuItem.Click += new System.EventHandler(this.startANewComparationToolStripMenuItem_Click);
+            // 
             // editSoftwareListToolStripMenuItem
             // 
             this.editSoftwareListToolStripMenuItem.Name = "editSoftwareListToolStripMenuItem";
@@ -1789,13 +1807,6 @@
             this.panelTab.Size = new System.Drawing.Size(732, 569);
             this.panelTab.TabIndex = 48;
             // 
-            // startANewComparationToolStripMenuItem
-            // 
-            this.startANewComparationToolStripMenuItem.Name = "startANewComparationToolStripMenuItem";
-            this.startANewComparationToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.startANewComparationToolStripMenuItem.Text = "Start a new Comparation";
-            this.startANewComparationToolStripMenuItem.Click += new System.EventHandler(this.startANewComparationToolStripMenuItem_Click);
-            // 
             // chooseProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1814,6 +1825,7 @@
             this.groupBoxCharactList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaSoftware)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.tabPageChooseCriteria.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

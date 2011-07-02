@@ -104,6 +104,7 @@
             this.dataGridViewSimpleSoftware.AllowUserToAddRows = false;
             this.dataGridViewSimpleSoftware.AllowUserToDeleteRows = false;
             this.dataGridViewSimpleSoftware.AllowUserToOrderColumns = true;
+            this.dataGridViewSimpleSoftware.AllowUserToResizeRows = false;
             this.dataGridViewSimpleSoftware.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewSimpleSoftware.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewSimpleSoftware.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -121,6 +122,8 @@
             this.dataGridViewSimpleSoftware.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewSimpleSoftware.Name = "dataGridViewSimpleSoftware";
             this.dataGridViewSimpleSoftware.ReadOnly = true;
+            this.dataGridViewSimpleSoftware.RowHeadersVisible = false;
+            this.dataGridViewSimpleSoftware.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSimpleSoftware.Size = new System.Drawing.Size(207, 477);
             this.dataGridViewSimpleSoftware.TabIndex = 0;
             this.dataGridViewSimpleSoftware.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSimpleSoftware_CellDoubleClick);
